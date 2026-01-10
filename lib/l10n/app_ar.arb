@@ -1,0 +1,29 @@
+{
+  "helloWorld": "مرحبًا بالعالم!",
+  "lookGoodFeelGood": "مظهر أنيق، إحساس أفضل",
+  "createYourStyle": "أنشئ أسلوبك الفردي والمميز وكن في أفضل مظهر كل يوم.",
+  "getStarted": "ابدأ الآن",
+
+  "signUp": "إنشاء حساب",
+  "name": "الاسم",
+  "enterYourName": "أدخل اسمك",
+
+  "emailAddress": "البريد الإلكتروني",
+  "enterYourEmail": "أدخل بريدك الإلكتروني",
+
+  "password": "كلمة المرور",
+  "enterYourPassword": "أدخل كلمة المرور",
+
+  "confirmPassword": "تأكيد كلمة المرور",
+  "confirmYourPassword": "أكد كلمة المرور",
+
+  "alreadyHaveAccount": "لديك حساب بالفعل",
+  "loginQuestion": "تسجيل الدخول؟",
+
+  "explore": "استكشف التطبيق للتعرّف على الميزات بدون الحاجة لإنشاء حساب",
+  "continueAsGuest": "المتابعة كزائر",
+  "login": "تسجيل الدخول",
+  "forgetPassword": "نسيت كلمة المرور",
+  "register": "إنشاء حساب"
+
+}

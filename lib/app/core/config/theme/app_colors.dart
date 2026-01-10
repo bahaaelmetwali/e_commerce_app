@@ -1,0 +1,13 @@
+import 'package:flutter/material.dart';
+
+abstract class AppColors {
+  AppColors._();
+  static const primaryColor = Color(0xff3D93F8);
+  static const primaryText = Colors.black;
+  static const secondaryText = Color(0xff8F959E);
+  static const redColor = Color(0xffFF5757);
+  static const cardColor = Color(0xffF3F3F3);
+  static const scaffoldColor = Color(0xffFEFEFE);
+  static const borderColor = Color(0xffE7E8EA);
+  static const errorColor = Color(0xffEA4335);
+}
