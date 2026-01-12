@@ -253,6 +253,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please write your email to receive a confirmation code to set a new password.'**
   String get writeyouremail;
+
+  /// No description provided for @pinisincorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Pin is incorrect'**
+  String get pinisincorrect;
+
+  /// No description provided for @pleasewriteyouremail.
+  ///
+  /// In en, this message translates to:
+  /// **'Please write your email to receive a confirmation code to set a new password.'**
+  String get pleasewriteyouremail;
+
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
+
+  /// No description provided for @newPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get newPassword;
+
+  /// No description provided for @enterYourNewPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your new password'**
+  String get enterYourNewPassword;
+
+  /// No description provided for @resetCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset code'**
+  String get resetCode;
+
+  /// No description provided for @home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// No description provided for @favorite.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorite'**
+  String get favorite;
+
+  /// No description provided for @cart.
+  ///
+  /// In en, this message translates to:
+  /// **'Cart'**
+  String get cart;
+
+  /// No description provided for @menu.
+  ///
+  /// In en, this message translates to:
+  /// **'Menu'**
+  String get menu;
+
+  /// No description provided for @hello.
+  ///
+  /// In en, this message translates to:
+  /// **'Hello'**
+  String get hello;
+
+  /// No description provided for @welcomeToMega.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to Mega.'**
+  String get welcomeToMega;
+
+  /// No description provided for @newArraivalProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'New Arrival Products'**
+  String get newArraivalProducts;
+
+  /// No description provided for @viewAll.
+  ///
+  /// In en, this message translates to:
+  /// **'View All'**
+  String get viewAll;
+
+  /// No description provided for @allProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'All Products'**
+  String get allProducts;
+
+  /// No description provided for @price.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get price;
+
+  /// No description provided for @description.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description;
+
+  /// No description provided for @reviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviews'**
+  String get reviews;
+
+  /// No description provided for @addtoCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to Cart'**
+  String get addtoCart;
 }
 
 class _AppLocalizationsDelegate

@@ -71,22 +71,80 @@ class AppLocalizationsAr extends AppLocalizations {
   String get register => 'إنشاء حساب';
 
   @override
-  String get verificationCode => 'Verification Code ';
+  String get verificationCode => 'رمز التأكيد';
 
   @override
   String get youcanresendconfirmationcodeafter =>
-      'You can resend confirmation code after ';
+      'يمكنك إعادة إرسال رمز التأكيد بعد';
 
   @override
-  String get dontreciveconfirmationcode => 'Don’t receive confirmation code?';
+  String get dontreciveconfirmationcode => 'لم يصلك رمز التأكيد؟';
 
   @override
-  String get resend => 'resend';
+  String get resend => 'إعادة إرسال';
 
   @override
-  String get verify => 'Verify';
+  String get verify => 'تحقق';
 
   @override
   String get writeyouremail =>
-      'Please write your email to receive a confirmation code to set a new password.';
+      'يرجى كتابة بريدك الإلكتروني لتلقي رمز التأكيد لإعداد كلمة مرور جديدة.';
+
+  @override
+  String get pinisincorrect => 'الرمز غير صحيح';
+
+  @override
+  String get pleasewriteyouremail =>
+      'يرجى كتابة بريدك الإلكتروني لتلقي رمز التأكيد لإعداد كلمة مرور جديدة.';
+
+  @override
+  String get next => 'التالي';
+
+  @override
+  String get newPassword => 'كلمة المرور الجديدة';
+
+  @override
+  String get enterYourNewPassword => 'أدخل كلمة المرور الجديدة';
+
+  @override
+  String get resetCode => 'إعادة تعيين الرمز';
+
+  @override
+  String get home => 'الرئيسية';
+
+  @override
+  String get favorite => 'المفضلة';
+
+  @override
+  String get cart => 'عربة التسوق';
+
+  @override
+  String get menu => 'القائمة';
+
+  @override
+  String get hello => 'مرحبا';
+
+  @override
+  String get welcomeToMega => 'مرحبًا بك في ميغا .';
+
+  @override
+  String get newArraivalProducts => 'منتجات جديدة وصلت';
+
+  @override
+  String get viewAll => 'عرض الكل';
+
+  @override
+  String get allProducts => 'جميع المنتجات';
+
+  @override
+  String get price => 'السعر';
+
+  @override
+  String get description => 'الوصف';
+
+  @override
+  String get reviews => 'المراجعات';
+
+  @override
+  String get addtoCart => 'أضف إلى عربة التسوق  ';
 }

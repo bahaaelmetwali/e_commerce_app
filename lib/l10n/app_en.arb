@@ -24,5 +24,26 @@
   "dontreciveconfirmationcode": "Don’t receive confirmation code?",
   "resend": "resend",
   "verify": "Verify",
-  "writeyouremail": "Please write your email to receive a confirmation code to set a new password."
+  "writeyouremail": "Please write your email to receive a confirmation code to set a new password.",
+  "pinisincorrect": "Pin is incorrect",
+  "pleasewriteyouremail": "Please write your email to receive a confirmation code to set a new password.",
+  "next": "Next",
+  "newPassword": "New Password",
+  "enterYourNewPassword": "Enter your new password",
+  "resetCode": "Reset code",
+  "home": "Home",
+  "favorite": "Favorite",
+  "cart": "Cart",
+  "menu": "Menu",
+  "hello": "Hello",
+  "welcomeToMega": "Welcome to Mega.",
+  "newArraivalProducts": "New Arrival Products",
+  "viewAll": "View All",
+  "allProducts": "All Products",
+  "price": "Price",
+  "description": "Description",
+"reviews" : "Reviews",
+"addtoCart" : "Add to Cart"
 }
+
+

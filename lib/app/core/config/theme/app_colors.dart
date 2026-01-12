@@ -10,4 +10,6 @@ abstract class AppColors {
   static const scaffoldColor = Color(0xffFEFEFE);
   static const borderColor = Color(0xffE7E8EA);
   static const errorColor = Color(0xffEA4335);
+  static const nameText = Color(0xff7A7C80);
+  static const greyBackGround = Color(0xffF5F6FA);
 }

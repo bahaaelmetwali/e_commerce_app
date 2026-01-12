@@ -74,13 +74,81 @@ class Assets {
   /// assets/fonts/inter/Inter_24pt-ThinItalic.ttf
   static const String fontsInterInter24ptThinItalic = "assets/fonts/inter/Inter_24pt-ThinItalic.ttf";
 
+  /// Assets for iconsAddToFav
+  /// assets/icons/add_to_fav.svg
+  static const String iconsAddToFav = "assets/icons/add_to_fav.svg";
+
+  /// Assets for iconsBag
+  /// assets/icons/bag.svg
+  static const String iconsBag = "assets/icons/bag.svg";
+
+  /// Assets for iconsClock
+  /// assets/icons/clock.svg
+  static const String iconsClock = "assets/icons/clock.svg";
+
+  /// Assets for iconsFav
+  /// assets/icons/fav.svg
+  static const String iconsFav = "assets/icons/fav.svg";
+
+  /// Assets for iconsFavPage
+  /// assets/icons/fav_page.svg
+  static const String iconsFavPage = "assets/icons/fav_page.svg";
+
+  /// Assets for iconsHome
+  /// assets/icons/home.svg
+  static const String iconsHome = "assets/icons/home.svg";
+
   /// Assets for iconsLock
   /// assets/icons/lock.svg
   static const String iconsLock = "assets/icons/lock.svg";
 
+  /// Assets for iconsNotification
+  /// assets/icons/notification.svg
+  static const String iconsNotification = "assets/icons/notification.svg";
+
+  /// Assets for iconsTab
+  /// assets/icons/tab.svg
+  static const String iconsTab = "assets/icons/tab.svg";
+
+  /// Assets for imagesCardtest
+  /// assets/images/cardtest.png
+  static const String imagesCardtest = "assets/images/cardtest.png";
+
   /// Assets for imagesManOnboarding
   /// assets/images/man_onboarding.png
   static const String imagesManOnboarding = "assets/images/man_onboarding.png";
+
+  /// Assets for imagesPrevTest1
+  /// assets/images/prev_test1.png
+  static const String imagesPrevTest1 = "assets/images/prev_test1.png";
+
+  /// Assets for imagesPrevTest2
+  /// assets/images/prev_test2.png
+  static const String imagesPrevTest2 = "assets/images/prev_test2.png";
+
+  /// Assets for imagesPrevTest3
+  /// assets/images/prev_test3.png
+  static const String imagesPrevTest3 = "assets/images/prev_test3.png";
+
+  /// Assets for imagesPrevTest4
+  /// assets/images/prev_test4.png
+  static const String imagesPrevTest4 = "assets/images/prev_test4.png";
+
+  /// Assets for imagesTest1
+  /// assets/images/test1.webp
+  static const String imagesTest1 = "assets/images/test1.webp";
+
+  /// Assets for imagesTest2
+  /// assets/images/test2.webp
+  static const String imagesTest2 = "assets/images/test2.webp";
+
+  /// Assets for imagesTest3
+  /// assets/images/test3.webp
+  static const String imagesTest3 = "assets/images/test3.webp";
+
+  /// Assets for imagesTestPerson
+  /// assets/images/test_person.png
+  static const String imagesTestPerson = "assets/images/test_person.png";
 
   /// Assets for launcher_iconsAppLauncherIcon
   /// assets/launcher_icons/app_launcher_icon.png

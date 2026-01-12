@@ -62,10 +62,15 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(height: 12),
               Align(
                 alignment: Alignment.centerRight,
-                child: Text(
-                  AppLocalizations.of(context)!.forgetPassword,
-                  style: TextStyles.regular16.copyWith(
-                    color: AppColors.errorColor,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, RouteNames.forgetPassword);
+                  },
+                  child: Text(
+                    AppLocalizations.of(context)!.forgetPassword,
+                    style: TextStyles.regular16.copyWith(
+                      color: AppColors.errorColor,
+                    ),
                   ),
                 ),
               ),
@@ -130,10 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
               CustomButton(
                 child: Text(AppLocalizations.of(context)!.login),
                 onPressed: () {
-                  Navigator.pushReplacementNamed(
-                    context,
-                    RouteNames.verificationCode,
-                  );
+                  Navigator.pushNamed(context, RouteNames.mainLayOut);
                 },
               ),
             ],

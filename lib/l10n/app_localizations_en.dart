@@ -89,4 +89,62 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get writeyouremail =>
       'Please write your email to receive a confirmation code to set a new password.';
+
+  @override
+  String get pinisincorrect => 'Pin is incorrect';
+
+  @override
+  String get pleasewriteyouremail =>
+      'Please write your email to receive a confirmation code to set a new password.';
+
+  @override
+  String get next => 'Next';
+
+  @override
+  String get newPassword => 'New Password';
+
+  @override
+  String get enterYourNewPassword => 'Enter your new password';
+
+  @override
+  String get resetCode => 'Reset code';
+
+  @override
+  String get home => 'Home';
+
+  @override
+  String get favorite => 'Favorite';
+
+  @override
+  String get cart => 'Cart';
+
+  @override
+  String get menu => 'Menu';
+
+  @override
+  String get hello => 'Hello';
+
+  @override
+  String get welcomeToMega => 'Welcome to Mega.';
+
+  @override
+  String get newArraivalProducts => 'New Arrival Products';
+
+  @override
+  String get viewAll => 'View All';
+
+  @override
+  String get allProducts => 'All Products';
+
+  @override
+  String get price => 'Price';
+
+  @override
+  String get description => 'Description';
+
+  @override
+  String get reviews => 'Reviews';
+
+  @override
+  String get addtoCart => 'Add to Cart';
 }

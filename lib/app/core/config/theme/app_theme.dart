@@ -13,7 +13,9 @@ class AppTheme {
     scaffoldBackgroundColor: AppColors.scaffoldColor,
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.scaffoldColor,
-      elevation: 0,
+       elevation: 0,
+        scrolledUnderElevation: 0,
+        iconTheme: IconThemeData(color: AppColors.primaryText),
       titleTextStyle: TextStyles.medium17.copyWith(
         color: AppColors.primaryText,
       ),
