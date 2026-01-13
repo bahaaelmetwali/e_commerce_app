@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:e_commerce_app/app/core/domain/entities/language/app_language_code_enum.dart';
-import 'package:e_commerce_app/app/core/domain/use_cases/change_language_use_case.dart';
-import 'package:e_commerce_app/app/core/domain/use_cases/get_language_use_case.dart';
+import 'package:mega/app/core/domain/entities/language/app_language_code_enum.dart';
+import 'package:mega/app/core/domain/use_cases/change_language_use_case.dart';
+import 'package:mega/app/core/domain/use_cases/get_language_use_case.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 

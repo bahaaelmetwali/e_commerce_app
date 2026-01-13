@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/app/core/config/router/route_names.dart';
+import 'package:mega/app/core/config/router/route_names.dart';
 import 'package:flutter/material.dart';
 
 import '../../../features/main_layout.dart';

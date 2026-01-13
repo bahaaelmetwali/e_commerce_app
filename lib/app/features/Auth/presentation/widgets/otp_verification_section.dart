@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/app/features/Auth/presentation/widgets/resend_section.dart';
+import 'package:mega/app/features/Auth/presentation/widgets/resend_section.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 

@@ -43,7 +43,9 @@
   "price": "Price",
   "description": "Description",
 "reviews" : "Reviews",
-"addtoCart" : "Add to Cart"
+"addtoCart" : "Add to Cart",
+"readLess":"Read Less",
+"readMore": "Read More"
 }
 
 

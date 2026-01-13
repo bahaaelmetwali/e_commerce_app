@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/l10n/app_localizations.dart';
+import 'package:mega/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -12,7 +12,6 @@ import 'app/core/localization/cubit/language_cubit.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
-
   runApp(const MyApp());
 }
 

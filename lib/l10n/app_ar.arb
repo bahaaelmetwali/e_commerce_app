@@ -43,5 +43,7 @@
   "price": "السعر",
   "description": "الوصف",
   "reviews": "المراجعات",
-  "addtoCart": "أضف إلى عربة التسوق  "
+  "addtoCart": "أضف إلى عربة التسوق",
+  "readLess":         "قراءة اقل",
+  "readMore":         "قراءة المزيد"
 }

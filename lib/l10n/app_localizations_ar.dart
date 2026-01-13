@@ -146,5 +146,11 @@ class AppLocalizationsAr extends AppLocalizations {
   String get reviews => 'المراجعات';
 
   @override
-  String get addtoCart => 'أضف إلى عربة التسوق  ';
+  String get addtoCart => 'أضف إلى عربة التسوق';
+
+  @override
+  String get readLess => 'قراءة اقل';
+
+  @override
+  String get readMore => 'قراءة المزيد';
 }

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../../constants/assets.dart';
@@ -18,7 +17,7 @@ class MainImageCard extends StatelessWidget {
           color: Color(0xffF2F2F2),
           child: AppPhoto(
             path: Assets.imagesCardtest,
-            fit: BoxFit.fill,
+            fit: BoxFit.contain,
             width: double.infinity,
           ),
         ),
@@ -26,6 +25,7 @@ class MainImageCard extends StatelessWidget {
           top: 16,
           start: 16,
           child: CircleAvatar(
+            radius: 20,
             backgroundColor: Colors.white,
             child: IconButton(
               icon: Icon(Icons.arrow_back, color: AppColors.primaryText),
@@ -39,11 +39,10 @@ class MainImageCard extends StatelessWidget {
           top: 16,
           end: 16,
           child: CircleAvatar(
+            radius: 20,
             backgroundColor: Colors.white,
             child: GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
+              onTap: () {},
               child: AppSvgPhoto(path: Assets.iconsAddToFav),
             ),
           ),

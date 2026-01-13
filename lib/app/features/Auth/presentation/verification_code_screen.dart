@@ -1,9 +1,9 @@
-import 'package:e_commerce_app/app/core/config/theme/text_styles.dart';
-import 'package:e_commerce_app/app/core/constants/dimensions.dart';
-import 'package:e_commerce_app/app/features/Auth/presentation/widgets/otp_verification_section.dart';
-import 'package:e_commerce_app/app/material/images/app_svg_photo.dart';
-import 'package:e_commerce_app/constants/assets.dart';
-import 'package:e_commerce_app/l10n/app_localizations.dart';
+import 'package:mega/app/core/config/theme/text_styles.dart';
+import 'package:mega/app/core/constants/dimensions.dart';
+import 'package:mega/app/features/Auth/presentation/widgets/otp_verification_section.dart';
+import 'package:mega/app/material/images/app_svg_photo.dart';
+import 'package:mega/constants/assets.dart';
+import 'package:mega/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class VerificationCodeScreen extends StatefulWidget {

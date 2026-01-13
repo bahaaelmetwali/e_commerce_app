@@ -1,6 +1,6 @@
-import 'package:e_commerce_app/app/core/constants/dimensions.dart';
-import 'package:e_commerce_app/app/features/home/presentation/widgets/list_of_products.dart';
-import 'package:e_commerce_app/l10n/app_localizations.dart';
+import 'package:mega/app/core/constants/dimensions.dart';
+import 'package:mega/app/features/home/presentation/widgets/list_of_products.dart';
+import 'package:mega/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class AllProductPage extends StatelessWidget {

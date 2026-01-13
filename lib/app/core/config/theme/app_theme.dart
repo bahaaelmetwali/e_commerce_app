@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/app/core/config/theme/text_styles.dart';
+import 'package:mega/app/core/config/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'app_colors.dart';
 

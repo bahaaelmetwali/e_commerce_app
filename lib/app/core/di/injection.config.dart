@@ -9,21 +9,20 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:e_commerce_app/app/core/data/data_source/language_local_data_source.dart'
-    as _i412;
-import 'package:e_commerce_app/app/core/data/repo_impl/language_cache_repository_imp.dart'
-    as _i417;
-import 'package:e_commerce_app/app/core/domain/repos/language_cache_repository.dart'
-    as _i623;
-import 'package:e_commerce_app/app/core/domain/use_cases/change_language_use_case.dart'
-    as _i803;
-import 'package:e_commerce_app/app/core/domain/use_cases/get_language_use_case.dart'
-    as _i365;
-import 'package:e_commerce_app/app/core/helper/cache_helper.dart' as _i163;
-import 'package:e_commerce_app/app/core/localization/cubit/language_cubit.dart'
-    as _i1055;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
+import 'package:mega/app/core/data/data_source/language_local_data_source.dart'
+    as _i310;
+import 'package:mega/app/core/data/repo_impl/language_cache_repository_imp.dart'
+    as _i34;
+import 'package:mega/app/core/domain/repos/language_cache_repository.dart'
+    as _i19;
+import 'package:mega/app/core/domain/use_cases/change_language_use_case.dart'
+    as _i477;
+import 'package:mega/app/core/domain/use_cases/get_language_use_case.dart'
+    as _i1030;
+import 'package:mega/app/core/helper/cache_helper.dart' as _i616;
+import 'package:mega/app/core/localization/cubit/language_cubit.dart' as _i270;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -33,26 +32,26 @@ extension GetItInjectableX on _i174.GetIt {
     _i526.EnvironmentFilter? environmentFilter,
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
-    gh.singleton<_i163.CacheHelper>(
-      () => _i163.CacheHelper(gh<_i460.SharedPreferences>()),
+    gh.singleton<_i616.CacheHelper>(
+      () => _i616.CacheHelper(gh<_i460.SharedPreferences>()),
     );
-    gh.singleton<_i412.LanguageLocalDataSource>(
-      () => _i412.LanguageLocalDataSourceImpl(gh<_i163.CacheHelper>()),
+    gh.singleton<_i310.LanguageLocalDataSource>(
+      () => _i310.LanguageLocalDataSourceImpl(gh<_i616.CacheHelper>()),
     );
-    gh.singleton<_i623.LanguageCacheRepository>(
+    gh.singleton<_i19.LanguageCacheRepository>(
       () =>
-          _i417.LanguageCacheRepositoryImp(gh<_i412.LanguageLocalDataSource>()),
+          _i34.LanguageCacheRepositoryImp(gh<_i310.LanguageLocalDataSource>()),
     );
-    gh.lazySingleton<_i365.GetAppLanguageUseCase>(
-      () => _i365.GetAppLanguageUseCase(gh<_i623.LanguageCacheRepository>()),
+    gh.lazySingleton<_i1030.GetAppLanguageUseCase>(
+      () => _i1030.GetAppLanguageUseCase(gh<_i19.LanguageCacheRepository>()),
     );
-    gh.lazySingleton<_i803.ChangeLanguageUseCase>(
-      () => _i803.ChangeLanguageUseCase(gh<_i623.LanguageCacheRepository>()),
+    gh.lazySingleton<_i477.ChangeLanguageUseCase>(
+      () => _i477.ChangeLanguageUseCase(gh<_i19.LanguageCacheRepository>()),
     );
-    gh.factory<_i1055.LanguageCubit>(
-      () => _i1055.LanguageCubit(
-        gh<_i365.GetAppLanguageUseCase>(),
-        changeLanguageUseCase: gh<_i803.ChangeLanguageUseCase>(),
+    gh.factory<_i270.LanguageCubit>(
+      () => _i270.LanguageCubit(
+        gh<_i1030.GetAppLanguageUseCase>(),
+        changeLanguageUseCase: gh<_i477.ChangeLanguageUseCase>(),
       ),
     );
     return this;

@@ -1,8 +1,8 @@
-import 'package:e_commerce_app/app/core/config/theme/text_styles.dart';
-import 'package:e_commerce_app/app/core/constants/dimensions.dart';
-import 'package:e_commerce_app/app/material/buttons/custom_button.dart';
-import 'package:e_commerce_app/app/material/textfields/custom_text_field.dart';
-import 'package:e_commerce_app/l10n/app_localizations.dart';
+import 'package:mega/app/core/config/theme/text_styles.dart';
+import 'package:mega/app/core/constants/dimensions.dart';
+import 'package:mega/app/material/buttons/custom_button.dart';
+import 'package:mega/app/material/textfields/custom_text_field.dart';
+import 'package:mega/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/config/router/route_names.dart';

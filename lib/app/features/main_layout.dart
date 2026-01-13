@@ -1,7 +1,7 @@
-import 'package:e_commerce_app/app/core/config/theme/app_colors.dart';
-import 'package:e_commerce_app/app/core/config/theme/text_styles.dart';
-import 'package:e_commerce_app/app/features/home/presentation/home_page.dart';
-import 'package:e_commerce_app/app/material/images/app_svg_photo.dart';
+import 'package:mega/app/core/config/theme/app_colors.dart';
+import 'package:mega/app/core/config/theme/text_styles.dart';
+import 'package:mega/app/features/home/presentation/home_page.dart';
+import 'package:mega/app/material/images/app_svg_photo.dart';
 import 'package:flutter/material.dart';
 import '../../constants/assets.dart';
 import '../../l10n/app_localizations.dart';

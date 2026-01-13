@@ -1,8 +1,9 @@
-import 'package:e_commerce_app/app/core/config/theme/text_styles.dart';
-import 'package:e_commerce_app/app/core/constants/dimensions.dart';
-import 'package:e_commerce_app/app/material/buttons/custom_button.dart';
-import 'package:e_commerce_app/app/material/textfields/custom_text_field.dart';
-import 'package:e_commerce_app/l10n/app_localizations.dart';
+import 'package:mega/app/core/config/theme/text_styles.dart';
+import 'package:mega/app/core/constants/dimensions.dart';
+import 'package:mega/app/material/buttons/custom_button.dart';
+import 'package:mega/app/material/textfields/custom_text_field.dart';
+import 'package:mega/l10n/app_localizations.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/config/router/route_names.dart';
@@ -21,22 +22,22 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(Dimensions.paddingMedium),
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(Dimensions.paddingMedium),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
 
             children: [
-              SizedBox(height: 106),
+              SizedBox(height: 24),
               Center(
                 child: Text(
                   AppLocalizations.of(context)!.login,
                   style: TextStyles.semiBold28,
                 ),
               ),
-              SizedBox(height: 46),
+              SizedBox(height: 30),
               CustomTextField(
                 labelText: AppLocalizations.of(context)!.emailAddress,
                 hintText: AppLocalizations.of(context)!.enterYourEmail,
@@ -78,30 +79,24 @@ class _LoginScreenState extends State<LoginScreen> {
               Divider(height: 3, color: AppColors.borderColor),
               SizedBox(height: 20),
               Center(
-                child: RichText(
-                  text: TextSpan(
-                    text: AppLocalizations.of(context)!.alreadyHaveAccount,
-                    style: TextStyles.regular15.copyWith(
-                      color: AppColors.secondaryText,
-                    ),
+                child: Text.rich(
+                  TextSpan(
                     children: [
-                      WidgetSpan(
-                        child: GestureDetector(
-                          onTap: () {
+                      TextSpan(
+                        text: AppLocalizations.of(context)!.alreadyHaveAccount,
+                        style: TextStyles.regular15.copyWith(
+                          color: AppColors.secondaryText,
+                        ),
+                      ),
+                      TextSpan(
+                        text: ' ${AppLocalizations.of(context)!.signUp}',
+                        style: TextStyles.semiBold15.copyWith(
+                          color: AppColors.primaryText,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
                             Navigator.pushNamed(context, RouteNames.register);
                           },
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 4.0,
-                            ),
-                            child: Text(
-                              AppLocalizations.of(context)!.signUp,
-                              style: TextStyles.semiBold15.copyWith(
-                                color: AppColors.primaryText,
-                              ),
-                            ),
-                          ),
-                        ),
                       ),
                     ],
                   ),
@@ -110,23 +105,24 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(height: 20),
               Divider(height: 3, color: AppColors.borderColor),
               SizedBox(height: 20),
-              RichText(
-                text: TextSpan(
-                  text: AppLocalizations.of(context)!.explore,
-                  style: TextStyles.regular15.copyWith(
-                    color: AppColors.secondaryText,
-                  ),
+              Text.rich(
+                TextSpan(
                   children: [
-                    WidgetSpan(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                        child: Text(
-                          AppLocalizations.of(context)!.continueAsGuest,
-                          style: TextStyles.semiBold15.copyWith(
-                            color: AppColors.primaryText,
-                          ),
-                        ),
+                    TextSpan(
+                      text: AppLocalizations.of(context)!.explore,
+                      style: TextStyles.regular15.copyWith(
+                        color: AppColors.secondaryText,
                       ),
+                    ),
+                    TextSpan(
+                      text: ' ${AppLocalizations.of(context)!.continueAsGuest}',
+                      style: TextStyles.semiBold15.copyWith(
+                        color: AppColors.primaryText,
+                      ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Navigator.pushNamed(context, RouteNames.mainLayOut);
+                        },
                     ),
                   ],
                 ),

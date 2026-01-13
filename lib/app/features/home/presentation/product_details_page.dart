@@ -1,8 +1,9 @@
-import 'package:e_commerce_app/app/core/config/theme/app_colors.dart';
-import 'package:e_commerce_app/app/core/config/theme/text_styles.dart';
-import 'package:e_commerce_app/app/core/constants/dimensions.dart';
-import 'package:e_commerce_app/l10n/app_localizations.dart';
+import 'package:mega/app/core/config/theme/app_colors.dart';
+import 'package:mega/app/core/config/theme/text_styles.dart';
+import 'package:mega/app/core/constants/dimensions.dart';
+import 'package:mega/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'widgets/expandable_text.dart';
 import 'widgets/main_image_card.dart';
 import 'widgets/preview_widget.dart';
 
@@ -69,15 +70,15 @@ class ProductDetailsPage extends StatelessWidget {
                             color: AppColors.primaryColor,
                           ),
                         ),
-                        ListView.builder(
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          itemCount: 4,
-                          itemBuilder: (context, index) {
-                            return Text('Review $index');
-                          },
-                        ),
                       ],
+                    ),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: 4,
+                      itemBuilder: (context, index) {
+                        return Text('Review $index');
+                      },
                     ),
                   ],
                 ),
@@ -86,69 +87,6 @@ class ProductDetailsPage extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class ExpandableText extends StatefulWidget {
-  final String text;
-  final int trimLines;
-
-  const ExpandableText({super.key, required this.text, this.trimLines = 3});
-
-  @override
-  State<ExpandableText> createState() => _ExpandableTextState();
-}
-
-class _ExpandableTextState extends State<ExpandableText> {
-  bool expanded = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final textSpan = TextSpan(
-          text: widget.text,
-          style: TextStyles.regular15,
-        );
-
-        final textPainter = TextPainter(
-          text: textSpan,
-          maxLines: widget.trimLines,
-          textDirection: TextDirection.ltr,
-        )..layout(maxWidth: constraints.maxWidth);
-
-        final isOverflow = textPainter.didExceedMaxLines;
-
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              widget.text,
-              maxLines: expanded ? null : widget.trimLines,
-              overflow: expanded ? TextOverflow.visible : TextOverflow.ellipsis,
-              style: TextStyles.regular15.copyWith(
-                color: AppColors.secondaryText,
-              ),
-            ),
-            if (isOverflow)
-              GestureDetector(
-                onTap: () {
-                  setState(() => expanded = !expanded);
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 4),
-                  child: Text(
-                    expanded ? 'Read Less' : 'Read More..',
-                    style: TextStyles.semiBold15.copyWith(
-                      color: AppColors.primaryText,
-                    ),
-                  ),
-                ),
-              ),
-          ],
-        );
-      },
     );
   }
 }

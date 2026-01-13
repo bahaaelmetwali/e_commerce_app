@@ -1,6 +1,6 @@
-import 'package:e_commerce_app/app/core/config/router/route_names.dart';
-import 'package:e_commerce_app/app/features/Auth/presentation/widgets/new_password_screen.dart';
-import 'package:e_commerce_app/app/features/home/presentation/all_product_page.dart';
+import 'package:mega/app/core/config/router/route_names.dart';
+import 'package:mega/app/features/Auth/presentation/widgets/new_password_screen.dart';
+import 'package:mega/app/features/home/presentation/all_product_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../features/Auth/presentation/forget_password_screen.dart';

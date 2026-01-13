@@ -147,4 +147,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get addtoCart => 'Add to Cart';
+
+  @override
+  String get readLess => 'Read Less';
+
+  @override
+  String get readMore => 'Read More';
 }
