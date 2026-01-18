@@ -13,9 +13,9 @@ class AppTheme {
     scaffoldBackgroundColor: AppColors.scaffoldColor,
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.scaffoldColor,
-       elevation: 0,
-        scrolledUnderElevation: 0,
-        iconTheme: IconThemeData(color: AppColors.primaryText),
+      elevation: 0,
+      scrolledUnderElevation: 0,
+      iconTheme: IconThemeData(color: AppColors.primaryText),
       titleTextStyle: TextStyles.medium17.copyWith(
         color: AppColors.primaryText,
       ),
@@ -35,6 +35,7 @@ class AppTheme {
       labelLarge: TextStyles.medium14,
       labelSmall: TextStyles.medium12,
     ),
+
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         foregroundColor: Colors.white,
@@ -52,13 +53,19 @@ class AppTheme {
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
-      border: OutlineInputBorder(
+      hintStyle: TextStyles.medium15.copyWith(color: AppColors.secondaryText),
+      enabledBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: AppColors.borderColor),
+      ),
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: AppColors.primaryText),
+      ),
+      errorBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: AppColors.errorColor),
+      ),
+      border: UnderlineInputBorder(
         borderRadius: BorderRadius.circular(10),
         borderSide: BorderSide(color: AppColors.secondaryText),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide(color: AppColors.primaryText),
       ),
       labelStyle: TextStyles.regular14.copyWith(color: AppColors.primaryText),
     ),

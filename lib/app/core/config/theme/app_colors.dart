@@ -12,4 +12,5 @@ abstract class AppColors {
   static const errorColor = Color(0xffEA4335);
   static const nameText = Color(0xff7A7C80);
   static const greyBackGround = Color(0xffF5F6FA);
+  static const whiteColor = Color(0xffffffff);
 }

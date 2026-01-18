@@ -1,4 +1,4 @@
-import 'package:mega/app/material/images/app_photo.dart';
+import 'package:mega/app/material/images/app_image_widget.dart';
 import 'package:mega/app/material/images/app_svg_photo.dart';
 import 'package:mega/constants/assets.dart';
 
@@ -53,7 +53,7 @@ class _ListofProductsState extends State<ListofProducts> {
                   borderRadius: BorderRadius.circular(12),
                   child: Stack(
                     children: [
-                      AppPhoto(
+                      AppImageWidget(
                         path: Assets.imagesCardtest,
                         fit: BoxFit.fill,
                         width: double.infinity,
@@ -67,7 +67,7 @@ class _ListofProductsState extends State<ListofProducts> {
                               favorites[index] = !favorites[index];
                             });
                           },
-                          child: AppSvgPhoto(
+                          child: AppSvgIcon(
                             path: favorites[index]
                                 ? Assets.iconsFav
                                 : Assets.iconsFavPage,

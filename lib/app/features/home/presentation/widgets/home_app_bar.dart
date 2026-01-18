@@ -44,7 +44,7 @@ class HomeAppBar extends StatelessWidget {
         CircleAvatar(
           radius: 25,
           backgroundColor: AppColors.greyBackGround,
-          child: Center(child: AppSvgPhoto(path: Assets.iconsNotification)),
+          child: Center(child: AppSvgIcon(path: Assets.iconsNotification)),
         ),
       ],
     );

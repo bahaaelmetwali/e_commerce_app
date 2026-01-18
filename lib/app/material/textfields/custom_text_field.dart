@@ -10,11 +10,15 @@ class CustomTextField extends StatelessWidget {
     this.labelText,
     this.obscureText = false,
     this.suffixIcon,
+    this.validator,
+    this.controller,
   });
   final String? hintText;
   final String? labelText;
   final bool obscureText;
   final suffixIcon;
+  final String? Function(String?)? validator;
+  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,20 +30,13 @@ class CustomTextField extends StatelessWidget {
           style: TextStyles.regular13,
         ),
         TextFormField(
+          validator: validator,
+          controller: controller,
           obscureText: obscureText,
           style: TextStyles.medium15.copyWith(color: AppColors.primaryText),
           decoration: InputDecoration(
             hintText: hintText ?? '',
-            hintStyle: TextStyles.medium15.copyWith(
-              color: AppColors.secondaryText,
-            ),
             suffixIcon: suffixIcon,
-            enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: AppColors.borderColor),
-            ),
-            focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: AppColors.primaryText),
-            ),
           ),
         ),
       ],

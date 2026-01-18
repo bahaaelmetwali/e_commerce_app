@@ -1,73 +1,43 @@
-
 import 'package:dio/dio.dart';
-import 'package:mega/app/core/constants/constants.dart';
+import 'package:injectable/injectable.dart';
+import 'package:mega/app/core/data/data_source/local_data_source.dart';
 
-class DioHelper {
-  // final TokenInterceptor tokenInterceptor;
-  // final ErrorInterceptor errorInterceptor;
+import '../network/log_out_stream.dart';
 
-  DioHelper(
-    // this.tokenInterceptor,
-    // this.errorInterceptor,
-  );
 
-  Dio createDio() {
-    final dio = Dio(
-      BaseOptions(
-        baseUrl: Constants.baseUrl,
-        validateStatus: (status) => status != null && status < 400,
-        headers: {
-          'Accept': 'application/json',
-          'Accept-Language': 'ar',
-          'Content-Type': 'application/json',
-        },
-      ),
-    );
+@singleton
+class TokenInterceptor extends Interceptor {
+  final LocalAuthDataSource localAuthDataSource;
+  TokenInterceptor(this.localAuthDataSource);
 
-    dio.interceptors.addAll([
-      // tokenInterceptor,
-      // errorInterceptor,
-      LogInterceptor(
-        request: true,
-        requestBody: true,
-        responseBody: true,
-        responseHeader: false,
-        error: true,
-      ),
-    ]);
-
-    return dio;
+  @override
+  void onRequest(
+    RequestOptions options,
+    RequestInterceptorHandler handler,
+  ) async {
+    final token = await localAuthDataSource.getToken();
+    print("token: $token");
+    if (token != null && token.isNotEmpty) {
+      options.headers['Authorization'] = 'Bearer $token';
+    }
+    handler.next(options);
   }
 }
 
-// class TokenInterceptor extends Interceptor {
-//   final LocalDataSource _localDataSource;
-//   TokenInterceptor(this._localDataSource);
+@singleton
+class ErrorInterceptor extends Interceptor {
+  final LocalAuthDataSource localAuthDataSource;
+  final LogOutStream logoutStream;
 
-//   @override
-//   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-//     final token = _localDataSource.getToken();
-//     if (token != null && token.isNotEmpty) {
-//       options.headers['Authorization'] = 'Bearer $token';
-//     }
-//     handler.next(options);
-//   }
-// }
-
-// class ErrorInterceptor extends Interceptor {
-//   final LocalDataSource localDataSource;
-//   final LogoutStream logoutStream;
-
-//   ErrorInterceptor(this.localDataSource, this.logoutStream);
-
-//   @override
-//   void onError(DioException err, ErrorInterceptorHandler handler) {
-//     if (err.response?.statusCode == 401 || err.response?.statusCode == 403) {
-//       localDataSource.clearToken();
-//       logoutStream.addEvent('logout');
-//       handler.reject(err);
-//     } else {
-//       handler.next(err);
-//     }
-//   }
-// }
+  ErrorInterceptor(this.localAuthDataSource, this.logoutStream);
+  @override
+  void onError(DioException err, ErrorInterceptorHandler handler) {
+    if (err.response?.statusCode == 401 || err.response?.statusCode == 403) {
+      localAuthDataSource.clearToken();
+      logoutStream.addEvent('logout');
+      handler.reject(err);
+    } else {
+      handler.next(err);
+    }
+  }
+}

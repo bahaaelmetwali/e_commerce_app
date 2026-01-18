@@ -44,6 +44,16 @@
   "description": "الوصف",
   "reviews": "المراجعات",
   "addtoCart": "أضف إلى عربة التسوق",
-  "readLess":         "قراءة اقل",
-  "readMore":         "قراءة المزيد"
+  "readLess": "قراءة اقل",
+  "readMore": "قراءة المزيد",
+  "registrationSuccessful": "تم التسجيل بنجاح",
+  "loginSuccessful": "تم تسجيل الدخول بنجاح",
+  "otpVerificationIsTrue": "رمز التحقق صحيح ",
+  "resendotpsucessful": "تم اعادة الرسال الكود بنجاح",
+  "vericationCodesentsuccessfully": "تم ارسال رمز التحقق بنجاح",
+  "pleaseWriteyourNewPassword": "يرجى كتابة كلمة المرور الجديدة الخاصة بك",
+  "passwordChangedSucessfully" : "تم تغيير كلمة المرور بنجاح",
+  "login_required": "يرجى تسجيل الدخول للوصول لهذه الصفحة.",
+  "cancel": "إلغاء",
+  "alert": "تنبيه"
 }

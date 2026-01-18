@@ -1,10 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega/app/material/snakbars/show_custom_snack_bar.dart';
 
 import '../../../../../l10n/app_localizations.dart';
 import '../../../../core/config/theme/app_colors.dart';
 import '../../../../core/config/theme/text_styles.dart';
+import '../cubits/resend_code/resend_code_cubit.dart';
 
 class ResendSection extends StatefulWidget {
   const ResendSection({super.key});
@@ -57,14 +60,30 @@ class _ResendSectionState extends State<ResendSection> {
           ),
           if (remainingSeconds == 0)
             WidgetSpan(
-              child: GestureDetector(
-                onTap: () {
-                  resendDelay();
+              child: BlocListener<ResendCodeCubit, ResendCodeState>(
+                listener: (context, state) {
+                  if (state is ResendCodeSuccess) {
+                    showCustomSnackBar(
+                      context,
+                      message: AppLocalizations.of(
+                        context,
+                      )!.resendOtpSuccessful,
+                    );
+
+                    resendDelay();
+                  } else if (state is ResendCodeFailure) {
+                    showCustomSnackBar(context, message: state.errorMessage);
+                  }
                 },
-                child: Text(
-                  ' ${AppLocalizations.of(context)!.resend}',
-                  style: TextStyles.medium13.copyWith(
-                    color: AppColors.primaryText,
+                child: GestureDetector(
+                  onTap: () {
+                    context.read<ResendCodeCubit>().resendCode();
+                  },
+                  child: Text(
+                    ' ${AppLocalizations.of(context)!.resend}',
+                    style: TextStyles.medium13.copyWith(
+                      color: AppColors.primaryText,
+                    ),
                   ),
                 ),
               ),

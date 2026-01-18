@@ -379,6 +379,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Read More'**
   String get readMore;
+
+  /// No description provided for @registrationSuccessful.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration successful'**
+  String get registrationSuccessful;
+
+  /// No description provided for @loginSuccessful.
+  ///
+  /// In en, this message translates to:
+  /// **'Login successful'**
+  String get loginSuccessful;
+
+  /// No description provided for @otpVerificationIsTrue.
+  ///
+  /// In en, this message translates to:
+  /// **'OTP verification is true'**
+  String get otpVerificationIsTrue;
+
+  /// No description provided for @resendOtpSuccessful.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend OTP successful'**
+  String get resendOtpSuccessful;
+
+  /// No description provided for @vericationCodesentsuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification code sent successfully'**
+  String get vericationCodesentsuccessfully;
+
+  /// No description provided for @pleaseWriteyourNewPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Please write your new password'**
+  String get pleaseWriteyourNewPassword;
+
+  /// No description provided for @passwordChangedSucessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Password changed successfully'**
+  String get passwordChangedSucessfully;
+
+  /// No description provided for @login_required.
+  ///
+  /// In en, this message translates to:
+  /// **'Please login to access this page.'**
+  String get login_required;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @alert.
+  ///
+  /// In en, this message translates to:
+  /// **'Alert'**
+  String get alert;
 }
 
 class _AppLocalizationsDelegate

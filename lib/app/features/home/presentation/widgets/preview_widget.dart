@@ -1,4 +1,4 @@
-import 'package:mega/app/material/images/app_photo.dart';
+import 'package:mega/app/material/images/app_image_widget.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../../../../constants/assets.dart';
@@ -27,7 +27,7 @@ class _PreviewWidgetState extends State<PreviewWidget> {
         itemBuilder: (context, index) {
           return ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child: AppPhoto(
+            child: AppImageWidget(
               path: images[index],
               width: 86,
               fit: BoxFit.contain,

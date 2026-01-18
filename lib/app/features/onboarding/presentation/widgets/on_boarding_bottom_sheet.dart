@@ -48,7 +48,7 @@ class OnBoardingButtonSheet extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacementNamed(context, RouteNames.login);
                   },
-                  child: Text(AppLocalizations.of(context)!.getStarted),
+                  child: AppLocalizations.of(context)!.getStarted,
                 );
               },
             ),

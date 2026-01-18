@@ -1,28 +1,65 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class AppSvgPhoto extends StatelessWidget {
-  const AppSvgPhoto({
+class AppSvgIcon extends StatelessWidget {
+  const AppSvgIcon({
     super.key,
     required this.path,
     this.height,
     this.width,
     this.color,
+    this.fit = BoxFit.contain,
+    this.placeholder,
   });
+
   final String path;
   final double? height;
   final double? width;
   final Color? color;
+  final BoxFit fit;
+
+  final Widget? placeholder;
+
+  bool get _isNetwork =>
+      path.startsWith('http://') || path.startsWith('https://');
+
+  bool get _isFile => path.startsWith('/');
+
+  ColorFilter? get _colorFilter =>
+      color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null;
 
   @override
   Widget build(BuildContext context) {
+    if (_isNetwork) {
+      return SvgPicture.network(
+        path,
+        height: height,
+        width: width,
+        fit: fit,
+        colorFilter: _colorFilter,
+        placeholderBuilder: (_) =>
+            placeholder ?? const SizedBox.shrink(),
+      );
+    }
+
+    if (_isFile) {
+      return SvgPicture.file(
+        File(path),
+        height: height,
+        width: width,
+        fit: fit,
+        colorFilter: _colorFilter,
+      );
+    }
+
     return SvgPicture.asset(
       path,
       height: height,
       width: width,
-      colorFilter: color != null
-          ? ColorFilter.mode(color!, BlendMode.srcIn)
-          : null,
+      fit: fit,
+      colorFilter: _colorFilter,
     );
   }
 }

@@ -12,7 +12,7 @@ class LanguageCubit extends Cubit<LanguageState> {
   LanguageCubit(this.appLanguageUseCase, {required this.changeLanguageUseCase})
     : super(const LanguageState(null));
   final GetAppLanguageUseCase appLanguageUseCase;
-  final ChangeLanguageUseCase changeLanguageUseCase;
+  final SaveLanguageUseCase changeLanguageUseCase;
   Future<void> getSavedLanguage() async {
     final result = await appLanguageUseCase();
     result.fold(

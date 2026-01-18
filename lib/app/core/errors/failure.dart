@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 
 class Failure {
@@ -7,11 +6,12 @@ class Failure {
   @override
   String toString() => message;
 }
+
 class ServiceFailure extends Failure {
   ServiceFailure(super.errorMessage);
 
-  factory ServiceFailure.fromDio(DioException dioerror) {
-    switch (dioerror.type) {
+  factory ServiceFailure.fromDio(DioException dioError) {
+    switch (dioError.type) {
       case DioExceptionType.connectionTimeout:
         return ServiceFailure('Connection timeout with Api server');
 
@@ -27,7 +27,7 @@ class ServiceFailure extends Failure {
         );
 
       case DioExceptionType.badResponse:
-        return ServiceFailure.checkStatusCode(dioerror);
+        return ServiceFailure.checkStatusCode(dioError);
 
       case DioExceptionType.cancel:
         return ServiceFailure('Request was cancelled. Please try again.');
@@ -44,9 +44,9 @@ class ServiceFailure extends Failure {
     }
   }
 
-  static ServiceFailure checkStatusCode(DioException dioerror) {
-    final statusCode = dioerror.response?.statusCode;
-    final data = dioerror.response?.data;
+  static ServiceFailure checkStatusCode(DioException dioError) {
+    final statusCode = dioError.response?.statusCode;
+    final data = dioError.response?.data;
 
     switch (statusCode) {
       case 400:
@@ -79,9 +79,15 @@ class ServiceFailure extends Failure {
     }
   }
 }
+
 class CacheFailure extends Failure {
-CacheFailure() : super("Cache Error Occurred");
+  CacheFailure() : super("Cache Error Occurred");
 }
+
 class NetworkFailure extends Failure {
   NetworkFailure() : super("No Internet Connection");
+}
+
+class UnexpectedFailure extends Failure {
+  UnexpectedFailure(super.message) ;
 }

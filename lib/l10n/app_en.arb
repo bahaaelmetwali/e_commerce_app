@@ -42,10 +42,18 @@
   "allProducts": "All Products",
   "price": "Price",
   "description": "Description",
-"reviews" : "Reviews",
-"addtoCart" : "Add to Cart",
-"readLess":"Read Less",
-"readMore": "Read More"
+  "reviews": "Reviews",
+  "addtoCart": "Add to Cart",
+  "readLess": "Read Less",
+  "readMore": "Read More",
+  "registrationSuccessful": "Registration successful",
+  "loginSuccessful": "Login successful",
+  "otpVerificationIsTrue": "OTP verification is true",
+  "resendOtpSuccessful": "Resend OTP successful",
+  "vericationCodesentsuccessfully": "Verification code sent successfully",
+  "pleaseWriteyourNewPassword": "Please write your new password",
+  "passwordChangedSucessfully": "Password changed successfully",
+  "login_required": "Please login to access this page.",
+  "cancel": "Cancel",
+  "alert": "Alert"
 }
-
-

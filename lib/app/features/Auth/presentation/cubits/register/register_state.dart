@@ -1,0 +1,24 @@
+part of 'register_cubit.dart';
+
+sealed class RegisterCubitState extends Equatable {
+  const RegisterCubitState();
+
+  @override
+  List<Object> get props => [];
+}
+
+final class RegisterCubitInitial extends RegisterCubitState {}
+
+final class RegisterCubitLoading extends RegisterCubitState {}
+
+final class RegisterCubitSuccess extends RegisterCubitState {
+  final AuthEntity authEntity;
+  const RegisterCubitSuccess(this.authEntity);
+}
+
+final class RegisterCubitFailure extends RegisterCubitState {
+  final String errorMessage;
+  const RegisterCubitFailure({required this.errorMessage});
+  @override
+  List<Object> get props => [errorMessage];
+}

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../constants/assets.dart';
 import '../../../../core/config/theme/app_colors.dart';
-import '../../../../material/images/app_photo.dart';
+import '../../../../material/images/app_image_widget.dart';
 import '../../../../material/images/app_svg_photo.dart';
 
 class MainImageCard extends StatelessWidget {
@@ -15,7 +15,7 @@ class MainImageCard extends StatelessWidget {
         Container(
           height: 260,
           color: Color(0xffF2F2F2),
-          child: AppPhoto(
+          child: AppImageWidget(
             path: Assets.imagesCardtest,
             fit: BoxFit.contain,
             width: double.infinity,
@@ -43,7 +43,7 @@ class MainImageCard extends StatelessWidget {
             backgroundColor: Colors.white,
             child: GestureDetector(
               onTap: () {},
-              child: AppSvgPhoto(path: Assets.iconsAddToFav),
+              child: AppSvgIcon(path: Assets.iconsAddToFav),
             ),
           ),
         ),

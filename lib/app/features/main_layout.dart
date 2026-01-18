@@ -1,3 +1,4 @@
+import 'package:mega/app/core/config/router/route_names.dart';
 import 'package:mega/app/core/config/theme/app_colors.dart';
 import 'package:mega/app/core/config/theme/text_styles.dart';
 import 'package:mega/app/features/home/presentation/home_page.dart';
@@ -7,14 +8,22 @@ import '../../constants/assets.dart';
 import '../../l10n/app_localizations.dart';
 
 class MainLayout extends StatefulWidget {
-  const MainLayout({super.key});
-
+  const MainLayout({super.key, required this.isGuest});
+  final bool isGuest;
   @override
   State<MainLayout> createState() => _MainLayoutState();
 }
 
 class _MainLayoutState extends State<MainLayout> {
   int currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+
+
   List<Widget> pages = [
     HomePage(),
     Center(child: Text('favorite Page')),
@@ -49,6 +58,36 @@ class _MainLayoutState extends State<MainLayout> {
             backgroundColor: AppColors.scaffoldColor,
             currentIndex: currentIndex,
             onTap: (index) {
+              if (widget.isGuest) {
+                if (index == 0) return;
+
+                showDialog(
+                  context: context,
+                  builder: (_) => AlertDialog(
+                    title: Text(AppLocalizations.of(context)!.alert),
+                    content: Text(AppLocalizations.of(context)!.login_required),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(
+                            context,
+                            RouteNames.login,
+                          );
+                        },
+                        child: Text(AppLocalizations.of(context)!.login),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text(AppLocalizations.of(context)!.cancel),
+                      ),
+                    ],
+                  ),
+                );
+                return;
+              }
+
               setState(() {
                 currentIndex = index;
               });
@@ -62,12 +101,8 @@ class _MainLayoutState extends State<MainLayout> {
                           color: AppColors.primaryColor,
                         ),
                       )
-                    : AppSvgPhoto(
-                        path: Assets.iconsHome,
-                        width: 22,
-                        height: 22,
-                      ),
-                label: "home",
+                    : AppSvgIcon(path: Assets.iconsHome, width: 22, height: 22),
+                label: AppLocalizations.of(context)!.home,
               ),
               BottomNavigationBarItem(
                 icon: currentIndex == 1
@@ -77,12 +112,12 @@ class _MainLayoutState extends State<MainLayout> {
                           color: AppColors.primaryColor,
                         ),
                       )
-                    : AppSvgPhoto(
+                    : AppSvgIcon(
                         path: Assets.iconsFavPage,
                         width: 22,
                         height: 22,
                       ),
-                label: "favorite",
+                label: AppLocalizations.of(context)!.favorite,
               ),
               BottomNavigationBarItem(
                 icon: currentIndex == 2
@@ -92,8 +127,8 @@ class _MainLayoutState extends State<MainLayout> {
                           color: AppColors.primaryColor,
                         ),
                       )
-                    : AppSvgPhoto(path: Assets.iconsBag, width: 22, height: 22),
-                label: "cart",
+                    : AppSvgIcon(path: Assets.iconsBag, width: 22, height: 22),
+                label: AppLocalizations.of(context)!.cart,
               ),
               BottomNavigationBarItem(
                 icon: currentIndex == 3
@@ -103,8 +138,8 @@ class _MainLayoutState extends State<MainLayout> {
                           color: AppColors.primaryColor,
                         ),
                       )
-                    : AppSvgPhoto(path: Assets.iconsTab, width: 18, height: 14),
-                label: "menu",
+                    : AppSvgIcon(path: Assets.iconsTab, width: 18, height: 14),
+                label: AppLocalizations.of(context)!.menu,
               ),
             ],
           ),

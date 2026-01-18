@@ -153,4 +153,35 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get readMore => 'قراءة المزيد';
+
+  @override
+  String get registrationSuccessful => 'تم التسجيل بنجاح';
+
+  @override
+  String get loginSuccessful => 'تم تسجيل الدخول بنجاح';
+
+  @override
+  String get otpVerificationIsTrue => 'رمز التحقق صحيح ';
+
+  @override
+  String get resendOtpSuccessful => 'Resend OTP successful';
+
+  @override
+  String get vericationCodesentsuccessfully => 'تم ارسال رمز التحقق بنجاح';
+
+  @override
+  String get pleaseWriteyourNewPassword =>
+      'يرجى كتابة كلمة المرور الجديدة الخاصة بك';
+
+  @override
+  String get passwordChangedSucessfully => 'تم تغيير كلمة المرور بنجاح';
+
+  @override
+  String get login_required => 'يرجى تسجيل الدخول للوصول لهذه الصفحة.';
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
+  String get alert => 'تنبيه';
 }

@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["pinisincorrect"]
+  "cSpell.words": ["pinisincorrect"],
+  "deepscan.ignoreConfirmWarning": true
 }

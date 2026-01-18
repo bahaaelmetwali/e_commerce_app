@@ -6,10 +6,10 @@ import '../entities/language/app_language_code_enum.dart';
 import '../repos/language_cache_repository.dart';
 
 @lazySingleton
-class ChangeLanguageUseCase {
+class SaveLanguageUseCase {
   final LanguageCacheRepository repository;
 
-  ChangeLanguageUseCase(this.repository);
+  SaveLanguageUseCase(this.repository);
 
   Future<Either<Failure, Unit>> call(AppLanguageCodeEnum languageCode) async {
     return await repository.saveLanguage(languageCode);

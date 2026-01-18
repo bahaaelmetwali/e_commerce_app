@@ -4,7 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../constants/assets.dart';
-import '../../../../material/images/app_photo.dart';
+import '../../../../material/images/app_image_widget.dart';
 
 class CustomSlider extends StatefulWidget {
   const CustomSlider({super.key});
@@ -33,7 +33,7 @@ class _CustomSliderState extends State<CustomSlider> {
                   height: 150,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16),
-                    child: AppPhoto(path: item, fit: BoxFit.fill),
+                    child: AppImageWidget(path: item, fit: BoxFit.fill),
                   ),
                 ),
               )

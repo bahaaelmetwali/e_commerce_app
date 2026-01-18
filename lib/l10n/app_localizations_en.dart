@@ -153,4 +153,35 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get readMore => 'Read More';
+
+  @override
+  String get registrationSuccessful => 'Registration successful';
+
+  @override
+  String get loginSuccessful => 'Login successful';
+
+  @override
+  String get otpVerificationIsTrue => 'OTP verification is true';
+
+  @override
+  String get resendOtpSuccessful => 'Resend OTP successful';
+
+  @override
+  String get vericationCodesentsuccessfully =>
+      'Verification code sent successfully';
+
+  @override
+  String get pleaseWriteyourNewPassword => 'Please write your new password';
+
+  @override
+  String get passwordChangedSucessfully => 'Password changed successfully';
+
+  @override
+  String get login_required => 'Please login to access this page.';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get alert => 'Alert';
 }

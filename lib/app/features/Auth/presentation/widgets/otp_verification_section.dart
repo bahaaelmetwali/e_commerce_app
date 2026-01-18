@@ -1,11 +1,16 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega/app/features/Auth/presentation/cubits/verify_email/verify_email_cubit.dart';
 import 'package:mega/app/features/Auth/presentation/widgets/resend_section.dart';
 import 'package:flutter/material.dart';
+import 'package:mega/app/material/snakbars/show_custom_snack_bar.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../../../../l10n/app_localizations.dart';
+import '../../../../core/config/router/route_names.dart';
 import '../../../../core/config/theme/app_colors.dart';
 import '../../../../core/config/theme/text_styles.dart';
 import '../../../../material/buttons/custom_button.dart';
+import '../../data/model/otp_request_model.dart';
 
 class OtpVerificationSection extends StatefulWidget {
   const OtpVerificationSection({super.key});
@@ -15,17 +20,13 @@ class OtpVerificationSection extends StatefulWidget {
 }
 
 class _PinputExampleState extends State<OtpVerificationSection> {
-  late final TextEditingController pinController;
-  late final FocusNode focusNode;
-  late final GlobalKey<FormState> formKey;
+  final TextEditingController pinController = TextEditingController();
+  final FocusNode focusNode = FocusNode();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
-
-    formKey = GlobalKey<FormState>();
-    pinController = TextEditingController();
-    focusNode = FocusNode();
   }
 
   @override
@@ -64,7 +65,7 @@ class _PinputExampleState extends State<OtpVerificationSection> {
               defaultPinTheme: defaultPinTheme,
               separatorBuilder: (index) => const SizedBox(width: 10),
               validator: (value) {
-                return value == '2222'
+                return value!.length == 4
                     ? null
                     : AppLocalizations.of(context)!.pinisincorrect;
               },
@@ -109,18 +110,45 @@ class _PinputExampleState extends State<OtpVerificationSection> {
 
           SizedBox(height: 120),
 
-          CustomButton(
-            child: Text(AppLocalizations.of(context)!.verify),
-            onPressed: () {
-              if (formKey.currentState!.validate()) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      AppLocalizations.of(context)!.verificationCode,
-                    ),
-                  ),
+          BlocConsumer<VerifyEmailCubit, VerifyEmailState>(
+            listener: (context, state) {
+              if (state is VerifyEmailSuccess) {
+                showCustomSnackBar(
+                  context,
+                  message: AppLocalizations.of(context)!.otpVerificationIsTrue,
+                );
+                Navigator.pushReplacementNamed(
+                  context,
+                  RouteNames.mainLayout,
+                  arguments: true,
+                );
+              } else if (state is VerifyEmailFailure) {
+                showCustomSnackBar(
+                  context,
+                  message: state.errorMessage,
+                  isError: true,
                 );
               }
+            },
+            builder: (context, state) {
+              if (state is VerifyEmailLoading) {
+                return CustomButton(
+                  onPressed: () {},
+                  child: AppLocalizations.of(context)!.verify,
+                  isLoading: true,
+                );
+              }
+              return CustomButton(
+                child: AppLocalizations.of(context)!.verify,
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {
+                    final otpRequest = OtpRequestModel(otp: pinController.text);
+                    context.read<VerifyEmailCubit>().verifyEmail(
+                      otpRequest: otpRequest,
+                    );
+                  }
+                },
+              );
             },
           ),
         ],

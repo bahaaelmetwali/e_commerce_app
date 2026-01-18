@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 
 import 'api_helper.dart';
 
+@Singleton(as: ApiHelper)
 class DioApiHelper implements ApiHelper {
   final Dio dio;
 

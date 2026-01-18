@@ -21,9 +21,11 @@ class LanguageCacheRepositoryImp implements LanguageCacheRepository {
   }
 
   @override
-  Future<Either<Failure, Unit>> saveLanguage(AppLanguageCodeEnum languageCode) async{
+  Future<Either<Failure, Unit>> saveLanguage(
+    AppLanguageCodeEnum languageCode,
+  ) async {
     try {
-     await localDataSource.saveLanguage(languageCode);
+      await localDataSource.saveLanguage(languageCode);
       return Right(unit);
     } catch (e) {
       return Left(CacheFailure());
