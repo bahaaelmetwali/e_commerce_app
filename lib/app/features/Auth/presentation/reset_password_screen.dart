@@ -133,8 +133,6 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                         onPressed: () => {
                           context.read<ResetPasswordCubit>().resetPassword(
                             ResetPasswordModel(
-                              email: widget.email,
-                              code: widget.code,
                               password: passwordController.text,
                               confirmPassword: confirmPasswordController.text,
                             ),

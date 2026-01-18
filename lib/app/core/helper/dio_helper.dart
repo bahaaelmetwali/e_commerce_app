@@ -1,39 +1,40 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:mega/app/core/data/data_source/local_data_source.dart';
-
+import '../../features/Auth/domain/use_cases/get_token_use_case.dart';
+import '../data/domain/use_cases/clear_token_use_case.dart';
 import '../network/log_out_stream.dart';
-
 
 @singleton
 class TokenInterceptor extends Interceptor {
-  final LocalAuthDataSource localAuthDataSource;
-  TokenInterceptor(this.localAuthDataSource);
+  final GetTokenUseCase getTokenUseCase;
+  TokenInterceptor(this.getTokenUseCase);
 
   @override
   void onRequest(
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    final token = await localAuthDataSource.getToken();
+    final token = await getTokenUseCase();
     print("token: $token");
-    if (token != null && token.isNotEmpty) {
-      options.headers['Authorization'] = 'Bearer $token';
-    }
+    token.fold((failure) {}, (value) {
+      if (value != null && value.isNotEmpty) {
+        options.headers['Authorization'] = 'Bearer $value';
+      }
+    });
     handler.next(options);
   }
 }
 
 @singleton
 class ErrorInterceptor extends Interceptor {
-  final LocalAuthDataSource localAuthDataSource;
+  final ClearTokenUseCase clearTokenUseCase;
   final LogOutStream logoutStream;
 
-  ErrorInterceptor(this.localAuthDataSource, this.logoutStream);
+  ErrorInterceptor(this.clearTokenUseCase, this.logoutStream);
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
     if (err.response?.statusCode == 401 || err.response?.statusCode == 403) {
-      localAuthDataSource.clearToken();
+      clearTokenUseCase();
       logoutStream.addEvent('logout');
       handler.reject(err);
     } else {

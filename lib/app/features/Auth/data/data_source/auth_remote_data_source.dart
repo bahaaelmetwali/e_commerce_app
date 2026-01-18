@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mega/app/core/constants/constants.dart';
 import 'package:mega/app/features/Auth/data/model/auth_response_model.dart';
+import 'package:mega/app/features/Auth/data/model/forget_password_response.dart';
 import 'package:mega/app/features/Auth/data/model/otp_request_model.dart';
 import 'package:mega/app/features/Auth/data/model/forget_password_model.dart';
 import 'package:mega/app/features/Auth/data/model/reset_password_model.dart';
@@ -16,7 +17,7 @@ abstract class AuthRemoteDataSource {
   Future<AuthResponseModel> login(LoginRequestModel loginRequestModel);
   Future<Unit> verifyEmail(OtpRequestModel otpRequestModel);
   Future<Unit> resendVerificationCode();
-  Future<Unit> forgetPassword(ForgetPasswordModel forgetPasswordModel);
+  Future<ForgetPasswordResponse> forgetPassword(ForgetPasswordModel forgetPasswordModel);
   Future<Unit> verifyPassCode(VerifyPassCodeModel verifyPassCodeModel);
   Future<Unit> resetPassWord(ResetPasswordModel resetPasswordModel);
   Future<AuthResponseModel> getProfile();
@@ -64,12 +65,12 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<Unit> forgetPassword(ForgetPasswordModel forgetPasswordModel) async {
-    await apiHelper.post(
+  Future<ForgetPasswordResponse> forgetPassword(ForgetPasswordModel forgetPasswordModel) async {
+     final response =await apiHelper.post(
       endPoint: Constants.forgetPasswordEndPoint,
       body: forgetPasswordModel.toJson(),
     );
-    return Future.value(unit);
+    return ForgetPasswordResponse.fromJson(response);
   }
 
   @override

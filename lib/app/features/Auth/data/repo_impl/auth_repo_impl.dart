@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:mega/app/core/data/data_source/local_data_source.dart';
+import 'package:mega/app/core/data/data_source/cached_authenticated_data_source.dart';
 
 import 'package:mega/app/core/errors/failure.dart';
 import 'package:mega/app/features/Auth/data/data_source/auth_remote_data_source.dart';
@@ -18,9 +18,8 @@ import '../model/login_request_model.dart';
 
 @Injectable(as: AuthRepo)
 class AuthRepoImpl implements AuthRepo {
-  final LocalAuthDataSource localAuthDataSource;
   final AuthRemoteDataSource authRemoteDataSource;
-  AuthRepoImpl(this.localAuthDataSource, this.authRemoteDataSource);
+  AuthRepoImpl(this.authRemoteDataSource);
 
   @override
   Future<Either<Failure, AuthEntity>> register(
@@ -29,12 +28,7 @@ class AuthRepoImpl implements AuthRepo {
     return requestHandler(
       request: () async {
         final response = await authRemoteDataSource.register(registerRequest);
-        await localAuthDataSource.saveToken(response.token);
-        await localAuthDataSource.saveUserInfo(
-          name: response.name,
-          email: response.email,
-        );
-        await localAuthDataSource.setAuthMode();
+
         return response;
       },
     );
@@ -85,7 +79,9 @@ class AuthRepoImpl implements AuthRepo {
         final response = await authRemoteDataSource.forgetPassword(
           forgetPasswordModel,
         );
-        return response;
+        await localAuthDataSource.saveToken(response.token);
+
+        return Future.value(unit);
       },
     );
   }
@@ -161,17 +157,17 @@ class AuthRepoImpl implements AuthRepo {
       },
     );
   }
-  @override
-Future<Either<Failure, Unit>> logout() {
-  return requestHandler(
-    requiresNetwork: false,
-    request: () async {
-      await localAuthDataSource.clearToken();
-      await localAuthDataSource.clearAuthMode();
-      await localAuthDataSource.clearUserInfo();
-      return unit;
-    },
-  );
-}
 
+  @override
+  Future<Either<Failure, Unit>> logout() {
+    return requestHandler(
+      requiresNetwork: false,
+      request: () async {
+        await localAuthDataSource.clearToken();
+        await localAuthDataSource.clearAuthMode();
+        await localAuthDataSource.clearUserInfo();
+        return unit;
+      },
+    );
+  }
 }

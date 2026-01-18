@@ -11,6 +11,5 @@ class Constants {
   static const getProfileEndPoint = "users/profile";
   static const tokenKey = 'token';
   static const authModeKey = 'auth_mode';
-  static const nameKey = 'user_name';
-  static const emailKey = 'user_email';
+  static const userKey = 'user_key';
 }

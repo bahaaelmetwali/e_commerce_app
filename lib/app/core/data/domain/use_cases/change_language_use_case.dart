@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../errors/failure.dart';
+import '../../../errors/failure.dart';
 import '../entities/language/app_language_code_enum.dart';
 import '../repos/language_cache_repository.dart';
 

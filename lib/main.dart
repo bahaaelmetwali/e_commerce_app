@@ -19,7 +19,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   await configureDependencies();
-  getIt<AuthRepo>().logout();
   runApp(const Mega());
 }
 

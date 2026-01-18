@@ -1,8 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:mega/app/core/domain/entities/language/app_language_code_enum.dart';
-import 'package:mega/app/core/domain/repos/language_cache_repository.dart';
-import 'package:mega/app/core/errors/failure.dart';
+
 import 'package:injectable/injectable.dart';
+
+import '../../../errors/failure.dart';
+import '../entities/language/app_language_code_enum.dart';
+import '../repos/language_cache_repository.dart';
 
 @lazySingleton
 class GetAppLanguageUseCase {

@@ -12,8 +12,7 @@ final class RegisterCubitInitial extends RegisterCubitState {}
 final class RegisterCubitLoading extends RegisterCubitState {}
 
 final class RegisterCubitSuccess extends RegisterCubitState {
-  final AuthEntity authEntity;
-  const RegisterCubitSuccess(this.authEntity);
+
 }
 
 final class RegisterCubitFailure extends RegisterCubitState {
