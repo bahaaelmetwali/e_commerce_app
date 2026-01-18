@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import '../../features/Auth/domain/use_cases/get_token_use_case.dart';
 import '../data/domain/use_cases/clear_token_use_case.dart';
+import '../data/domain/use_cases/get_token_use_case.dart';
 import '../network/log_out_stream.dart';
 
 @singleton
@@ -15,10 +15,10 @@ class TokenInterceptor extends Interceptor {
     RequestInterceptorHandler handler,
   ) async {
     final token = await getTokenUseCase();
-    print("token: $token");
     token.fold((failure) {}, (value) {
-      if (value != null && value.isNotEmpty) {
-        options.headers['Authorization'] = 'Bearer $value';
+      final String? cachedToken = value?.token;
+      if (cachedToken != null && cachedToken.isNotEmpty) {
+        options.headers['Authorization'] = 'Bearer $cachedToken';
       }
     });
     handler.next(options);

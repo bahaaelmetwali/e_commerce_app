@@ -24,28 +24,27 @@ abstract class CachedAuthenticatedDataSource {
   Future<Unit> clearUserInfo();
 }
 
-@Injectable(as: CachedAuthenticatedDataSource)
-class CachedAuthenticatedDataSourceImpl
-    implements CachedAuthenticatedDataSource {
+@LazySingleton(as: CachedAuthenticatedDataSource)
+class CachedAuthenticatedDataSourceImpl implements CachedAuthenticatedDataSource {
   final FlutterSecureStorage storage;
 
   CachedAuthenticatedDataSourceImpl(this.storage);
 
   @override
-  Future<Unit> clearToken() async {
+ Future<Unit> clearToken() async {
     await storage.delete(key: Constants.tokenKey);
     return unit;
   }
 
   @override
   Future<Unit> setGuestMode() async {
-    await storage.write(key: Constants.authModeKey, value: 'guest');
+    await storage.write(key: Constants.authModeKey, value: Constants.guest);
     return unit;
   }
 
   @override
   Future<Unit> setAuthMode() async {
-    await storage.write(key: Constants.authModeKey, value: 'auth');
+    await storage.write(key: Constants.authModeKey, value: Constants.client);
     return unit;
   }
 

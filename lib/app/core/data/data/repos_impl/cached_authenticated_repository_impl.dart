@@ -1,18 +1,18 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
-
 import '../../../errors/failure.dart';
 import '../../../utils/request_handler.dart';
 import '../../domain/entities/token_entity.dart';
 import '../../domain/entities/user_entity.dart';
 import '../../domain/repos/cached_authenticated_repository.dart';
-import '../data_source/cached_Authenticated_data_source.dart';
+import '../data_source/cached_authenticated_data_source.dart';
 import '../model/token_model.dart';
 import '../model/user_model.dart';
 
-@Injectable(as: CachedAuthenticatedRepository)
-class CachedAuthenticatedRepositoryImpl extends CachedAuthenticatedRepository {
+@LazySingleton(as: CachedAuthenticatedRepository)
+class CachedAuthenticatedRepositoryImpl
+    implements CachedAuthenticatedRepository {
   final CachedAuthenticatedDataSource cachedAuthenticatedDataSource;
 
   CachedAuthenticatedRepositoryImpl({
@@ -85,7 +85,7 @@ class CachedAuthenticatedRepositoryImpl extends CachedAuthenticatedRepository {
 
   @override
   Future<Either<Failure, Unit>> saveUserInfo(UserEntity user) {
- return requestHandler(
+    return requestHandler(
       request: () async {
         final mappedUser = UserModel.fromEntity(user);
         return await cachedAuthenticatedDataSource.saveUserInfo(mappedUser);
@@ -94,7 +94,7 @@ class CachedAuthenticatedRepositoryImpl extends CachedAuthenticatedRepository {
   }
 
   @override
-  Future<Either<Failure, Unit>> setAuthMode(String mode) {
+  Future<Either<Failure, Unit>> setAuthMode() {
     return requestHandler(
       request: () async {
         return await cachedAuthenticatedDataSource.setAuthMode();
@@ -103,7 +103,7 @@ class CachedAuthenticatedRepositoryImpl extends CachedAuthenticatedRepository {
   }
 
   @override
-  Future<Either<Failure, Unit>> setGuestMode(String mode) {
+  Future<Either<Failure, Unit>> setGuestMode() {
     return requestHandler(
       request: () async {
         return await cachedAuthenticatedDataSource.setGuestMode();

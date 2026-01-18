@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 
-
 import '../../../../../core/data/domain/entities/token_entity.dart';
 import '../../../../../core/data/domain/entities/user_entity.dart';
 import '../../../../../core/data/domain/use_cases/save_token_use_case.dart';

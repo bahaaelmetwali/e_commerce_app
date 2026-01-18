@@ -25,10 +25,9 @@ abstract class AuthRepo {
   Future<Either<Failure, Unit>> resetPassword(
     ResetPasswordModel resetPasswordModel,
   );
-  Future<Either<Failure, String?>> getToken();
-  Future<Either<Failure, AuthEntity>> getProfile();
   Future<Either<Failure, Unit>> loginAsGuest();
-  Future<Either<Failure, String?>> getAuthMode();
+    Future<Either<Failure, Unit>> resendResetPassCode();
+
   Future<Either<Failure, Unit>> logout();
 
 

@@ -9,6 +9,6 @@ import '../repos/cached_authenticated_repository.dart';
 class SetAuthModeUseCase {
   final CachedAuthenticatedRepository cachedAuthenticatedRepository;
   SetAuthModeUseCase(this.cachedAuthenticatedRepository);
-  Future<Either<Failure, Unit>> call(final String mode) {
-    return cachedAuthenticatedRepository.setAuthMode(mode);
+  Future<Either<Failure, Unit>> call(e) {
+    return cachedAuthenticatedRepository.setAuthMode();
   }}

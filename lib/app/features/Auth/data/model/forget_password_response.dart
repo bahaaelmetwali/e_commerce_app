@@ -16,6 +16,4 @@ class ForgetPasswordResponse {
       token: json['token'] as String,
     );
   }
-
-
 }

@@ -4,8 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mega/app/features/Auth/presentation/cubits/auth/auth_state.dart';
 
-import '../../../domain/use_cases/get_auh_mode_use_case.dart';
-import '../../../domain/use_cases/get_token_use_case.dart';
+import '../../../../../core/data/domain/use_cases/get_auth_mode_use_case.dart';
+import '../../../../../core/data/domain/use_cases/get_token_use_case.dart';
 import '../../../domain/use_cases/logged_as_guest_use_case.dart';
 
 @injectable
@@ -29,8 +29,9 @@ class AuthCubit extends Cubit<AuthState> {
         emit(AuthGuest());
       } else {
         final tokenResult = await getTokenUseCase();
-        tokenResult.fold((_) => emit(AuthUnauthenticated()), (token) {
-          if (token != null && token.isNotEmpty) {
+        tokenResult.fold((_) => emit(AuthUnauthenticated()), (tokenEntity) {
+          final String? cachedToken = tokenEntity?.token;
+          if (cachedToken != null && cachedToken.isNotEmpty) {
             emit(AuthAuthenticated());
           } else {
             emit(AuthUnauthenticated());

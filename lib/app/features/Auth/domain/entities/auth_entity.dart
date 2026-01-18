@@ -1,3 +1,5 @@
+import 'package:mega/app/core/data/domain/entities/user_entity.dart';
+
 class AuthEntity {
   final String id;
   final String name;
@@ -14,4 +16,14 @@ class AuthEntity {
     required this.token,
     required this.isVerified,
   });
+}
+
+extension AuthEntityExtension on AuthEntity {UserEntity toUserEntity() {
+    return UserEntity(
+      id: id,
+      name: name,
+      email: email,
+      avatar: avatar.isNotEmpty ? avatar : null,
+    );
+  }
 }

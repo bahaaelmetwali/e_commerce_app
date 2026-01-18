@@ -1,9 +1,11 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../errors/failure.dart';
-import '../entities/user_entity.dart'  ;
+import '../entities/user_entity.dart';
 import '../repos/cached_authenticated_repository.dart';
 
+@singleton
 class SaveUserInfoUseCase {
   final CachedAuthenticatedRepository cachedAuthenticatedRepository;
   SaveUserInfoUseCase(this.cachedAuthenticatedRepository);

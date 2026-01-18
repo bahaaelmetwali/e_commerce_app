@@ -17,11 +17,9 @@ import 'cubits/reset_password/reset_password_cubit.dart';
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({
     super.key,
-    required this.email,
-    required this.code,
+
   });
-  final String email;
-  final String code;
+
   @override
   State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
 }

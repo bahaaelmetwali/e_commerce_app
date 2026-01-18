@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:mega/app/core/di/injection.config.dart';
@@ -21,6 +22,8 @@ Future<void> configureDependencies() async {
 
 @module
 abstract class RegisterModule {
+  @lazySingleton
+  FirebaseMessaging get firebaseMessaging => FirebaseMessaging.instance;
   @lazySingleton
   InternetConnectionChecker get internetConnectionChecker =>
       InternetConnectionChecker.instance;

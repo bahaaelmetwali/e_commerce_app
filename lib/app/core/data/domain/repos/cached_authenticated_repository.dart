@@ -9,8 +9,8 @@ abstract class CachedAuthenticatedRepository {
   Future<Either<Failure, TokenEntity?>> getToken();
   Future<Either<Failure, Unit>> clearToken();
 
-  Future<Either<Failure, Unit>> setGuestMode(final String mode);
-  Future<Either<Failure, Unit>> setAuthMode(final String mode);
+  Future<Either<Failure, Unit>> setGuestMode();
+  Future<Either<Failure, Unit>> setAuthMode();
   Future<Either<Failure, String?>> getAuthMode();
   Future<Either<Failure, Unit>> clearAuthMode();
 

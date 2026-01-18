@@ -8,8 +8,10 @@ class Constants {
   static const forgetPasswordEndPoint = "auth/forgot-password";
   static const verifyPassCodeEndPoint = "auth/verify-pass-code";
   static const resetPasswordEndPoint = "auth/reset-password";
-  static const getProfileEndPoint = "users/profile";
+  static const resendResetPassCodeEndPoint = "auth/resend-pass-code";
   static const tokenKey = 'token';
   static const authModeKey = 'auth_mode';
   static const userKey = 'user_key';
+  static const guest = 'guest';
+  static const client = 'client';
 }

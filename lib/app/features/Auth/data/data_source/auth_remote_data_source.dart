@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mega/app/core/constants/constants.dart';
+import 'package:mega/app/features/Auth/data/data_source/push_token_data_source.dart';
 import 'package:mega/app/features/Auth/data/model/auth_response_model.dart';
 import 'package:mega/app/features/Auth/data/model/forget_password_response.dart';
 import 'package:mega/app/features/Auth/data/model/otp_request_model.dart';
@@ -17,16 +18,18 @@ abstract class AuthRemoteDataSource {
   Future<AuthResponseModel> login(LoginRequestModel loginRequestModel);
   Future<Unit> verifyEmail(OtpRequestModel otpRequestModel);
   Future<Unit> resendVerificationCode();
-  Future<ForgetPasswordResponse> forgetPassword(ForgetPasswordModel forgetPasswordModel);
+  Future<ForgetPasswordResponse> forgetPassword(
+    ForgetPasswordModel forgetPasswordModel,
+  );
   Future<Unit> verifyPassCode(VerifyPassCodeModel verifyPassCodeModel);
   Future<Unit> resetPassWord(ResetPasswordModel resetPasswordModel);
-  Future<AuthResponseModel> getProfile();
+  Future<Unit> resendPassCode();
 }
 
 @Injectable(as: AuthRemoteDataSource)
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final ApiHelper apiHelper;
-  AuthRemoteDataSourceImpl(this.apiHelper);
+  AuthRemoteDataSourceImpl(this.apiHelper, this.pushTokenDataSource);
   @override
   Future<AuthResponseModel> register(
     RegisterRequestModel registerRequestModel,
@@ -45,6 +48,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       endPoint: Constants.loginEndPoint,
       body: loginRequestModel.toJson(),
     );
+
     final data = response['data'];
     return AuthResponseModel.fromJson(data);
   }
@@ -65,8 +69,10 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<ForgetPasswordResponse> forgetPassword(ForgetPasswordModel forgetPasswordModel) async {
-     final response =await apiHelper.post(
+  Future<ForgetPasswordResponse> forgetPassword(
+    ForgetPasswordModel forgetPasswordModel,
+  ) async {
+    final response = await apiHelper.post(
       endPoint: Constants.forgetPasswordEndPoint,
       body: forgetPasswordModel.toJson(),
     );
@@ -92,11 +98,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<AuthResponseModel> getProfile() async {
-    final response = await apiHelper.get(
-      endPoint: Constants.getProfileEndPoint,
-    );
-    final data = response['data'];
-    return AuthResponseModel.fromJson(data);
+  Future<Unit> resendPassCode() async {
+    await apiHelper.post(endPoint: Constants.resendResetPassCodeEndPoint);
+    return Future.value(unit);
   }
 }

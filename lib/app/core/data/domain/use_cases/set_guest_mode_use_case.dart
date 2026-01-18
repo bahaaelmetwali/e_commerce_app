@@ -8,7 +8,7 @@ import '../repos/cached_authenticated_repository.dart';
 class SetGuestModeUseCase {
   final CachedAuthenticatedRepository cachedAuthenticatedRepository;
   SetGuestModeUseCase(this.cachedAuthenticatedRepository);
-  Future<Either<Failure, Unit>> call(final String mode) {
-    return cachedAuthenticatedRepository.setGuestMode(mode);
+  Future<Either<Failure, Unit>> call() {
+    return cachedAuthenticatedRepository.setGuestMode();
   }
 }

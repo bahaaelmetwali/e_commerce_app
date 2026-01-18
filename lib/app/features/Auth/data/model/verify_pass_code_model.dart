@@ -1,11 +1,9 @@
 class VerifyPassCodeModel {
   final String code;
-  final String email;
-  VerifyPassCodeModel({required this.code, required this.email});
+  VerifyPassCodeModel({required this.code, });
   Map<String, dynamic> toJson() {
     return {
       'code': code,
-      'email': email,
     };
   }
 }

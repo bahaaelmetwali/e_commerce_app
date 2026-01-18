@@ -18,8 +18,7 @@ import 'cubits/resend_code/resend_code_cubit.dart';
 import 'cubits/verify_pass_code/verify_pass_code_cubit.dart';
 
 class VerifyPasswordScreen extends StatelessWidget {
-  const VerifyPasswordScreen({super.key, required this.email});
-  final String email;
+  const VerifyPasswordScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -46,7 +45,7 @@ class VerifyPasswordScreen extends StatelessWidget {
                 SizedBox(height: 68),
                 AppSvgIcon(path: Assets.iconsLock, width: 255, height: 160),
                 SizedBox(height: 40),
-                OtpVerifyPassWordSection(email: email),
+                OtpVerifyPassWordSection(),
               ],
             ),
           ),
@@ -57,8 +56,7 @@ class VerifyPasswordScreen extends StatelessWidget {
 }
 
 class OtpVerifyPassWordSection extends StatefulWidget {
-  const OtpVerifyPassWordSection({super.key, required this.email});
-  final String email;
+  const OtpVerifyPassWordSection({super.key,});
   @override
   State<OtpVerifyPassWordSection> createState() => _PinputExampleState();
 }
@@ -164,10 +162,7 @@ class _PinputExampleState extends State<OtpVerifyPassWordSection> {
                 Navigator.pushNamed(
                   context,
                   RouteNames.resetPassword,
-                  arguments: {
-                    'email': widget.email,
-                    'otpCode': pinController.text,
-                  },
+
                 );
               } else if (state is VerifyPassCodeFailure) {
                 showCustomSnackBar(
@@ -191,7 +186,6 @@ class _PinputExampleState extends State<OtpVerifyPassWordSection> {
                   if (formKey.currentState!.validate()) {
                     final verifyPassCodeModel = VerifyPassCodeModel(
                       code: pinController.text,
-                      email: widget.email,
                     );
                     context.read<VerifyPassCodeCubit>().verifyPassCode(
                       verifyPassCodeModel: verifyPassCodeModel,
