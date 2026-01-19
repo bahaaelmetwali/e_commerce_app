@@ -2,15 +2,15 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../errors/failure.dart';
-import '../repos/cached_authenticated_repository.dart';
+import '../repos/auth_state_repository.dart';
 
 @lazySingleton
 class GetAuthModeUseCase {
-  final CachedAuthenticatedRepository cachedAuthenticatedRepository;
+  final AuthStateRepository authStateRepository;
 
-  GetAuthModeUseCase(this.cachedAuthenticatedRepository);
+  GetAuthModeUseCase(this.authStateRepository);
 
   Future<Either<Failure, String?>> call() {
-    return cachedAuthenticatedRepository.getAuthMode();
+    return authStateRepository.getAuthMode();
   }
 }

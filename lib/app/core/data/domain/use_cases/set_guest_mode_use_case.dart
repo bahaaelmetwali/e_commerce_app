@@ -1,14 +1,14 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:mega/app/core/data/domain/repos/auth_state_repository.dart';
 
 import '../../../errors/failure.dart';
-import '../repos/cached_authenticated_repository.dart';
 
 @lazySingleton
 class SetGuestModeUseCase {
-  final CachedAuthenticatedRepository cachedAuthenticatedRepository;
-  SetGuestModeUseCase(this.cachedAuthenticatedRepository);
+  final AuthStateRepository authStateRepository;
+  SetGuestModeUseCase(this.authStateRepository);
   Future<Either<Failure, Unit>> call() {
-    return cachedAuthenticatedRepository.setGuestMode();
+    return authStateRepository.setGuestMode();
   }
 }

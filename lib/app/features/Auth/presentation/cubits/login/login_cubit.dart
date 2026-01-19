@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/data/domain/entities/token_entity.dart';
-import '../../../../../core/data/domain/entities/user_entity.dart';
+import '../../../../../core/data/domain/entities/cached_user_entity.dart';
 import '../../../../../core/data/domain/use_cases/save_token_use_case.dart';
 import '../../../../../core/data/domain/use_cases/save_user_info_use_case.dart';
 import '../../../data/model/login_request_model.dart';

@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mega/app/core/constants/constants.dart';
-import 'package:mega/app/features/Auth/data/data_source/push_token_data_source.dart';
 import 'package:mega/app/features/Auth/data/model/auth_response_model.dart';
 import 'package:mega/app/features/Auth/data/model/forget_password_response.dart';
 import 'package:mega/app/features/Auth/data/model/otp_request_model.dart';
@@ -24,12 +23,13 @@ abstract class AuthRemoteDataSource {
   Future<Unit> verifyPassCode(VerifyPassCodeModel verifyPassCodeModel);
   Future<Unit> resetPassWord(ResetPasswordModel resetPasswordModel);
   Future<Unit> resendPassCode();
+  Future<Unit> logout();  
 }
 
 @Injectable(as: AuthRemoteDataSource)
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final ApiHelper apiHelper;
-  AuthRemoteDataSourceImpl(this.apiHelper, this.pushTokenDataSource);
+  AuthRemoteDataSourceImpl(this.apiHelper, );
   @override
   Future<AuthResponseModel> register(
     RegisterRequestModel registerRequestModel,
@@ -101,5 +101,12 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<Unit> resendPassCode() async {
     await apiHelper.post(endPoint: Constants.resendResetPassCodeEndPoint);
     return Future.value(unit);
+  }
+  
+  @override
+  Future<Unit> logout() {
+    return apiHelper.post(
+      endPoint: Constants.logoutEndPoint,
+    ).then((_) => Future.value(unit));
   }
 }

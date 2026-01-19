@@ -184,7 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             if (_formKey.currentState!.validate()) {
                               final loginRequest = LoginRequestModel(
                                 email: emailController.text.trim(),
-                                password: passwordController.text.trim(),
+                                password: passwordController.text.trim(), fcmToken: '',
                               );
                               context.read<LoginCubit>().login(
                                 loginRequest: loginRequest,

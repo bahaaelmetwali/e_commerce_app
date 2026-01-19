@@ -4,58 +4,33 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
 
-
 import '../../../constants/constants.dart';
 import '../model/token_model.dart';
-import '../model/user_model.dart';
+import '../model/cached_user_model.dart';
+
 
 abstract class CachedAuthenticatedDataSource {
   Future<Unit> saveToken(TokenModel token);
   Future<TokenModel?> getToken();
   Future<Unit> clearToken();
-
-  Future<Unit> setGuestMode();
-  Future<Unit> setAuthMode();
-  Future<String?> getAuthMode();
-  Future<Unit> clearAuthMode();
-
-  Future<Unit> saveUserInfo(UserModel user);
-  Future<UserModel?> getUserInfo();
+  Future<Unit> saveUserInfo(CachedUserModel user);
+  Future<CachedUserModel?> getUserInfo();
   Future<Unit> clearUserInfo();
 }
 
-@LazySingleton(as: CachedAuthenticatedDataSource)
-class CachedAuthenticatedDataSourceImpl implements CachedAuthenticatedDataSource {
+@Injectable(as: CachedAuthenticatedDataSource)
+class CachedAuthenticatedDataSourceImpl
+    implements CachedAuthenticatedDataSource {
   final FlutterSecureStorage storage;
 
   CachedAuthenticatedDataSourceImpl(this.storage);
 
   @override
- Future<Unit> clearToken() async {
+  Future<Unit> clearToken() async {
     await storage.delete(key: Constants.tokenKey);
     return unit;
   }
 
-  @override
-  Future<Unit> setGuestMode() async {
-    await storage.write(key: Constants.authModeKey, value: Constants.guest);
-    return unit;
-  }
-
-  @override
-  Future<Unit> setAuthMode() async {
-    await storage.write(key: Constants.authModeKey, value: Constants.client);
-    return unit;
-  }
-
-  @override
-  Future<String?> getAuthMode() => storage.read(key: Constants.authModeKey);
-
-  @override
-  Future<Unit> clearAuthMode() async {
-    await storage.delete(key: Constants.authModeKey);
-    return unit;
-  }
 
   @override
   Future<Unit> clearUserInfo() async {
@@ -67,7 +42,8 @@ class CachedAuthenticatedDataSourceImpl implements CachedAuthenticatedDataSource
   Future<TokenModel?> getToken() {
     return storage.read(key: Constants.tokenKey).then((value) {
       if (value != null) {
-        return TokenModel.fromJson({'token': value});
+        final decoded = jsonDecode(value);
+        return TokenModel.fromJson(decoded);
       } else {
         return null;
       }
@@ -75,12 +51,11 @@ class CachedAuthenticatedDataSourceImpl implements CachedAuthenticatedDataSource
   }
 
   @override
-  Future<UserModel?> getUserInfo() {
-    final response = storage.read(key: Constants.userKey);
-    return response.then((value) {
+  Future<CachedUserModel?> getUserInfo() {
+    return storage.read(key: Constants.userKey).then((value) {
       if (value != null) {
         final jsonDecoder = jsonDecode(value);
-        return UserModel.fromJson(jsonDecoder);
+        return CachedUserModel.fromJson(jsonDecoder);
       } else {
         return null;
       }
@@ -96,7 +71,7 @@ class CachedAuthenticatedDataSourceImpl implements CachedAuthenticatedDataSource
   }
 
   @override
-  Future<Unit> saveUserInfo(UserModel user) {
+  Future<Unit> saveUserInfo(CachedUserModel user) {
     final cachedUser = jsonEncode(user.toJson());
     return storage
         .write(key: Constants.userKey, value: cachedUser)

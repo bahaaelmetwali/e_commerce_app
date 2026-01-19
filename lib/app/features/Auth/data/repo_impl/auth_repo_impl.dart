@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:mega/app/core/data/domain/repos/auth_state_repository.dart';
 import 'package:mega/app/core/data/domain/repos/cached_authenticated_repository.dart';
 import 'package:mega/app/core/errors/failure.dart';
 
 import '../../../../core/data/domain/entities/token_entity.dart';
-import '../../../../core/data/domain/entities/user_entity.dart';
 import '../../../../core/utils/request_handler.dart';
 import '../../domain/entities/auth_entity.dart';
 import '../../domain/repos/auth_repo.dart';
@@ -20,9 +20,10 @@ import '../model/verify_pass_code_model.dart';
 class AuthRepoImpl implements AuthRepo {
   final AuthRemoteDataSource authRemoteDataSource;
   final CachedAuthenticatedRepository cachedAuthenticatedRepository;
+  final AuthStateRepository authStateRepository;
   AuthRepoImpl(
     this.authRemoteDataSource, {
-    required this.cachedAuthenticatedRepository,
+    required this.cachedAuthenticatedRepository, required this.authStateRepository,
   });
   //done
   @override
@@ -49,7 +50,7 @@ class AuthRepoImpl implements AuthRepo {
         final userEntity = response.toUserEntity();
         await cachedAuthenticatedRepository.saveToken(tokenEntity);
         await cachedAuthenticatedRepository.saveUserInfo(userEntity);
-        await cachedAuthenticatedRepository.setAuthMode();
+        await authStateRepository.setAuthMode();
         return response;
       },
     );
@@ -133,7 +134,7 @@ class AuthRepoImpl implements AuthRepo {
       request: () async {
         await cachedAuthenticatedRepository.clearToken();
         await cachedAuthenticatedRepository.clearUserInfo();
-        await cachedAuthenticatedRepository.setGuestMode();
+        await authStateRepository.setGuestMode();
         return Future.value(unit);
       },
     );
@@ -146,7 +147,7 @@ class AuthRepoImpl implements AuthRepo {
       requiresNetwork: false,
       request: () async {
         await cachedAuthenticatedRepository.clearToken();
-        await cachedAuthenticatedRepository.clearAuthMode();
+        await authStateRepository.clearAuthMode();
         await cachedAuthenticatedRepository.clearUserInfo();
         return Future.value(unit);
       },

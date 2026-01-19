@@ -1,15 +1,15 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:mega/app/core/data/domain/repos/auth_state_repository.dart';
 
 import '../../../errors/failure.dart';
-import '../repos/cached_authenticated_repository.dart';
 
 @lazySingleton
 class ClearAuthModeUseCase {
-  final CachedAuthenticatedRepository cachedAuthenticatedRepository;
-  ClearAuthModeUseCase(this.cachedAuthenticatedRepository);
+  final AuthStateRepository authStateRepository;
+  ClearAuthModeUseCase(this.authStateRepository);
 
   Future<Either<Failure, Unit>> call() {
-    return cachedAuthenticatedRepository.clearAuthMode();
+    return  authStateRepository.clearAuthMode();
   }
 }

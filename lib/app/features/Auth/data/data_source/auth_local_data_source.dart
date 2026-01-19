@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:mega/app/core/helper/push_token_helper.dart';
 import 'package:mega/app/features/Auth/data/model/push_token_model.dart';
 
@@ -16,5 +15,6 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
     if (token != null) {
       return token;
     }
+    return null;
   }
 }

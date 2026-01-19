@@ -9,6 +9,7 @@ class Constants {
   static const verifyPassCodeEndPoint = "auth/verify-pass-code";
   static const resetPasswordEndPoint = "auth/reset-password";
   static const resendResetPassCodeEndPoint = "auth/resend-pass-code";
+  static const logoutEndPoint = "auth/logout";
   static const tokenKey = 'token';
   static const authModeKey = 'auth_mode';
   static const userKey = 'user_key';

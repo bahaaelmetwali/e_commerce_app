@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../errors/failure.dart';
-import '../entities/user_entity.dart';
+import '../entities/cached_user_entity.dart';
 import '../repos/cached_authenticated_repository.dart';
 
 @lazySingleton
@@ -11,7 +11,7 @@ class GetUserInfoUseCase {
 
   final CachedAuthenticatedRepository _cachedAuthenticatedRepository;
 
-  Future<Either<Failure, UserEntity?>> call() {
+  Future<Either<Failure, CachedUserEntity?>> call() {
     return _cachedAuthenticatedRepository.getUserInfo();
   }
 }

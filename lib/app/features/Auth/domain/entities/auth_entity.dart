@@ -1,4 +1,4 @@
-import 'package:mega/app/core/data/domain/entities/user_entity.dart';
+import 'package:mega/app/core/data/domain/entities/cached_user_entity.dart';
 
 class AuthEntity {
   final String id;
