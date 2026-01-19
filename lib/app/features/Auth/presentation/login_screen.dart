@@ -3,6 +3,7 @@ import 'package:mega/app/core/config/theme/text_styles.dart';
 import 'package:mega/app/core/constants/dimensions.dart';
 import 'package:mega/app/core/di/injection.dart';
 import 'package:mega/app/core/utils/validator.dart';
+import 'package:mega/app/features/Auth/domain/use_cases/login_use_case.dart';
 import 'package:mega/app/material/buttons/custom_button.dart';
 import 'package:mega/app/material/textfields/custom_text_field.dart';
 import 'package:mega/l10n/app_localizations.dart';
@@ -12,7 +13,6 @@ import 'package:flutter/material.dart';
 import '../../../core/config/router/route_names.dart';
 import '../../../core/config/theme/app_colors.dart';
 import '../../../material/snakbars/show_custom_snack_bar.dart';
-import '../data/model/login_request_model.dart';
 import 'cubits/login/login_cubit.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -161,7 +161,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         Navigator.pushReplacementNamed(
                           context,
                           RouteNames.mainLayout,
-                          arguments: false,);
+                          arguments: false,
+                        );
                       } else if (state is LoginFailure) {
                         showCustomSnackBar(
                           context,
@@ -182,13 +183,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: AppLocalizations.of(context)!.login,
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              final loginRequest = LoginRequestModel(
+                              final loginRequest = LoginParams(
                                 email: emailController.text.trim(),
-                                password: passwordController.text.trim(), fcmToken: '',
+                                password: passwordController.text.trim(),
+                                fcmToken: '',
                               );
-                              context.read<LoginCubit>().login(
-                                loginRequest: loginRequest,
-                              );
+                              context.read<LoginCubit>().login(params: loginRequest);
                             }
                           },
                         );

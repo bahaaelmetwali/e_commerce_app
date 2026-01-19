@@ -20,20 +20,30 @@ import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../features/Auth/data/data_source/auth_remote_data_source.dart'
     as _i114;
-import '../../features/Auth/data/data_source/push_token_data_source.dart'
-    as _i157;
 import '../../features/Auth/data/repo_impl/auth_repo_impl.dart' as _i304;
 import '../../features/Auth/domain/repos/auth_repo.dart' as _i848;
+import '../../features/Auth/domain/use_cases/change_password_use_case.dart'
+    as _i500;
 import '../../features/Auth/domain/use_cases/forget_password_use_case.dart'
     as _i812;
+import '../../features/Auth/domain/use_cases/get_profile_use_case.dart'
+    as _i1055;
 import '../../features/Auth/domain/use_cases/logged_as_guest_use_case.dart'
     as _i1002;
 import '../../features/Auth/domain/use_cases/login_use_case.dart' as _i694;
 import '../../features/Auth/domain/use_cases/register_use_case.dart' as _i228;
+import '../../features/Auth/domain/use_cases/resend_email_update_use_case.dart'
+    as _i587;
 import '../../features/Auth/domain/use_cases/resend_verification_code_use_case.dart'
     as _i556;
 import '../../features/Auth/domain/use_cases/reset_password_use_case.dart'
     as _i942;
+import '../../features/Auth/domain/use_cases/update_email_use_case.dart'
+    as _i552;
+import '../../features/Auth/domain/use_cases/update_profile_use_case.dart'
+    as _i611;
+import '../../features/Auth/domain/use_cases/verify_email_update_use_case.dart'
+    as _i598;
 import '../../features/Auth/domain/use_cases/verify_email_use_case.dart'
     as _i156;
 import '../../features/Auth/domain/use_cases/verify_pass_code_use_case.dart'
@@ -53,11 +63,16 @@ import '../../features/Auth/presentation/cubits/verify_email/verify_email_cubit.
     as _i565;
 import '../../features/Auth/presentation/cubits/verify_pass_code/verify_pass_code_cubit.dart'
     as _i911;
+import '../../features/menu/presentation/cubits/cubit/get_cached_data_cubit.dart'
+    as _i713;
+import '../data/data/data_source/auth_state_local_data_source.dart' as _i323;
 import '../data/data/data_source/cached_authenticated_data_source.dart' as _i29;
 import '../data/data/data_source/language_local_data_source.dart' as _i191;
+import '../data/data/repos_impl/auth_state_repository_impl.dart' as _i1038;
 import '../data/data/repos_impl/cached_authenticated_repository_impl.dart'
     as _i418;
 import '../data/data/repos_impl/language_repo_impl.dart' as _i761;
+import '../data/domain/repos/auth_state_repository.dart' as _i691;
 import '../data/domain/repos/cached_authenticated_repository.dart' as _i631;
 import '../data/domain/repos/language_cache_repository.dart' as _i529;
 import '../data/domain/use_cases/change_language_use_case.dart' as _i120;
@@ -102,13 +117,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i558.FlutterSecureStorage>(
       () => registerModule.flutterSecureStorage,
     );
-    gh.factory<_i157.PushTokenDataSource>(
-      () => _i157.PushTokenDataSourceImpl(gh<_i892.FirebaseMessaging>()),
+    gh.factory<_i323.AuthStateLocalDataSource>(
+      () =>
+          _i323.AuthStateLocalDataSourceImpl(gh<_i558.FlutterSecureStorage>()),
     );
     gh.factory<_i191.LanguageLocalDataSource>(
       () => _i191.LanguageLocalDataSourceImpl(gh<_i460.SharedPreferences>()),
     );
-    gh.lazySingleton<_i29.CachedAuthenticatedDataSource>(
+    gh.factory<_i29.CachedAuthenticatedDataSource>(
       () => _i29.CachedAuthenticatedDataSourceImpl(
         gh<_i558.FlutterSecureStorage>(),
       ),
@@ -123,10 +139,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i132.CheckNetwork>(
       () => _i132.NetworkCheckerImp(gh<_i973.InternetConnectionChecker>()),
     );
-    gh.lazySingleton<_i631.CachedAuthenticatedRepository>(
+    gh.factory<_i631.CachedAuthenticatedRepository>(
       () => _i418.CachedAuthenticatedRepositoryImpl(
         cachedAuthenticatedDataSource: gh<_i29.CachedAuthenticatedDataSource>(),
       ),
+    );
+    gh.lazySingleton<_i691.AuthStateRepository>(
+      () =>
+          _i1038.AuthStateRepositoryImpl(gh<_i323.AuthStateLocalDataSource>()),
     );
     gh.lazySingleton<_i390.GetAppLanguageUseCase>(
       () => _i390.GetAppLanguageUseCase(gh<_i529.LanguageCacheRepository>()),
@@ -138,25 +158,23 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i590.GetUserInfoUseCase(gh<_i631.CachedAuthenticatedRepository>()),
     );
     gh.lazySingleton<_i500.ClearAuthModeUseCase>(
-      () =>
-          _i500.ClearAuthModeUseCase(gh<_i631.CachedAuthenticatedRepository>()),
+      () => _i500.ClearAuthModeUseCase(gh<_i691.AuthStateRepository>()),
+    );
+    gh.lazySingleton<_i178.GetAuthModeUseCase>(
+      () => _i178.GetAuthModeUseCase(gh<_i691.AuthStateRepository>()),
+    );
+    gh.lazySingleton<_i81.SetAuthModeUseCase>(
+      () => _i81.SetAuthModeUseCase(gh<_i691.AuthStateRepository>()),
+    );
+    gh.lazySingleton<_i448.SetGuestModeUseCase>(
+      () => _i448.SetGuestModeUseCase(gh<_i691.AuthStateRepository>()),
     );
     gh.lazySingleton<_i882.ClearUserInfoUseCase>(
       () =>
           _i882.ClearUserInfoUseCase(gh<_i631.CachedAuthenticatedRepository>()),
     );
-    gh.lazySingleton<_i178.GetAuthModeUseCase>(
-      () => _i178.GetAuthModeUseCase(gh<_i631.CachedAuthenticatedRepository>()),
-    );
     gh.lazySingleton<_i799.GetTokenUseCase>(
       () => _i799.GetTokenUseCase(gh<_i631.CachedAuthenticatedRepository>()),
-    );
-    gh.lazySingleton<_i81.SetAuthModeUseCase>(
-      () => _i81.SetAuthModeUseCase(gh<_i631.CachedAuthenticatedRepository>()),
-    );
-    gh.lazySingleton<_i448.SetGuestModeUseCase>(
-      () =>
-          _i448.SetGuestModeUseCase(gh<_i631.CachedAuthenticatedRepository>()),
     );
     gh.singleton<_i1018.SaveUserInfoUseCase>(
       () =>
@@ -173,6 +191,9 @@ extension GetItInjectableX on _i174.GetIt {
         cachedAuthenticatedRepository:
             gh<_i631.CachedAuthenticatedRepository>(),
       ),
+    );
+    gh.factory<_i713.GetCachedDataCubit>(
+      () => _i713.GetCachedDataCubit(gh<_i590.GetUserInfoUseCase>()),
     );
     gh.singleton<_i408.TokenInterceptor>(
       () => _i408.TokenInterceptor(gh<_i799.GetTokenUseCase>()),
@@ -195,19 +216,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i848.AuthRepo>(
       () => _i304.AuthRepoImpl(
-        gh<_i114.AuthRemoteDataSource>(),
-        cachedAuthenticatedRepository:
-            gh<_i631.CachedAuthenticatedRepository>(),
-      ),
-    );
-    gh.singleton<_i1002.LoginAsGuestUseCase>(
-      () => _i1002.LoginAsGuestUseCase(gh<_i848.AuthRepo>()),
-    );
-    gh.factory<_i340.AuthCubit>(
-      () => _i340.AuthCubit(
-        gh<_i178.GetAuthModeUseCase>(),
-        gh<_i799.GetTokenUseCase>(),
-        gh<_i1002.LoginAsGuestUseCase>(),
+        authRemoteDataSource: gh<_i114.AuthRemoteDataSource>(),
+        authStateLocalDataSource: gh<_i323.AuthStateLocalDataSource>(),
+        cachedAuthenticatedDataSource: gh<_i29.CachedAuthenticatedDataSource>(),
       ),
     );
     gh.singleton<_i812.ForgetPasswordUseCase>(
@@ -257,8 +268,36 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i759.ForgetPasswordCubit>(
       () => _i759.ForgetPasswordCubit(gh<_i812.ForgetPasswordUseCase>()),
     );
+    gh.singleton<_i500.ChangePasswordUseCase>(
+      () => _i500.ChangePasswordUseCase(gh<_i848.AuthRepo>()),
+    );
+    gh.singleton<_i1055.GetProfileUseCase>(
+      () => _i1055.GetProfileUseCase(gh<_i848.AuthRepo>()),
+    );
+    gh.singleton<_i1002.LoginAsGuestUseCase>(
+      () => _i1002.LoginAsGuestUseCase(gh<_i848.AuthRepo>()),
+    );
+    gh.singleton<_i587.ResendEmailUpdateUseCase>(
+      () => _i587.ResendEmailUpdateUseCase(gh<_i848.AuthRepo>()),
+    );
+    gh.singleton<_i552.UpdateEmailUseCase>(
+      () => _i552.UpdateEmailUseCase(gh<_i848.AuthRepo>()),
+    );
+    gh.singleton<_i611.UpdateProfileUseCase>(
+      () => _i611.UpdateProfileUseCase(gh<_i848.AuthRepo>()),
+    );
+    gh.singleton<_i598.VerifyEmailUpdatedUseCase>(
+      () => _i598.VerifyEmailUpdatedUseCase(gh<_i848.AuthRepo>()),
+    );
     gh.factory<_i565.VerifyEmailCubit>(
       () => _i565.VerifyEmailCubit(gh<_i156.VerifyEmailUseCase>()),
+    );
+    gh.factory<_i340.AuthCubit>(
+      () => _i340.AuthCubit(
+        gh<_i178.GetAuthModeUseCase>(),
+        gh<_i799.GetTokenUseCase>(),
+        gh<_i1002.LoginAsGuestUseCase>(),
+      ),
     );
     return this;
   }

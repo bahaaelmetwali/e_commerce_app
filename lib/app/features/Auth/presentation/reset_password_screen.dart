@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 import '../../../core/config/router/route_names.dart';
 import '../../../core/config/theme/app_colors.dart';
 import '../../../material/snakbars/show_custom_snack_bar.dart';
-import '../data/model/reset_password_model.dart';
+import '../domain/use_cases/reset_password_use_case.dart';
 import 'cubits/reset_password/reset_password_cubit.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
@@ -130,7 +130,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                       return CustomButton(
                         onPressed: () => {
                           context.read<ResetPasswordCubit>().resetPassword(
-                            ResetPasswordModel(
+                            ResetPasswordParams(
                               password: passwordController.text,
                               confirmPassword: confirmPasswordController.text,
                             ),

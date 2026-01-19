@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega/app/core/di/injection.dart';
 import 'package:mega/app/core/utils/validator.dart';
-import 'package:mega/app/features/Auth/data/model/register_request_model.dart';
+import 'package:mega/app/features/Auth/domain/use_cases/register_use_case.dart';
 import 'package:mega/app/material/snakbars/show_custom_snack_bar.dart';
-
 import '../../../../l10n/app_localizations.dart';
 import '../../../core/config/router/route_names.dart';
 import '../../../core/config/theme/app_colors.dart';
@@ -154,7 +153,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       return CustomButton(
                         child: AppLocalizations.of(context)!.register,
                         onPressed: () {
-                          final registerRequest = RegisterRequestModel(
+                          final registerRequest = RegisterParams(
                             name: nameController.text,
                             email: emailController.text,
                             password: passwordController.text,

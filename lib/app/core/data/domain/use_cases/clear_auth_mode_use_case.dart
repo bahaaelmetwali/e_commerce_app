@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:mega/app/core/data/domain/repos/auth_state_repository.dart';
 
 import '../../../errors/failure.dart';
+import '../repos/auth_state_repository.dart';
 
 @lazySingleton
 class ClearAuthModeUseCase {

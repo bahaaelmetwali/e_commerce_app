@@ -439,6 +439,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Alert'**
   String get alert;
+
+  /// No description provided for @becameStoreOwner.
+  ///
+  /// In en, this message translates to:
+  /// **'Became Store Owner'**
+  String get becameStoreOwner;
+
+  /// No description provided for @myOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'My Orders'**
+  String get myOrders;
+
+  /// No description provided for @accountInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Information'**
+  String get accountInformation;
+
+  /// No description provided for @updatePassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Password'**
+  String get updatePassword;
+
+  /// No description provided for @updateEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Email'**
+  String get updateEmail;
+
+  /// No description provided for @changeLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Language'**
+  String get changeLanguage;
+
+  /// No description provided for @termsAndConditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms and conditions'**
+  String get termsAndConditions;
+
+  /// No description provided for @privacyPolicy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get privacyPolicy;
+
+  /// No description provided for @aboutApp.
+  ///
+  /// In en, this message translates to:
+  /// **'About App'**
+  String get aboutApp;
+
+  /// No description provided for @support.
+  ///
+  /// In en, this message translates to:
+  /// **'Support'**
+  String get support;
+
+  /// No description provided for @rateTheApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate the app'**
+  String get rateTheApp;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logout;
 }
 
 class _AppLocalizationsDelegate

@@ -55,5 +55,17 @@
   "passwordChangedSucessfully" : "تم تغيير كلمة المرور بنجاح",
   "login_required": "يرجى تسجيل الدخول للوصول لهذه الصفحة.",
   "cancel": "إلغاء",
-  "alert": "تنبيه"
+  "alert": "تنبيه",
+  "becameStoreOwner": "كن صاحب متجر",
+  "myOrders": "طلباتي",
+  "accountInformation": "معلومات الحساب",
+  "updatePassword": "تغيير كلمة المرور",
+  "updateEmail": "تغيير البريد الإلكتروني",
+  "changeLanguage": "تغيير اللغة",
+  "termsAndConditions": "الشروط والأحكام",
+  "privacyPolicy": "سياسة الخصوصية",
+  "aboutApp": "حول التطبيق",
+  "support": "الدعم الفني",
+  "rateTheApp": "قيّم التطبيق",
+  "logout": "تسجيل الخروج"
 }

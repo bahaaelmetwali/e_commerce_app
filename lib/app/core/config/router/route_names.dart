@@ -11,4 +11,6 @@ class RouteNames {
   static const String mainLayout = '/mainLayout';
   static const String allProducts = '/allProducts';
   static const String productDetails = '/productDetails';
+  static const String menu = '/menu';
+
 }

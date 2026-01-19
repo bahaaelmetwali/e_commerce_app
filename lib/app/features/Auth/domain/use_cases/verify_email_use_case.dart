@@ -3,7 +3,6 @@ import 'package:injectable/injectable.dart';
 import 'package:mega/app/features/Auth/domain/repos/auth_repo.dart';
 
 import '../../../../core/errors/failure.dart';
-import '../../data/model/otp_request_model.dart';
 
 @singleton
 class VerifyEmailUseCase {
@@ -11,7 +10,18 @@ class VerifyEmailUseCase {
 
   VerifyEmailUseCase(this.authRepo);
 
-  Future<Either<Failure, Unit>> call(OtpRequestModel otpRequest) {
-    return authRepo.verifyEmail(otpRequest);
+  Future<Either<Failure, Unit>> call(VerifyEmailOtpRequestParams params) {
+    return authRepo.verifyEmail(params);
+  }
+}
+
+class VerifyEmailOtpRequestParams {
+  final String otp;
+
+  VerifyEmailOtpRequestParams({required this.otp});
+  Map<String, dynamic> toMap() {
+    return {
+      'code': otp,
+    };
   }
 }

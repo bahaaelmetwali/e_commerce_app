@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega/app/features/Auth/domain/use_cases/verify_email_use_case.dart';
 import 'package:mega/app/features/Auth/presentation/cubits/verify_email/verify_email_cubit.dart';
 import 'package:mega/app/features/Auth/presentation/widgets/resend_section.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,6 @@ import '../../../../core/config/router/route_names.dart';
 import '../../../../core/config/theme/app_colors.dart';
 import '../../../../core/config/theme/text_styles.dart';
 import '../../../../material/buttons/custom_button.dart';
-import '../../data/model/otp_request_model.dart';
 
 class OtpVerificationSection extends StatefulWidget {
   const OtpVerificationSection({super.key});
@@ -142,9 +142,11 @@ class _PinputExampleState extends State<OtpVerificationSection> {
                 child: AppLocalizations.of(context)!.verify,
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
-                    final otpRequest = OtpRequestModel(otp: pinController.text);
+                    final otpRequest = VerifyEmailOtpRequestParams(
+                      otp: pinController.text,
+                    );
                     context.read<VerifyEmailCubit>().verifyEmail(
-                      otpRequest: otpRequest,
+                      params: otpRequest,
                     );
                   }
                 },

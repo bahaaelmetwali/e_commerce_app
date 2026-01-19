@@ -55,5 +55,17 @@
   "passwordChangedSucessfully": "Password changed successfully",
   "login_required": "Please login to access this page.",
   "cancel": "Cancel",
-  "alert": "Alert"
+  "alert": "Alert",
+  "becameStoreOwner": "Became Store Owner",
+  "myOrders": "My Orders",
+  "accountInformation": "Account Information",
+  "updatePassword": "Update Password",
+  "updateEmail": "Update Email",
+  "changeLanguage": "Change Language",
+  "termsAndConditions": "Terms and conditions",
+  "privacyPolicy": "Privacy Policy",
+  "aboutApp": "About App",
+  "support": "Support",
+  "rateTheApp": "Rate the app",
+  "logout": "Logout"
 }

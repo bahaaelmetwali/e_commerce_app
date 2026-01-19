@@ -3,7 +3,6 @@ import 'package:mega/app/core/config/theme/app_colors.dart';
 import 'package:mega/app/core/config/theme/text_styles.dart';
 import 'package:mega/app/core/constants/dimensions.dart';
 import 'package:mega/app/core/di/injection.dart';
-import 'package:mega/app/features/Auth/data/model/forget_password_model.dart';
 import 'package:mega/app/material/buttons/custom_button.dart';
 import 'package:mega/app/material/snakbars/show_custom_snack_bar.dart';
 import 'package:mega/app/material/textfields/custom_text_field.dart';
@@ -14,6 +13,7 @@ import '../../../../constants/assets.dart';
 import '../../../core/config/router/route_names.dart';
 import '../../../core/utils/validator.dart';
 import '../../../material/images/app_svg_photo.dart';
+import '../domain/use_cases/forget_password_use_case.dart';
 import 'cubits/forget_password/forget_password_cubit.dart';
 
 class ForgetPasswordScreen extends StatefulWidget {
@@ -98,7 +98,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                       child: AppLocalizations.of(context)!.next,
                       onPressed: () {
                         context.read<ForgetPasswordCubit>().forgetPassword(
-                          ForgetPasswordModel(email: emailController.text),
+                          ForgetPasswordParams(email: emailController.text),
                         );
                       },
                     );

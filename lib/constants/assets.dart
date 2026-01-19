@@ -78,6 +78,10 @@ class Assets {
   /// assets/icons/add_to_fav.svg
   static const String iconsAddToFav = "assets/icons/add_to_fav.svg";
 
+  /// Assets for iconsAlert
+  /// assets/icons/alert.svg
+  static const String iconsAlert = "assets/icons/alert.svg";
+
   /// Assets for iconsBag
   /// assets/icons/bag.svg
   static const String iconsBag = "assets/icons/bag.svg";
@@ -94,21 +98,61 @@ class Assets {
   /// assets/icons/fav_page.svg
   static const String iconsFavPage = "assets/icons/fav_page.svg";
 
+  /// Assets for iconsForbidden
+  /// assets/icons/forbidden.svg
+  static const String iconsForbidden = "assets/icons/forbidden.svg";
+
   /// Assets for iconsHome
   /// assets/icons/home.svg
   static const String iconsHome = "assets/icons/home.svg";
+
+  /// Assets for iconsInformation
+  /// assets/icons/information.svg
+  static const String iconsInformation = "assets/icons/information.svg";
 
   /// Assets for iconsLock
   /// assets/icons/lock.svg
   static const String iconsLock = "assets/icons/lock.svg";
 
+  /// Assets for iconsLogout
+  /// assets/icons/logout.svg
+  static const String iconsLogout = "assets/icons/logout.svg";
+
+  /// Assets for iconsMessageQuestion
+  /// assets/icons/message-question.svg
+  static const String iconsMessageQuestion = "assets/icons/message-question.svg";
+
   /// Assets for iconsNotification
   /// assets/icons/notification.svg
   static const String iconsNotification = "assets/icons/notification.svg";
 
+  /// Assets for iconsShieldTick
+  /// assets/icons/shield-tick.svg
+  static const String iconsShieldTick = "assets/icons/shield-tick.svg";
+
+  /// Assets for iconsShop
+  /// assets/icons/shop.svg
+  static const String iconsShop = "assets/icons/shop.svg";
+
+  /// Assets for iconsShoppingBag
+  /// assets/icons/shopping-bag.svg
+  static const String iconsShoppingBag = "assets/icons/shopping-bag.svg";
+
+  /// Assets for iconsSms
+  /// assets/icons/sms.svg
+  static const String iconsSms = "assets/icons/sms.svg";
+
+  /// Assets for iconsStar
+  /// assets/icons/star.svg
+  static const String iconsStar = "assets/icons/star.svg";
+
   /// Assets for iconsTab
   /// assets/icons/tab.svg
   static const String iconsTab = "assets/icons/tab.svg";
+
+  /// Assets for iconsTranslate
+  /// assets/icons/translate.svg
+  static const String iconsTranslate = "assets/icons/translate.svg";
 
   /// Assets for imagesCardtest
   /// assets/images/cardtest.png
@@ -117,6 +161,10 @@ class Assets {
   /// Assets for imagesManOnboarding
   /// assets/images/man_onboarding.png
   static const String imagesManOnboarding = "assets/images/man_onboarding.png";
+
+  /// Assets for imagesManTest
+  /// assets/images/man_test.jpg
+  static const String imagesManTest = "assets/images/man_test.jpg";
 
   /// Assets for imagesPrevTest1
   /// assets/images/prev_test1.png

@@ -1,112 +1,166 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:mega/app/core/constants/constants.dart';
-import 'package:mega/app/features/Auth/data/model/auth_response_model.dart';
-import 'package:mega/app/features/Auth/data/model/forget_password_response.dart';
-import 'package:mega/app/features/Auth/data/model/otp_request_model.dart';
-import 'package:mega/app/features/Auth/data/model/forget_password_model.dart';
-import 'package:mega/app/features/Auth/data/model/reset_password_model.dart';
-
+import '../../../../core/constants/constants.dart';
 import '../../../../core/helper/api_helper.dart';
-import '../model/login_request_model.dart';
-import '../model/register_request_model.dart';
-import '../model/verify_pass_code_model.dart';
+import '../../domain/use_cases/change_password_use_case.dart';
+import '../../domain/use_cases/forget_password_use_case.dart';
+import '../../domain/use_cases/login_use_case.dart';
+import '../../domain/use_cases/register_use_case.dart';
+import '../../domain/use_cases/reset_password_use_case.dart';
+import '../../domain/use_cases/update_email_use_case.dart';
+import '../../domain/use_cases/update_profile_use_case.dart';
+import '../../domain/use_cases/verify_email_update_use_case.dart';
+import '../../domain/use_cases/verify_email_use_case.dart';
+import '../../domain/use_cases/verify_pass_code_use_case.dart';
+import '../model/auth_response_model.dart';
+import '../model/profile_model.dart';
 
 abstract class AuthRemoteDataSource {
-  Future<AuthResponseModel> register(RegisterRequestModel registerRequestModel);
-  Future<AuthResponseModel> login(LoginRequestModel loginRequestModel);
-  Future<Unit> verifyEmail(OtpRequestModel otpRequestModel);
-  Future<Unit> resendVerificationCode();
-  Future<ForgetPasswordResponse> forgetPassword(
-    ForgetPasswordModel forgetPasswordModel,
-  );
-  Future<Unit> verifyPassCode(VerifyPassCodeModel verifyPassCodeModel);
-  Future<Unit> resetPassWord(ResetPasswordModel resetPasswordModel);
-  Future<Unit> resendPassCode();
-  Future<Unit> logout();  
-}
+  Future<AuthResponseModel> register(RegisterParams params);
+  Future<AuthResponseModel> login(LoginParams params);
 
+  Future<Unit> verifyEmail(VerifyEmailOtpRequestParams params);
+  Future<Unit> resendVerificationCode();
+
+  Future<Unit> forgetPassword(ForgetPasswordParams params);
+  Future<Unit> verifyPassCode(VerifyPassCodeParams params);
+  Future<Unit> resetPassword(ResetPasswordParams params);
+  Future<Unit> resendResetPassCode();
+
+  Future<Unit> logout();
+
+  Future<ProfileModel> getProfile();
+  Future<ProfileModel> updateProfile(UpdateUserProfileParams params);
+
+  Future<Unit> changePassword(ChangePasswordParams params);
+  Future<Unit> updateEmail(UpdateEmailParams params);
+  Future<Unit> resendEmailUpdate();
+  Future<Unit> verifyEmailUpdated(OtpRequestParams params);
+}
 @Injectable(as: AuthRemoteDataSource)
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final ApiHelper apiHelper;
-  AuthRemoteDataSourceImpl(this.apiHelper, );
+  AuthRemoteDataSourceImpl(this.apiHelper);
+
   @override
-  Future<AuthResponseModel> register(
-    RegisterRequestModel registerRequestModel,
-  ) async {
+  Future<AuthResponseModel> register(RegisterParams params) async {
     final response = await apiHelper.post(
       endPoint: Constants.registerEndPoint,
-      body: registerRequestModel.toJson(),
+      body: params.toMap(),
     );
-    final data = response['data'];
-    return AuthResponseModel.fromJson(data);
+    return AuthResponseModel.fromJson(response['data']);
   }
 
   @override
-  Future<AuthResponseModel> login(LoginRequestModel loginRequestModel) async {
+  Future<AuthResponseModel> login(LoginParams params) async {
     final response = await apiHelper.post(
       endPoint: Constants.loginEndPoint,
-      body: loginRequestModel.toJson(),
+      body: params.toMap(),
     );
-
-    final data = response['data'];
-    return AuthResponseModel.fromJson(data);
+    return AuthResponseModel.fromJson(response['data']);
   }
 
   @override
-  Future<Unit> verifyEmail(OtpRequestModel otpRequestModel) async {
+  Future<Unit> verifyEmail(VerifyEmailOtpRequestParams params) async {
     await apiHelper.post(
       endPoint: Constants.verifyEmailEndPoint,
-      body: otpRequestModel.toJson(),
+      body: params.toMap(),
     );
-    return Future.value(unit);
+    return unit;
   }
 
   @override
   Future<Unit> resendVerificationCode() async {
     await apiHelper.post(endPoint: Constants.resendVerificationCodeEndPoint);
-    return Future.value(unit);
+    return unit;
   }
 
   @override
-  Future<ForgetPasswordResponse> forgetPassword(
-    ForgetPasswordModel forgetPasswordModel,
-  ) async {
-    final response = await apiHelper.post(
+  Future<Unit> forgetPassword(ForgetPasswordParams params) async {
+    await apiHelper.post(
       endPoint: Constants.forgetPasswordEndPoint,
-      body: forgetPasswordModel.toJson(),
+      body: params.toMap(),
     );
-    return ForgetPasswordResponse.fromJson(response);
+    return unit;
   }
 
   @override
-  Future<Unit> verifyPassCode(VerifyPassCodeModel verifyPassCodeModel) async {
+  Future<Unit> verifyPassCode(VerifyPassCodeParams params) async {
     await apiHelper.post(
       endPoint: Constants.verifyPassCodeEndPoint,
-      body: verifyPassCodeModel.toJson(),
+      body: params.toMap(),
     );
-    return Future.value(unit);
+    return unit;
   }
 
   @override
-  Future<Unit> resetPassWord(ResetPasswordModel resetPasswordModel) async {
+  Future<Unit> resetPassword(ResetPasswordParams params) async {
     await apiHelper.post(
       endPoint: Constants.resetPasswordEndPoint,
-      body: resetPasswordModel.toJson(),
+      body: params.toMap(),
     );
-    return Future.value(unit);
+    return unit;
   }
 
   @override
-  Future<Unit> resendPassCode() async {
+  Future<Unit> resendResetPassCode() async {
     await apiHelper.post(endPoint: Constants.resendResetPassCodeEndPoint);
-    return Future.value(unit);
+    return unit;
   }
-  
+
   @override
-  Future<Unit> logout() {
-    return apiHelper.post(
-      endPoint: Constants.logoutEndPoint,
-    ).then((_) => Future.value(unit));
+  Future<Unit> logout() async {
+    await apiHelper.post(endPoint: Constants.logoutEndPoint);
+    return unit;
+  }
+
+  @override
+  Future<ProfileModel> getProfile() async {
+    final response = await apiHelper.get(
+      endPoint: Constants.getProfileEndPoint,
+    );
+    return ProfileModel.fromJson(response);
+  }
+
+  @override
+  Future<ProfileModel> updateProfile(UpdateUserProfileParams params) async {
+    final response = await apiHelper.put(
+      endPoint: Constants.getProfileEndPoint,
+      body: params.toMap(),
+    );
+    return ProfileModel.fromJson(response);
+  }
+
+  @override
+  Future<Unit> changePassword(ChangePasswordParams params) async {
+    await apiHelper.put(
+      endPoint: Constants.updatePasswordEndPoint,
+      body: params.toMap(),
+    );
+    return unit;
+  }
+
+  @override
+  Future<Unit> updateEmail(UpdateEmailParams params) async {
+    await apiHelper.post(
+      endPoint: Constants.updateEmailEndPoint,
+      body: params.toMap(),
+    );
+    return unit;
+  }
+
+  @override
+  Future<Unit> resendEmailUpdate() async {
+    await apiHelper.post(endPoint: Constants.resentUpdateEmailEndPoint);
+    return unit;
+  }
+
+  @override
+  Future<Unit> verifyEmailUpdated(OtpRequestParams params) async {
+    await apiHelper.post(
+      endPoint: Constants.verifyUpdateEmailEndPoint,
+      body: params.toMap(),
+    );
+    return unit;
   }
 }

@@ -1,35 +1,37 @@
 import 'package:dartz/dartz.dart';
-import 'package:mega/app/features/Auth/data/model/login_request_model.dart';
-import 'package:mega/app/features/Auth/data/model/otp_request_model.dart';
-import 'package:mega/app/features/Auth/data/model/register_request_model.dart';
-import 'package:mega/app/features/Auth/domain/entities/auth_entity.dart';
 
+import '../../domain/entities/auth_entity.dart';
+import '../../domain/entities/profile_entity.dart';
 import '../../../../core/errors/failure.dart';
-import '../../data/model/forget_password_model.dart';
-import '../../data/model/reset_password_model.dart';
-import '../../data/model/verify_pass_code_model.dart';
+import '../use_cases/change_password_use_case.dart';
+import '../use_cases/forget_password_use_case.dart';
+import '../use_cases/login_use_case.dart';
+import '../use_cases/register_use_case.dart';
+import '../use_cases/reset_password_use_case.dart';
+import '../use_cases/update_email_use_case.dart';
+import '../use_cases/update_profile_use_case.dart';
+import '../use_cases/verify_email_update_use_case.dart';
+import '../use_cases/verify_email_use_case.dart';
+import '../use_cases/verify_pass_code_use_case.dart';
 
 abstract class AuthRepo {
-  Future<Either<Failure, AuthEntity>> register(
-    RegisterRequestModel registerRequest,
-  );
-  Future<Either<Failure, AuthEntity>> login(LoginRequestModel loginRequest);
-  Future<Either<Failure, Unit>> verifyEmail(OtpRequestModel otpRequest);
+  Future<Either<Failure, AuthEntity>> register(RegisterParams params);
+  Future<Either<Failure, AuthEntity>> login(LoginParams params);
+  Future<Either<Failure, Unit>> verifyEmail(VerifyEmailOtpRequestParams params);
   Future<Either<Failure, Unit>> resendVerificationCode();
-  Future<Either<Failure, Unit>> forgetPassword(
-    ForgetPasswordModel forgetPasswordModel,
-  );
-  Future<Either<Failure, Unit>> verifyPassCode(
-    VerifyPassCodeModel verifyPassCodeModel,
-  );
-  Future<Either<Failure, Unit>> resetPassword(
-    ResetPasswordModel resetPasswordModel,
-  );
+  Future<Either<Failure, Unit>> forgetPassword(ForgetPasswordParams params);
+  Future<Either<Failure, Unit>> verifyPassCode(VerifyPassCodeParams params);
+  Future<Either<Failure, Unit>> resetPassword(ResetPasswordParams params);
+  Future<Either<Failure, Unit>> resendResetPassCode();
   Future<Either<Failure, Unit>> loginAsGuest();
-    Future<Either<Failure, Unit>> resendResetPassCode();
-
   Future<Either<Failure, Unit>> logout();
 
-
-
+  Future<Either<Failure, ProfileEntity>> getProfile();
+  Future<Either<Failure, ProfileEntity>> updateProfile(
+    UpdateUserProfileParams params,
+  );
+  Future<Either<Failure, Unit>> changePassword(ChangePasswordParams params);
+  Future<Either<Failure, Unit>> updateEmail(UpdateEmailParams params);
+  Future<Either<Failure, Unit>> resendEmailUpdate();
+  Future<Either<Failure, Unit>> verifyEmailUpdated(OtpRequestParams params);
 }

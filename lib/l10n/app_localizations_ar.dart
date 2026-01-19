@@ -184,4 +184,40 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get alert => 'تنبيه';
+
+  @override
+  String get becameStoreOwner => 'كن صاحب متجر';
+
+  @override
+  String get myOrders => 'طلباتي';
+
+  @override
+  String get accountInformation => 'معلومات الحساب';
+
+  @override
+  String get updatePassword => 'تغيير كلمة المرور';
+
+  @override
+  String get updateEmail => 'تغيير البريد الإلكتروني';
+
+  @override
+  String get changeLanguage => 'تغيير اللغة';
+
+  @override
+  String get termsAndConditions => 'الشروط والأحكام';
+
+  @override
+  String get privacyPolicy => 'سياسة الخصوصية';
+
+  @override
+  String get aboutApp => 'حول التطبيق';
+
+  @override
+  String get support => 'الدعم الفني';
+
+  @override
+  String get rateTheApp => 'قيّم التطبيق';
+
+  @override
+  String get logout => 'تسجيل الخروج';
 }

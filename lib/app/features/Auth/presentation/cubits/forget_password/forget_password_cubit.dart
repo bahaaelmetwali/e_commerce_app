@@ -3,7 +3,6 @@ import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mega/app/features/Auth/domain/use_cases/forget_password_use_case.dart';
 
-import '../../../data/model/forget_password_model.dart';
 
 part 'forget_password_state.dart';
 
@@ -11,10 +10,10 @@ part 'forget_password_state.dart';
 class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
   ForgetPasswordCubit(this.forgetPasswordUseCase) : super(ForgetPasswordInitial());
   final ForgetPasswordUseCase forgetPasswordUseCase;
-  Future<void> forgetPassword(ForgetPasswordModel forgetPasswordModel ) async {
+  Future<void> forgetPassword(ForgetPasswordParams params  ) async {
     emit(ForgetPasswordLoading());
     final result = await forgetPasswordUseCase(
-      forgetPasswordModel,
+      params,
     );
     result.fold(
       (failure) => emit(ForgetPasswordFailure(failure.message)),

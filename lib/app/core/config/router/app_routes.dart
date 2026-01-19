@@ -1,6 +1,7 @@
 import 'package:mega/app/core/config/router/route_names.dart';
 import 'package:mega/app/features/home/presentation/all_product_page.dart';
 import 'package:flutter/material.dart';
+import 'package:mega/app/features/menu/presentation/menu_screen.dart';
 import 'package:mega/main.dart';
 
 import '../../../features/Auth/presentation/forget_password_screen.dart';
@@ -26,5 +27,6 @@ class AppRoutes {
     RouteNames.verifyCodeForResetPassword: (context) =>
         const VerifyPasswordScreen(),
     RouteNames.resetPassword: (context) => const ResetPasswordScreen(),
+    RouteNames.menu: (context) => const MenuScreen(),
   };
 }

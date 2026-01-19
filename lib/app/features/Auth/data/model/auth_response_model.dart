@@ -8,6 +8,7 @@ class AuthResponseModel extends AuthEntity {
     required super.avatar,
     required super.token,
     required super.isVerified,
+    required super.role,
   });
 
   factory AuthResponseModel.fromJson(Map<String, dynamic> json) {
@@ -18,6 +19,9 @@ class AuthResponseModel extends AuthEntity {
       avatar: json['avatar'] ?? '',
       token: json['token'] ?? '',
       isVerified: json['isVerified'] ?? false,
+      role: json['role'] ?? '',
     );
   }
+
+
 }

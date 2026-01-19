@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mega/app/features/Auth/data/model/verify_pass_code_model.dart';
+import 'package:mega/app/features/Auth/domain/use_cases/verify_pass_code_use_case.dart';
 import 'package:mega/app/features/Auth/presentation/widgets/resend_section.dart';
 import 'package:pinput/pinput.dart';
 
@@ -56,7 +56,7 @@ class VerifyPasswordScreen extends StatelessWidget {
 }
 
 class OtpVerifyPassWordSection extends StatefulWidget {
-  const OtpVerifyPassWordSection({super.key,});
+  const OtpVerifyPassWordSection({super.key});
   @override
   State<OtpVerifyPassWordSection> createState() => _PinputExampleState();
 }
@@ -159,11 +159,7 @@ class _PinputExampleState extends State<OtpVerifyPassWordSection> {
                   context,
                   message: AppLocalizations.of(context)!.otpVerificationIsTrue,
                 );
-                Navigator.pushNamed(
-                  context,
-                  RouteNames.resetPassword,
-
-                );
+                Navigator.pushNamed(context, RouteNames.resetPassword);
               } else if (state is VerifyPassCodeFailure) {
                 showCustomSnackBar(
                   context,
@@ -184,11 +180,11 @@ class _PinputExampleState extends State<OtpVerifyPassWordSection> {
                 child: AppLocalizations.of(context)!.verify,
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
-                    final verifyPassCodeModel = VerifyPassCodeModel(
+                    final verifyPassCodeParams = VerifyPassCodeParams(
                       code: pinController.text,
                     );
                     context.read<VerifyPassCodeCubit>().verifyPassCode(
-                      verifyPassCodeModel: verifyPassCodeModel,
+                      params: verifyPassCodeParams,
                     );
                   }
                 },
