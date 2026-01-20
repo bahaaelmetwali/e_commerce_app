@@ -511,6 +511,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Logout'**
   String get logout;
+
+  /// No description provided for @privacyPolicyforMega.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy for Mega'**
+  String get privacyPolicyforMega;
+
+  /// No description provided for @enterYourComment.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your comment'**
+  String get enterYourComment;
+
+  /// No description provided for @comment.
+  ///
+  /// In en, this message translates to:
+  /// **'Comment'**
+  String get comment;
+
+  /// No description provided for @howWasYourExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'How was your experience?'**
+  String get howWasYourExperience;
+
+  /// No description provided for @describeYourExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'Describe your experience?'**
+  String get describeYourExperience;
+
+  /// No description provided for @submit.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit'**
+  String get submit;
+
+  /// No description provided for @yourResponseSubmittedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Your response submitted successfully'**
+  String get yourResponseSubmittedSuccessfully;
+
+  /// No description provided for @oldPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Old Password'**
+  String get oldPassword;
+
+  /// No description provided for @enterYourOldPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your old password'**
+  String get enterYourOldPassword;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @newEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'New Email'**
+  String get newEmail;
+
+  /// No description provided for @enterYourNewEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your new email'**
+  String get enterYourNewEmail;
+
+  /// No description provided for @codeWasSentToYourNewEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Code was sent to your new email'**
+  String get codeWasSentToYourNewEmail;
+
+  /// No description provided for @english.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get english;
+
+  /// No description provided for @arabic.
+  ///
+  /// In en, this message translates to:
+  /// **'Arabic'**
+  String get arabic;
 }
 
 class _AppLocalizationsDelegate

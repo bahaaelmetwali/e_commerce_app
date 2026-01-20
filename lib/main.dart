@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:mega/app/core/data/data/data_source/cached_authenticated_data_source.dart';
 import 'package:mega/app/features/Auth/presentation/cubits/auth/auth_cubit.dart';
 import 'package:mega/app/features/Auth/presentation/cubits/auth/auth_state.dart';
 import 'package:mega/l10n/app_localizations.dart';
@@ -24,7 +23,6 @@ void main() async {
 
   Bloc.observer = MyBlocObserver();
   await configureDependencies();
-  getIt<CachedAuthenticatedDataSource>().clearToken();
   runApp(const Mega());
 }
 

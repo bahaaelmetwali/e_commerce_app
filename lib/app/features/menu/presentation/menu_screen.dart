@@ -4,11 +4,12 @@ import 'package:mega/app/core/config/theme/app_colors.dart';
 import 'package:mega/app/core/config/theme/text_styles.dart';
 import 'package:mega/app/core/constants/dimensions.dart';
 import 'package:mega/app/core/di/injection.dart';
-import 'package:mega/app/features/menu/presentation/cubits/cubit/get_cached_data_cubit.dart';
-import 'package:mega/app/material/images/app_image_widget.dart';
+import 'package:mega/app/features/menu/presentation/cubits/get_cached_data/get_cached_data_cubit.dart';
 import 'package:mega/constants/assets.dart';
 import 'package:mega/l10n/app_localizations.dart';
+import '../../../core/config/router/route_names.dart';
 import 'widgets/custom_grey_card.dart';
+import 'widgets/main_data_section.dart';
 import 'widgets/row_section.dart';
 
 class MenuScreen extends StatelessWidget {
@@ -50,26 +51,44 @@ class MenuScreen extends StatelessWidget {
                   icon: Assets.iconsAlert,
                 ),
                 RowSection(
+                  onTap: () {
+                    Navigator.pushNamed(context, RouteNames.updatePassword);
+                  },
                   title: AppLocalizations.of(context)!.updatePassword,
                   icon: Assets.iconsLock,
                 ),
                 RowSection(
+                  onTap: () {
+                    Navigator.pushNamed(context, RouteNames.updateEmail);
+                  },
                   title: AppLocalizations.of(context)!.updateEmail,
                   icon: Assets.iconsSms,
                 ),
                 RowSection(
+                  onTap: () {
+                    Navigator.pushNamed(context, RouteNames.updateLanguage);
+                  },
                   title: AppLocalizations.of(context)!.changeLanguage,
                   icon: Assets.iconsTranslate,
                 ),
                 RowSection(
+                  onTap: () {
+                    Navigator.pushNamed(context, RouteNames.termsAndConditions);
+                  },
                   title: AppLocalizations.of(context)!.termsAndConditions,
                   icon: Assets.iconsForbidden,
                 ),
                 RowSection(
+                  onTap: () {
+                    Navigator.pushNamed(context, RouteNames.privacyPolicy);
+                  },
                   title: AppLocalizations.of(context)!.privacyPolicy,
                   icon: Assets.iconsShieldTick,
                 ),
                 RowSection(
+                  onTap: () {
+                    Navigator.pushNamed(context, RouteNames.aboutApp);
+                  },
                   title: AppLocalizations.of(context)!.aboutApp,
                   icon: Assets.iconsInformation,
                 ),
@@ -78,6 +97,9 @@ class MenuScreen extends StatelessWidget {
                   icon: Assets.iconsMessageQuestion,
                 ),
                 RowSection(
+                  onTap: () {
+                    Navigator.pushNamed(context, RouteNames.rateApp);
+                  },
                   title: AppLocalizations.of(context)!.rateTheApp,
                   icon: Assets.iconsStar,
                 ),
@@ -91,46 +113,6 @@ class MenuScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class MainDataSection extends StatelessWidget {
-  const MainDataSection({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<GetCachedDataCubit, GetCachedDataState>(
-      builder: (context, state) {
-        if (state is GetCachedDataLoaded) print(state.cachedData.avatar);
-        return Row(
-          children: [
-            CircleAvatar(
-              radius: 30,
-              child: ClipOval(
-                child: state is GetCachedDataLoaded
-                    ? AppImageWidget(
-                        path: state.cachedData.avatar ?? Assets.imagesManTest,
-                        canCache: true,
-                        fit: BoxFit.cover,
-                        width: 60,
-                        height: 60,
-                      )
-                    : Icon(Icons.person, size: 40),
-              ),
-            ),
-            const SizedBox(width: 20),
-            Expanded(
-              child: Text(
-                state is GetCachedDataLoaded
-                    ? state.cachedData.name
-                    : "unknown",
-                style: TextStyles.semiBold17,
-              ),
-            ),
-          ],
-        );
-      },
     );
   }
 }

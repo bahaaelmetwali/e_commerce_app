@@ -43,7 +43,7 @@ class AuthRepoImpl implements AuthRepo {
         await cachedAuthenticatedDataSource.saveToken(
           TokenModel.fromEntity(tokenEntity),
         );
-        return response;
+        return response.toEntity();
       },
     );
   }
@@ -62,7 +62,7 @@ class AuthRepoImpl implements AuthRepo {
           CachedUserModel.fromEntity(userEntity),
         );
         await authStateLocalDataSource.setAuthMode();
-        return response;
+        return response.toEntity();
       },
     );
   }

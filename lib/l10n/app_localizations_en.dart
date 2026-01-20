@@ -220,4 +220,50 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get logout => 'Logout';
+
+  @override
+  String get privacyPolicyforMega => 'Privacy Policy for Mega';
+
+  @override
+  String get enterYourComment => 'Enter your comment';
+
+  @override
+  String get comment => 'Comment';
+
+  @override
+  String get howWasYourExperience => 'How was your experience?';
+
+  @override
+  String get describeYourExperience => 'Describe your experience?';
+
+  @override
+  String get submit => 'Submit';
+
+  @override
+  String get yourResponseSubmittedSuccessfully =>
+      'Your response submitted successfully';
+
+  @override
+  String get oldPassword => 'Old Password';
+
+  @override
+  String get enterYourOldPassword => 'Enter your old password';
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get newEmail => 'New Email';
+
+  @override
+  String get enterYourNewEmail => 'Enter your new email';
+
+  @override
+  String get codeWasSentToYourNewEmail => 'Code was sent to your new email';
+
+  @override
+  String get english => 'English';
+
+  @override
+  String get arabic => 'Arabic';
 }

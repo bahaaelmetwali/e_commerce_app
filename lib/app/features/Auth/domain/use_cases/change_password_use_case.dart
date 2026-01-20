@@ -27,8 +27,9 @@ class ChangePasswordParams {
 
   Map<String, dynamic> toMap() {
     return {
-      'old_password': oldPassword,
-      'new_password': newPassword,
-      'confirm_password': confirmPassword,
+      'oldPassword': oldPassword,
+      'newPassword': newPassword,
+      'confirmPassword': confirmPassword,
     };
-  }}
+  }
+}

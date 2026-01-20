@@ -15,6 +15,10 @@ class Constants {
   static const updateEmailEndPoint = "users/update-email";
   static const resentUpdateEmailEndPoint = "users/update-email/resend";
   static const verifyUpdateEmailEndPoint = "users/verify-email-update";
+  static const aboutAppEndPoint = "info/about";
+  static const termsAndConditionsEndPoint = "info/terms";
+  static const privacyPolicyEndPoint = "info/privacy";
+  static const rateAppEndPoint = "info/rate";
   static const tokenKey = 'token';
   static const authModeKey = 'auth_mode';
   static const userKey = 'user_key';

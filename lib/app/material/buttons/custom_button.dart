@@ -9,7 +9,7 @@ class CustomButton extends StatelessWidget {
     this.width,
     this.onPressed,
     this.isLoading = false,
-    this.isDisabled = false,
+    this.isDisabled = false, this.shape,
   });
   final String child;
   final double? height;
@@ -17,13 +17,16 @@ class CustomButton extends StatelessWidget {
   final void Function()? onPressed;
   final bool isLoading;
   final bool isDisabled;
+  final OutlinedBorder? shape ;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: height ?? 50,
       width: width ?? double.infinity,
       child: ElevatedButton(
-        onPressed: isDisabled ? null : onPressed,
+        style: ElevatedButton.styleFrom(
+        shape: shape ?? RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        )       , onPressed: isDisabled ? null : onPressed,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

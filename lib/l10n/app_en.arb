@@ -67,5 +67,20 @@
   "aboutApp": "About App",
   "support": "Support",
   "rateTheApp": "Rate the app",
-  "logout": "Logout"
+  "logout": "Logout",
+  "privacyPolicyforMega": "Privacy Policy for Mega",
+  "enterYourComment": "Enter your comment",
+  "comment": "Comment",
+  "howWasYourExperience": "How was your experience?",
+  "describeYourExperience": "Describe your experience?",
+  "submit": "Submit",
+  "yourResponseSubmittedSuccessfully": "Your response submitted successfully",
+  "oldPassword": "Old Password",
+  "enterYourOldPassword": "Enter your old password",
+  "save": "Save",
+  "newEmail": "New Email",
+  "enterYourNewEmail": "Enter your new email",
+  "codeWasSentToYourNewEmail": "Code was sent to your new email",
+  "english": "English",
+  "arabic": "Arabic"
 }

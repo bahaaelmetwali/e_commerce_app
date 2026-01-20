@@ -220,4 +220,50 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get logout => 'تسجيل الخروج';
+
+  @override
+  String get privacyPolicyforMega => 'سياسة الخصوصية لتطبيق ميغا';
+
+  @override
+  String get enterYourComment => 'أدخل تعليقك';
+
+  @override
+  String get comment => 'تعليق';
+
+  @override
+  String get howWasYourExperience => 'كيف كان تجربتك؟';
+
+  @override
+  String get describeYourExperience => 'صف تجربتك؟';
+
+  @override
+  String get submit => 'إرسال';
+
+  @override
+  String get yourResponseSubmittedSuccessfully => 'تم إرسال ردك بنجاح';
+
+  @override
+  String get oldPassword => 'كلمة المرور القديمة';
+
+  @override
+  String get enterYourOldPassword => 'أدخل كلمة المرور القديمة';
+
+  @override
+  String get save => 'حفظ';
+
+  @override
+  String get newEmail => 'البريد الإلكتروني الجديد';
+
+  @override
+  String get enterYourNewEmail => 'أدخل بريدك الإلكتروني الجديد';
+
+  @override
+  String get codeWasSentToYourNewEmail =>
+      'تم إرسال الرمز إلى بريدك الإلكتروني الجديد';
+
+  @override
+  String get english => 'الانجليزية';
+
+  @override
+  String get arabic => 'العربية';
 }

@@ -10,20 +10,25 @@ class RowSection extends StatelessWidget {
     required this.title,
     required this.icon,
     this.color,
+    this.onTap,
   });
   final String title;
   final String icon;
   final Color? color;
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16),
-      child: Row(
-        children: [
-          AppSvgIcon(path: icon, height: 24, width: 24),
-          const SizedBox(width: 10),
-          Text(title, style: TextStyles.medium16.copyWith(color: color?? AppColors.primaryText) ),
-        ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        child: Row(
+          children: [
+            AppSvgIcon(path: icon, height: 24, width: 24),
+            const SizedBox(width: 10),
+            Text(title, style: TextStyles.medium16.copyWith(color: color?? AppColors.primaryText) ),
+          ],
+        ),
       ),
     );
   }

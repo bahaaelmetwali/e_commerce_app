@@ -2,8 +2,9 @@ import 'package:mega/app/core/config/router/route_names.dart';
 import 'package:mega/app/features/home/presentation/all_product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:mega/app/features/menu/presentation/menu_screen.dart';
+import 'package:mega/app/features/menu/presentation/privacy_policy_screen.dart';
+import 'package:mega/app/features/menu/presentation/rate_the_app_screen.dart';
 import 'package:mega/main.dart';
-
 import '../../../features/Auth/presentation/forget_password_screen.dart';
 import '../../../features/Auth/presentation/login_screen.dart';
 import '../../../features/Auth/presentation/register_screen.dart';
@@ -11,6 +12,11 @@ import '../../../features/Auth/presentation/reset_password_screen.dart';
 import '../../../features/Auth/presentation/verification_code_screen.dart';
 import '../../../features/Auth/presentation/verify_password_screen.dart';
 import '../../../features/home/presentation/product_details_page.dart';
+import '../../../features/menu/presentation/about_app_screen.dart';
+import '../../../features/menu/presentation/terms_and_conditions_screen.dart';
+import '../../../features/menu/presentation/update_email_screen.dart';
+import '../../../features/menu/presentation/update_language_screen.dart';
+import '../../../features/menu/presentation/update_password_screen.dart';
 import '../../../features/onboarding/presentation/on_boarding_screen.dart';
 
 class AppRoutes {
@@ -28,5 +34,13 @@ class AppRoutes {
         const VerifyPasswordScreen(),
     RouteNames.resetPassword: (context) => const ResetPasswordScreen(),
     RouteNames.menu: (context) => const MenuScreen(),
+    RouteNames.termsAndConditions: (context) =>
+        const TermsAndConditionsScreen(),
+    RouteNames.rateApp: (context) => const RateTheAppScreen(),
+    RouteNames.aboutApp: (context) => const AboutAppScreen(),
+    RouteNames.privacyPolicy: (context) => const PrivacyPolicyScreen(),
+    RouteNames.updatePassword: (context) => const UpdatePasswordScreen(),
+    RouteNames.updateEmail: (context) => const UpdateEmailScreen(),
+    RouteNames.updateLanguage: (context) => const UpdateLanguageScreen(),
   };
 }

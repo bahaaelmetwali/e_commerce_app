@@ -4,7 +4,6 @@ import 'package:mega/app/core/data/domain/use_cases/change_language_use_case.dar
 import 'package:mega/app/core/data/domain/use_cases/get_language_use_case.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
-
 part 'language_state.dart';
 
 @injectable
@@ -15,10 +14,9 @@ class LanguageCubit extends Cubit<LanguageState> {
   final SaveLanguageUseCase changeLanguageUseCase;
   Future<void> getSavedLanguage() async {
     final result = await appLanguageUseCase();
-    result.fold(
-      (failure) => emit(const LanguageState(null)),
-      (language) => emit(LanguageState(language)),
-    );
+    result.fold((failure) {
+      emit(const LanguageState(null));
+    }, (language) => emit(LanguageState(language)));
   }
 
   Future<void> changeLanguage(AppLanguageCodeEnum languageCode) async {

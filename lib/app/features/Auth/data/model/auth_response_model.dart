@@ -22,6 +22,15 @@ class AuthResponseModel extends AuthEntity {
       role: json['role'] ?? '',
     );
   }
-
-
+  AuthEntity toEntity() {
+    return AuthEntity(
+      id: id,
+      name: name,
+      email: email,
+      avatar: avatar,
+      token: token,
+      isVerified: isVerified,
+      role: role,
+    );
+  }
 }

@@ -57,14 +57,39 @@ import '../../features/Auth/presentation/cubits/register/register_cubit.dart'
     as _i478;
 import '../../features/Auth/presentation/cubits/resend_code/resend_code_cubit.dart'
     as _i554;
+import '../../features/Auth/presentation/cubits/resend_email_updated/resend_email_updated_cubit.dart'
+    as _i38;
 import '../../features/Auth/presentation/cubits/reset_password/reset_password_cubit.dart'
     as _i665;
+import '../../features/Auth/presentation/cubits/update_email/update_email_cubit.dart'
+    as _i728;
+import '../../features/Auth/presentation/cubits/update_password/update_password_cubit.dart'
+    as _i843;
 import '../../features/Auth/presentation/cubits/verify_email/verify_email_cubit.dart'
     as _i565;
+import '../../features/Auth/presentation/cubits/verify_email_update/verify_email_updated_cubit.dart'
+    as _i962;
 import '../../features/Auth/presentation/cubits/verify_pass_code/verify_pass_code_cubit.dart'
     as _i911;
-import '../../features/menu/presentation/cubits/cubit/get_cached_data_cubit.dart'
-    as _i713;
+import '../../features/menu/data/data_source/static_remote_data_source.dart'
+    as _i816;
+import '../../features/menu/data/repo_impl/static_repo_impl.dart' as _i574;
+import '../../features/menu/domain/repos/static_repo.dart' as _i742;
+import '../../features/menu/domain/use_cases/about_app_use_case.dart' as _i900;
+import '../../features/menu/domain/use_cases/get_privacy_use_case.dart'
+    as _i565;
+import '../../features/menu/domain/use_cases/get_terms_use_case.dart' as _i715;
+import '../../features/menu/domain/use_cases/rate_app_use_case.dart' as _i530;
+import '../../features/menu/presentation/cubits/about_app/about_app_cubit.dart'
+    as _i455;
+import '../../features/menu/presentation/cubits/get_cached_data/get_cached_data_cubit.dart'
+    as _i903;
+import '../../features/menu/presentation/cubits/privacy/privacy_cubit.dart'
+    as _i1069;
+import '../../features/menu/presentation/cubits/rate_app/rate_app_cubit.dart'
+    as _i701;
+import '../../features/menu/presentation/cubits/terms/terms_cubit.dart'
+    as _i240;
 import '../data/data/data_source/auth_state_local_data_source.dart' as _i323;
 import '../data/data/data_source/cached_authenticated_data_source.dart' as _i29;
 import '../data/data/data_source/language_local_data_source.dart' as _i191;
@@ -192,8 +217,8 @@ extension GetItInjectableX on _i174.GetIt {
             gh<_i631.CachedAuthenticatedRepository>(),
       ),
     );
-    gh.factory<_i713.GetCachedDataCubit>(
-      () => _i713.GetCachedDataCubit(gh<_i590.GetUserInfoUseCase>()),
+    gh.factory<_i903.GetCachedDataCubit>(
+      () => _i903.GetCachedDataCubit(gh<_i590.GetUserInfoUseCase>()),
     );
     gh.singleton<_i408.TokenInterceptor>(
       () => _i408.TokenInterceptor(gh<_i799.GetTokenUseCase>()),
@@ -211,8 +236,16 @@ extension GetItInjectableX on _i174.GetIt {
       ),
     );
     gh.singleton<_i926.ApiHelper>(() => _i424.DioApiHelper(gh<_i361.Dio>()));
+    gh.factory<_i816.StaticRemoteDataSource>(
+      () => _i816.StaticRemoteDataSourceImp(apiHelper: gh<_i926.ApiHelper>()),
+    );
     gh.factory<_i114.AuthRemoteDataSource>(
       () => _i114.AuthRemoteDataSourceImpl(gh<_i926.ApiHelper>()),
+    );
+    gh.factory<_i742.StaticRepo>(
+      () => _i574.StaticRepoImpl(
+        remoteDataSource: gh<_i816.StaticRemoteDataSource>(),
+      ),
     );
     gh.factory<_i848.AuthRepo>(
       () => _i304.AuthRepoImpl(
@@ -220,6 +253,18 @@ extension GetItInjectableX on _i174.GetIt {
         authStateLocalDataSource: gh<_i323.AuthStateLocalDataSource>(),
         cachedAuthenticatedDataSource: gh<_i29.CachedAuthenticatedDataSource>(),
       ),
+    );
+    gh.singleton<_i565.GetPrivacyUseCase>(
+      () => _i565.GetPrivacyUseCase(gh<_i742.StaticRepo>()),
+    );
+    gh.singleton<_i715.GetTermsUseCase>(
+      () => _i715.GetTermsUseCase(gh<_i742.StaticRepo>()),
+    );
+    gh.singleton<_i530.RateAppUseCase>(
+      () => _i530.RateAppUseCase(gh<_i742.StaticRepo>()),
+    );
+    gh.factory<_i701.RateAppCubit>(
+      () => _i701.RateAppCubit(gh<_i530.RateAppUseCase>()),
     );
     gh.singleton<_i812.ForgetPasswordUseCase>(
       () => _i812.ForgetPasswordUseCase(gh<_i848.AuthRepo>()),
@@ -242,11 +287,23 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i412.VerifyPassCodeUseCase>(
       () => _i412.VerifyPassCodeUseCase(gh<_i848.AuthRepo>()),
     );
+    gh.singleton<_i900.AboutAppUseCase>(
+      () => _i900.AboutAppUseCase(repo: gh<_i742.StaticRepo>()),
+    );
+    gh.factory<_i240.TermsCubit>(
+      () => _i240.TermsCubit(gh<_i715.GetTermsUseCase>()),
+    );
     gh.factory<_i911.VerifyPassCodeCubit>(
       () => _i911.VerifyPassCodeCubit(gh<_i412.VerifyPassCodeUseCase>()),
     );
+    gh.factory<_i455.AboutAppCubit>(
+      () => _i455.AboutAppCubit(gh<_i900.AboutAppUseCase>()),
+    );
     gh.factory<_i554.ResendCodeCubit>(
       () => _i554.ResendCodeCubit(gh<_i556.ResendVerificationCodeUseCase>()),
+    );
+    gh.factory<_i1069.PrivacyCubit>(
+      () => _i1069.PrivacyCubit(gh<_i565.GetPrivacyUseCase>()),
     );
     gh.factory<_i610.LoginCubit>(
       () => _i610.LoginCubit(
@@ -292,12 +349,24 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i565.VerifyEmailCubit>(
       () => _i565.VerifyEmailCubit(gh<_i156.VerifyEmailUseCase>()),
     );
+    gh.factory<_i962.VerifyEmailUpdatedCubit>(
+      () => _i962.VerifyEmailUpdatedCubit(gh<_i156.VerifyEmailUseCase>()),
+    );
+    gh.factory<_i728.UpdateEmailCubit>(
+      () => _i728.UpdateEmailCubit(gh<_i552.UpdateEmailUseCase>()),
+    );
     gh.factory<_i340.AuthCubit>(
       () => _i340.AuthCubit(
         gh<_i178.GetAuthModeUseCase>(),
         gh<_i799.GetTokenUseCase>(),
         gh<_i1002.LoginAsGuestUseCase>(),
       ),
+    );
+    gh.factory<_i38.ResendEmailUpdatedCubit>(
+      () => _i38.ResendEmailUpdatedCubit(gh<_i587.ResendEmailUpdateUseCase>()),
+    );
+    gh.factory<_i843.UpdatePasswordCubit>(
+      () => _i843.UpdatePasswordCubit(gh<_i500.ChangePasswordUseCase>()),
     );
     return this;
   }
