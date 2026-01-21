@@ -43,7 +43,7 @@ class StaticRemoteDataSourceImp extends StaticRemoteDataSource {
 
   @override
   Future<Unit> rateApp(RateAppParams params) {
-    apiHelper.post(endPoint: Constants.rateAppEndPoint, body: params.toMap());
+    apiHelper.post(endPoint: Constants.rateAppEndPoint, json: params.toMap());
     return Future.value(unit);
   }
 }

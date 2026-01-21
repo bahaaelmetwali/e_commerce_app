@@ -37,6 +37,7 @@ abstract class AuthRemoteDataSource {
   Future<Unit> resendEmailUpdate();
   Future<Unit> verifyEmailUpdated(OtpRequestParams params);
 }
+
 @Injectable(as: AuthRemoteDataSource)
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final ApiHelper apiHelper;
@@ -46,7 +47,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<AuthResponseModel> register(RegisterParams params) async {
     final response = await apiHelper.post(
       endPoint: Constants.registerEndPoint,
-      body: params.toMap(),
+      json: params.toMap(),
     );
     return AuthResponseModel.fromJson(response['data']);
   }
@@ -55,7 +56,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<AuthResponseModel> login(LoginParams params) async {
     final response = await apiHelper.post(
       endPoint: Constants.loginEndPoint,
-      body: params.toMap(),
+      json: params.toMap(),
     );
     return AuthResponseModel.fromJson(response['data']);
   }
@@ -64,7 +65,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<Unit> verifyEmail(VerifyEmailOtpRequestParams params) async {
     await apiHelper.post(
       endPoint: Constants.verifyEmailEndPoint,
-      body: params.toMap(),
+      json: params.toMap(),
     );
     return unit;
   }
@@ -79,7 +80,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<Unit> forgetPassword(ForgetPasswordParams params) async {
     await apiHelper.post(
       endPoint: Constants.forgetPasswordEndPoint,
-      body: params.toMap(),
+      json: params.toMap(),
     );
     return unit;
   }
@@ -88,7 +89,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<Unit> verifyPassCode(VerifyPassCodeParams params) async {
     await apiHelper.post(
       endPoint: Constants.verifyPassCodeEndPoint,
-      body: params.toMap(),
+      json: params.toMap(),
     );
     return unit;
   }
@@ -97,7 +98,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<Unit> resetPassword(ResetPasswordParams params) async {
     await apiHelper.post(
       endPoint: Constants.resetPasswordEndPoint,
-      body: params.toMap(),
+      json: params.toMap(),
     );
     return unit;
   }
@@ -126,7 +127,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<ProfileModel> updateProfile(UpdateUserProfileParams params) async {
     final response = await apiHelper.put(
       endPoint: Constants.getProfileEndPoint,
-      body: params.toMap(),
+      formData: params.toMap(),
     );
     return ProfileModel.fromJson(response);
   }
@@ -135,7 +136,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<Unit> changePassword(ChangePasswordParams params) async {
     await apiHelper.put(
       endPoint: Constants.updatePasswordEndPoint,
-      body: params.toMap(),
+      json: params.toMap(),
     );
     return unit;
   }
@@ -144,7 +145,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<Unit> updateEmail(UpdateEmailParams params) async {
     await apiHelper.post(
       endPoint: Constants.updateEmailEndPoint,
-      body: params.toMap(),
+      json: params.toMap(),
     );
     return unit;
   }
@@ -159,7 +160,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<Unit> verifyEmailUpdated(OtpRequestParams params) async {
     await apiHelper.post(
       endPoint: Constants.verifyUpdateEmailEndPoint,
-      body: params.toMap(),
+      json: params.toMap(),
     );
     return unit;
   }

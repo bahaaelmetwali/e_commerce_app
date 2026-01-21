@@ -1,24 +1,26 @@
 
-
-
 abstract class ApiHelper {
   Future<Map<String, dynamic>> get({
     required String endPoint,
-    Map<String, dynamic>? query,
-  });
+    Map<String, dynamic>? queryParameters,
+  }) ;
 
-  Future<Map<String, dynamic>> post({
+   Future<Map<String, dynamic>> post({
     required String endPoint,
-    Map<String, dynamic>? body,
+    final Map<String, dynamic>? queryParameters,
+    final Map<String, dynamic>? formData,
+    final Map<String, dynamic>? json,
   });
 
   Future<Map<String, dynamic>> put({
     required String endPoint,
-    Map<String, dynamic>? body,
-  });
+    final Map<String, dynamic>? queryParameters,
+    final Map<String, dynamic>? formData,
+    final Map<String, dynamic>? json,
+  }) ;
 
   Future<Map<String, dynamic>> delete({
     required String endPoint,
-    Map<String, dynamic>? query,
+    Map<String, dynamic>? queryParameters,
   });
 }

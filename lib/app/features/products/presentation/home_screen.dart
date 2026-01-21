@@ -1,6 +1,6 @@
 import 'package:mega/app/core/config/theme/app_colors.dart';
 import 'package:mega/app/core/constants/dimensions.dart';
-import 'package:mega/app/features/home/presentation/widgets/list_of_products.dart'
+import 'package:mega/app/features/products/presentation/widgets/list_of_products.dart'
     show ListofProducts;
 
 import 'package:mega/l10n/app_localizations.dart';
@@ -12,14 +12,14 @@ import '../../../core/config/theme/text_styles.dart';
 import 'widgets/custom_slider.dart';
 import 'widgets/home_app_bar.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

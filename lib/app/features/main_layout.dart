@@ -1,7 +1,7 @@
 import 'package:mega/app/core/config/router/route_names.dart';
 import 'package:mega/app/core/config/theme/app_colors.dart';
 import 'package:mega/app/core/config/theme/text_styles.dart';
-import 'package:mega/app/features/home/presentation/home_page.dart';
+import 'package:mega/app/features/products/presentation/home_screen.dart';
 import 'package:mega/app/features/menu/presentation/menu_screen.dart';
 import 'package:mega/app/material/images/app_svg_photo.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +24,7 @@ class _MainLayoutState extends State<MainLayout> {
   }
 
   List<Widget> pages = [
-    HomePage(),
+    HomeScreen(),
     Center(child: Text('favorite Page')),
     Center(child: Text('cart Page')),
     MenuScreen(),

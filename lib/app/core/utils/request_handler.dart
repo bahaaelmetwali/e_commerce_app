@@ -6,7 +6,7 @@ import '../network/check_network.dart';
 
 Future<Either<Failure, T>> requestHandler<T>({
   required Future<T> Function() request,
-  bool requiresNetwork = true,
+  bool requiresNetwork = false,
 }) async {
   try {
     final networkInfo = await getIt<CheckNetwork>().isConnected;

@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../core/errors/failure.dart';
 import '../entities/profile_entity.dart';
@@ -19,18 +22,14 @@ class UpdateProfileUseCase {
 
 class UpdateUserProfileParams {
   final String? name;
-  final String? avatar;
+  final File? avatar;
 
   const UpdateUserProfileParams({this.name, this.avatar});
   Map<String, dynamic> toMap() {
-    final map = <String, dynamic>{};
-    if (name != null) {
-      map['name'] = name;
-    }
-    if (avatar != null) {
-      map['avatar'] = avatar;
-    }
-    return map;
+    return {
+      if (name != null) 'name': name,
+      if (avatar != null) 'avatar': MultipartFile.fromFileSync(avatar!.path),
+    };
   }
 
   bool get hasData => name != null || avatar != null;

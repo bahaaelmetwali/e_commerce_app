@@ -15,6 +15,8 @@ class Constants {
   static const updateEmailEndPoint = "users/update-email";
   static const resentUpdateEmailEndPoint = "users/update-email/resend";
   static const verifyUpdateEmailEndPoint = "users/verify-email-update";
+  static const getMyProductsEndPoint = "products/myproducts";
+  static const getProductsEndPoint = "products";
   static const aboutAppEndPoint = "info/about";
   static const termsAndConditionsEndPoint = "info/terms";
   static const privacyPolicyEndPoint = "info/privacy";

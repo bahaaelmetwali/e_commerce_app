@@ -7,8 +7,8 @@ import 'widgets/expandable_text.dart';
 import 'widgets/main_image_card.dart';
 import 'widgets/preview_widget.dart';
 
-class ProductDetailsPage extends StatelessWidget {
-  const ProductDetailsPage({super.key});
+class ProductDetailsScreen extends StatelessWidget {
+  const ProductDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

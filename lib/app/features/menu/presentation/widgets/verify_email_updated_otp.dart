@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega/app/features/Auth/domain/use_cases/verify_email_use_case.dart';
 import 'package:mega/app/features/Auth/presentation/cubits/verify_email/verify_email_cubit.dart';
+import 'package:mega/app/features/Auth/presentation/cubits/verify_email_update/verify_email_updated_cubit.dart';
 import 'package:mega/app/features/Auth/presentation/widgets/resend_section.dart';
 import 'package:flutter/material.dart';
 import 'package:mega/app/material/snakbars/show_custom_snack_bar.dart';
@@ -12,14 +13,14 @@ import '../../../../core/config/theme/app_colors.dart';
 import '../../../../core/config/theme/text_styles.dart';
 import '../../../../material/buttons/custom_button.dart';
 
-class OtpVerificationSection extends StatefulWidget {
-  const OtpVerificationSection({super.key});
+class VerifyEmailUpdatedOtp extends StatefulWidget {
+  const VerifyEmailUpdatedOtp({super.key});
 
   @override
-  State<OtpVerificationSection> createState() => _OtpVerificationSectionState();
+  State<VerifyEmailUpdatedOtp> createState() => _VerifyEmailUpdatedOtpState();
 }
 
-class _OtpVerificationSectionState extends State<OtpVerificationSection> {
+class _VerifyEmailUpdatedOtpState extends State<VerifyEmailUpdatedOtp> {
   final TextEditingController pinController = TextEditingController();
   final FocusNode focusNode = FocusNode();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -110,9 +111,9 @@ class _OtpVerificationSectionState extends State<OtpVerificationSection> {
 
           SizedBox(height: 120),
 
-          BlocConsumer<VerifyEmailCubit, VerifyEmailState>(
+          BlocConsumer<VerifyEmailUpdatedCubit, VerifyEmailUpdatedState>(
             listener: (context, state) {
-              if (state is VerifyEmailSuccess) {
+              if (state is VerifyEmailUpdatedSuccess) {
                 showCustomSnackBar(
                   context,
                   message: AppLocalizations.of(context)!.otpVerificationIsTrue,
@@ -122,10 +123,10 @@ class _OtpVerificationSectionState extends State<OtpVerificationSection> {
                   RouteNames.mainLayout,
                   arguments: true,
                 );
-              } else if (state is VerifyEmailFailure) {
+              } else if (state is VerifyEmailUpdatedFailure) {
                 showCustomSnackBar(
                   context,
-                  message: state.errorMessage,
+                  message: state.failure.toString(),
                   isError: true,
                 );
               }
