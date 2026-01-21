@@ -42,5 +42,6 @@ class AppRoutes {
     RouteNames.updatePassword: (context) => const UpdatePasswordScreen(),
     RouteNames.updateEmail: (context) => const UpdateEmailScreen(),
     RouteNames.updateLanguage: (context) => const UpdateLanguageScreen(),
+    
   };
 }

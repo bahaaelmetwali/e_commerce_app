@@ -58,6 +58,7 @@ dependencies:
   iconsax_flutter: ^1.0.1
   firebase_core: ^4.3.0
   firebase_messaging: ^16.1.0
+  image_picker: ^1.2.1
 
 dev_dependencies:
   flutter_test:

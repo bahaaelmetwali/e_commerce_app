@@ -20,4 +20,5 @@ class RouteNames {
   static const String updatePassword = '/updatePassword';
   static const String updateEmail = '/updateEmail';
   static const String updateLanguage = '/updateLanguage';
+  static const String profileScreen = '/profileScreen';
 }

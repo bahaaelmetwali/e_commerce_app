@@ -49,7 +49,7 @@
   "registrationSuccessful": "تم التسجيل بنجاح",
   "loginSuccessful": "تم تسجيل الدخول بنجاح",
   "otpVerificationIsTrue": "رمز التحقق صحيح ",
-  "resendotpsucessful": "تم اعادة الرسال الكود بنجاح",
+  "resendOtpSuccessful": "تم اعادة الرسال الكود بنجاح",
   "vericationCodesentsuccessfully": "تم ارسال رمز التحقق بنجاح",
   "pleaseWriteyourNewPassword": "يرجى كتابة كلمة المرور الجديدة الخاصة بك",
   "passwordChangedSucessfully": "تم تغيير كلمة المرور بنجاح",
@@ -82,5 +82,8 @@
   "enterYourNewEmail": "أدخل بريدك الإلكتروني الجديد",
   "codeWasSentToYourNewEmail": "تم إرسال الرمز إلى بريدك الإلكتروني الجديد",
   "english": "الانجليزية",
-  "arabic": "العربية"
+  "arabic": "العربية",
+  "areYouSureLogout" : "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  "youAreLoggedOut" : "تم تسجيل خروجك بنجاح"
+  
 }

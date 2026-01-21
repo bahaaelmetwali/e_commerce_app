@@ -266,4 +266,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get arabic => 'Arabic';
+
+  @override
+  String get areYouSureLogout => 'Are You Sure Logout ?';
+
+  @override
+  String get youAreLoggedOut => 'You Are Logged Out';
 }

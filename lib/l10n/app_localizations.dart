@@ -601,6 +601,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Arabic'**
   String get arabic;
+
+  /// No description provided for @areYouSureLogout.
+  ///
+  /// In en, this message translates to:
+  /// **'Are You Sure Logout ?'**
+  String get areYouSureLogout;
+
+  /// No description provided for @youAreLoggedOut.
+  ///
+  /// In en, this message translates to:
+  /// **'You Are Logged Out'**
+  String get youAreLoggedOut;
 }
 
 class _AppLocalizationsDelegate

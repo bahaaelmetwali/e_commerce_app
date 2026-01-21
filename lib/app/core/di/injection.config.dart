@@ -31,6 +31,7 @@ import '../../features/Auth/domain/use_cases/get_profile_use_case.dart'
 import '../../features/Auth/domain/use_cases/logged_as_guest_use_case.dart'
     as _i1002;
 import '../../features/Auth/domain/use_cases/login_use_case.dart' as _i694;
+import '../../features/Auth/domain/use_cases/logout_use_case.dart' as _i1054;
 import '../../features/Auth/domain/use_cases/register_use_case.dart' as _i228;
 import '../../features/Auth/domain/use_cases/resend_email_update_use_case.dart'
     as _i587;
@@ -51,6 +52,8 @@ import '../../features/Auth/domain/use_cases/verify_pass_code_use_case.dart'
 import '../../features/Auth/presentation/cubits/auth/auth_cubit.dart' as _i340;
 import '../../features/Auth/presentation/cubits/forget_password/forget_password_cubit.dart'
     as _i759;
+import '../../features/Auth/presentation/cubits/log_out/logout_cubit.dart'
+    as _i858;
 import '../../features/Auth/presentation/cubits/login/login_cubit.dart'
     as _i610;
 import '../../features/Auth/presentation/cubits/register/register_cubit.dart'
@@ -65,6 +68,8 @@ import '../../features/Auth/presentation/cubits/update_email/update_email_cubit.
     as _i728;
 import '../../features/Auth/presentation/cubits/update_password/update_password_cubit.dart'
     as _i843;
+import '../../features/Auth/presentation/cubits/update_profile/update_profile_cubit.dart'
+    as _i849;
 import '../../features/Auth/presentation/cubits/verify_email/verify_email_cubit.dart'
     as _i565;
 import '../../features/Auth/presentation/cubits/verify_email_update/verify_email_updated_cubit.dart'
@@ -272,6 +277,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i694.LoginUseCase>(
       () => _i694.LoginUseCase(gh<_i848.AuthRepo>()),
     );
+    gh.singleton<_i1054.LogoutUseCase>(
+      () => _i1054.LogoutUseCase(gh<_i848.AuthRepo>()),
+    );
     gh.singleton<_i228.RegisterUseCase>(
       () => _i228.RegisterUseCase(gh<_i848.AuthRepo>()),
     );
@@ -352,6 +360,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i962.VerifyEmailUpdatedCubit>(
       () => _i962.VerifyEmailUpdatedCubit(gh<_i156.VerifyEmailUseCase>()),
     );
+    gh.factory<_i858.LogoutCubit>(
+      () => _i858.LogoutCubit(gh<_i1054.LogoutUseCase>()),
+    );
     gh.factory<_i728.UpdateEmailCubit>(
       () => _i728.UpdateEmailCubit(gh<_i552.UpdateEmailUseCase>()),
     );
@@ -364,6 +375,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i38.ResendEmailUpdatedCubit>(
       () => _i38.ResendEmailUpdatedCubit(gh<_i587.ResendEmailUpdateUseCase>()),
+    );
+    gh.factory<_i849.UpdateProfileCubit>(
+      () => _i849.UpdateProfileCubit(gh<_i611.UpdateProfileUseCase>()),
     );
     gh.factory<_i843.UpdatePasswordCubit>(
       () => _i843.UpdatePasswordCubit(gh<_i500.ChangePasswordUseCase>()),

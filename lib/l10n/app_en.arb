@@ -82,5 +82,7 @@
   "enterYourNewEmail": "Enter your new email",
   "codeWasSentToYourNewEmail": "Code was sent to your new email",
   "english": "English",
-  "arabic": "Arabic"
+  "arabic": "Arabic",
+  "areYouSureLogout" : "Are You Sure Logout ?",
+  "youAreLoggedOut" : "You Are Logged Out" 
 }

@@ -164,7 +164,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get otpVerificationIsTrue => 'رمز التحقق صحيح ';
 
   @override
-  String get resendOtpSuccessful => 'Resend OTP successful';
+  String get resendOtpSuccessful => 'تم اعادة الرسال الكود بنجاح';
 
   @override
   String get vericationCodesentsuccessfully => 'تم ارسال رمز التحقق بنجاح';
@@ -266,4 +266,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get arabic => 'العربية';
+
+  @override
+  String get areYouSureLogout => 'هل أنت متأكد أنك تريد تسجيل الخروج؟';
+
+  @override
+  String get youAreLoggedOut => 'تم تسجيل خروجك بنجاح';
 }
