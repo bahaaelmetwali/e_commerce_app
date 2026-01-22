@@ -8,9 +8,6 @@ Failure exceptionToFailure(Object error) {
     return CacheFailure();
   }
 
-  if (error is NetworkException) {
-    return NetworkFailure();
-  }
 
   if (error is UnauthorizedException) {
     return ServiceFailure('Unauthorized. Please login again.');

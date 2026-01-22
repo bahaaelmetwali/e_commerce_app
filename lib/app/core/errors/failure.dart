@@ -84,9 +84,6 @@ class CacheFailure extends Failure {
   CacheFailure() : super("Cache Error Occurred");
 }
 
-class NetworkFailure extends Failure {
-  NetworkFailure() : super("No Internet Connection");
-}
 
 class UnexpectedFailure extends Failure {
   UnexpectedFailure(super.message) ;

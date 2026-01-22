@@ -4,10 +4,7 @@ class CacheException implements Exception {
   CacheException([this.message = 'Cache error']);
 }
 
-class NetworkException implements Exception {
-  final String message;
-  NetworkException([this.message = 'No internet connection']);
-}
+
 
 class UnauthorizedException implements Exception {
   final String message;

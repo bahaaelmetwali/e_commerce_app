@@ -35,7 +35,7 @@
   "favorite": "Favorite",
   "cart": "Cart",
   "menu": "Menu",
-  "hello": "Hello",
+  "hello": "Hello ",
   "welcomeToMega": "Welcome to Mega.",
   "newArraivalProducts": "New Arrival Products",
   "viewAll": "View All",
@@ -83,6 +83,6 @@
   "codeWasSentToYourNewEmail": "Code was sent to your new email",
   "english": "English",
   "arabic": "Arabic",
-  "areYouSureLogout" : "Are You Sure Logout ?",
-  "youAreLoggedOut" : "You Are Logged Out" 
+  "areYouSureLogout": "Are You Sure Logout ?",
+  "youAreLoggedOut": "You Are Logged Out"
 }

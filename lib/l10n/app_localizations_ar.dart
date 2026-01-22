@@ -122,7 +122,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get menu => 'القائمة';
 
   @override
-  String get hello => 'مرحبا';
+  String get hello => ' مرحبا';
 
   @override
   String get welcomeToMega => 'مرحبًا بك في ميغا .';

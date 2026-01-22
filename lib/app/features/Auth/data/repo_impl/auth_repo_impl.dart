@@ -132,7 +132,6 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<Either<Failure, Unit>> loginAsGuest() {
     return requestHandler(
-      requiresNetwork: false,
       request: () async {
         await cachedAuthenticatedDataSource.clearToken();
         await cachedAuthenticatedDataSource.clearUserInfo();
@@ -145,7 +144,6 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<Either<Failure, Unit>> logout() {
     return requestHandler(
-      requiresNetwork: false,
       request: () async {
         await cachedAuthenticatedDataSource.clearToken();
         await cachedAuthenticatedDataSource.clearUserInfo();

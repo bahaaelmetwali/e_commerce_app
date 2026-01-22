@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega/app/features/menu/presentation/cubits/get_cached_data/get_cached_data_cubit.dart';
 
 import '../../../../../constants/assets.dart';
 import '../../../../../l10n/app_localizations.dart';
@@ -14,24 +16,31 @@ class HomeAppBar extends StatelessWidget {
     return Row(
       children: [
         Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RichText(
-              text: TextSpan(
-                text: AppLocalizations.of(context)!.hello,
-                style: TextStyles.semiBold28.copyWith(
-                  color: AppColors.primaryText,
-                ),
-                children: <TextSpan>[
-                  TextSpan(
-                    text: 'User',
+            BlocBuilder<GetCachedDataCubit, GetCachedDataState>(
+              builder: (context, state) {
+                return RichText(
+                  textAlign: TextAlign.start,
+                  text: TextSpan(
+                    text: AppLocalizations.of(context)!.hello,
                     style: TextStyles.semiBold28.copyWith(
-                      color: AppColors.nameText,
+                      color: AppColors.primaryText,
                     ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: state is GetCachedDataLoaded
+                            ? state.cachedData.name
+                            : 'User',
+                        style: TextStyles.semiBold28.copyWith(
+                          color: AppColors.nameText,
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                );
+              },
             ),
-            SizedBox(width: 4),
             Text(
               AppLocalizations.of(context)!.welcomeToMega,
               style: TextStyles.medium14.copyWith(

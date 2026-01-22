@@ -11,6 +11,6 @@ class NetworkCheckerImp implements CheckNetwork {
   NetworkCheckerImp(this.internetConnectionChecker);
 
   @override
-  Future<bool> get isConnected => internetConnectionChecker.hasConnection
-      .timeout(Duration(seconds: 5), onTimeout: () => false);
+  Future<bool> get isConnected =>
+      internetConnectionChecker.hasConnection.timeout(Duration(seconds: 5));
 }

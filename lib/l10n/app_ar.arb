@@ -29,7 +29,7 @@
   "favorite": "المفضلة",
   "cart": "عربة التسوق",
   "menu": "القائمة",
-  "hello": "مرحبا",
+  "hello": " مرحبا",
   "welcomeToMega": "مرحبًا بك في ميغا .",
   "newArraivalProducts": "منتجات جديدة وصلت",
   "viewAll": "عرض الكل",
@@ -83,7 +83,6 @@
   "codeWasSentToYourNewEmail": "تم إرسال الرمز إلى بريدك الإلكتروني الجديد",
   "english": "الانجليزية",
   "arabic": "العربية",
-  "areYouSureLogout" : "هل أنت متأكد أنك تريد تسجيل الخروج؟",
-  "youAreLoggedOut" : "تم تسجيل خروجك بنجاح"
-  
+  "areYouSureLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  "youAreLoggedOut": "تم تسجيل خروجك بنجاح"
 }

@@ -122,7 +122,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get menu => 'Menu';
 
   @override
-  String get hello => 'Hello';
+  String get hello => 'Hello ';
 
   @override
   String get welcomeToMega => 'Welcome to Mega.';

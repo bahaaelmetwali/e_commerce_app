@@ -15,7 +15,6 @@ class LanguageCacheRepositoryImp implements LanguageCacheRepository {
   @override
   Future<Either<Failure, AppLanguageCodeEnum>> getSavedLanguage() async {
     return requestHandler(
-      requiresNetwork: false,
       request: () {
         return localDataSource.getSavedLanguage();
       },
@@ -27,7 +26,6 @@ class LanguageCacheRepositoryImp implements LanguageCacheRepository {
     AppLanguageCodeEnum languageCode,
   ) async {
     return requestHandler(
-      requiresNetwork: false,
       request: () {
         return localDataSource.saveLanguage(languageCode);
       },

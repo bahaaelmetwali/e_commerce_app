@@ -317,7 +317,7 @@ abstract class AppLocalizations {
   /// No description provided for @hello.
   ///
   /// In en, this message translates to:
-  /// **'Hello'**
+  /// **'Hello '**
   String get hello;
 
   /// No description provided for @welcomeToMega.

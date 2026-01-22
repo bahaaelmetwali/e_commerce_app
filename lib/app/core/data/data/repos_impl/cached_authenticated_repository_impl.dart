@@ -19,7 +19,6 @@ class CachedAuthenticatedRepositoryImpl
     required this.cachedAuthenticatedDataSource,
   });
 
-
   @override
   Future<Either<Failure, Unit>> clearToken() {
     return requestHandler(
@@ -33,7 +32,6 @@ class CachedAuthenticatedRepositoryImpl
       request: () => cachedAuthenticatedDataSource.clearUserInfo(),
     );
   }
-
 
   @override
   Future<Either<Failure, TokenEntity?>> getToken() {
@@ -68,6 +66,4 @@ class CachedAuthenticatedRepositoryImpl
       },
     );
   }
-
-
 }
