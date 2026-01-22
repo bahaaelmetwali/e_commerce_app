@@ -76,12 +76,7 @@ class MenuScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     late CachedUserEntity cachedUserEntity;
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (_) => getIt<GetCachedDataCubit>()..getCachedData(),
-        ),
-        BlocProvider(create: (_) => getIt<LogoutCubit>()),
-      ],
+      providers: [BlocProvider(create: (_) => getIt<LogoutCubit>())],
       child: BlocListener<LogoutCubit, LogoutState>(
         listener: (context, state) {
           if (state is LogoutSuccess) {
@@ -161,7 +156,11 @@ class MenuScreen extends StatelessWidget {
                   const SizedBox(height: 30),
                   RowSection(
                     onTap: () {
-                      Navigator.pushNamed(context, RouteNames.profileScreen,arguments: cachedUserEntity);
+                      Navigator.pushNamed(
+                        context,
+                        RouteNames.profileScreen,
+                        arguments: cachedUserEntity,
+                      );
                     },
                     title: AppLocalizations.of(context)!.accountInformation,
                     icon: Assets.iconsAlert,

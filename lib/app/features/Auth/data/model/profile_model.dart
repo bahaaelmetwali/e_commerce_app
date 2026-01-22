@@ -1,3 +1,5 @@
+import 'package:mega/app/core/data/domain/entities/cached_user_entity.dart';
+import 'package:mega/app/core/data/domain/entities/token_entity.dart';
 import 'package:mega/app/features/Auth/domain/entities/profile_entity.dart';
 
 class ProfileModel extends ProfileEntity {
@@ -48,7 +50,8 @@ class ProfileModel extends ProfileEntity {
       'traderRequestStatus': traderRequestStatus,
     };
   }
-   ProfileEntity toEntity() {
+
+  ProfileEntity toEntity() {
     return ProfileEntity(
       id: id,
       name: name,
@@ -62,5 +65,20 @@ class ProfileModel extends ProfileEntity {
       fcmToken: fcmToken,
       traderRequestStatus: traderRequestStatus,
     );
-}
+  }
+
+  TokenEntity toTokenEntity(String token) {
+    return TokenEntity(token: token);
+  }
+
+  CachedUserEntity toUserEntity() {
+    return CachedUserEntity(
+      id: id,
+      name: name,
+      email: email,
+      role: role,
+
+      avatar: avatar,
+    );
+  }
 }

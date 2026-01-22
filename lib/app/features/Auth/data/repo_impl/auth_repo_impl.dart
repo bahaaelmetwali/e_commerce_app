@@ -172,6 +172,11 @@ class AuthRepoImpl implements AuthRepo {
     return requestHandler(
       request: () async {
         final response = await authRemoteDataSource.updateProfile(params);
+        final userEntity = response.toUserEntity();
+
+        await cachedAuthenticatedDataSource.saveUserInfo(
+          CachedUserModel.fromEntity(userEntity),
+        );
         return response.toEntity();
       },
     );

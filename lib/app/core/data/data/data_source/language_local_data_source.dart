@@ -37,7 +37,3 @@ AppLanguageCodeEnum get getDeviceLanguage {
   return AppLanguageCodeEnum.fromCode(deviceLanguage.languageCode);
 }
 
-@override
-Future<void> saveLanguage() {
-  throw UnimplementedError();
-}

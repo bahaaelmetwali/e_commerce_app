@@ -18,6 +18,7 @@ import '../../../core/data/domain/entities/cached_user_entity.dart';
 import '../../../material/buttons/custom_button.dart';
 import '../../../material/images/app_image_widget.dart';
 import '../../../material/snakbars/show_custom_snack_bar.dart';
+import 'cubits/get_cached_data/get_cached_data_cubit.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key, required this.cachedUserEntity});
@@ -70,7 +71,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           centerTitle: true,
         ),
- bottomNavigationBar: SizedBox(
+        bottomNavigationBar: SizedBox(
           width: double.infinity,
           height: 60,
           child: BlocConsumer<UpdateProfileCubit, UpdateProfileState>(
@@ -82,6 +83,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     context,
                   )!.yourResponseSubmittedSuccessfully,
                 );
+                    context.read<GetCachedDataCubit>().getCachedData();
+
                 Navigator.pop(context);
               } else if (state is UpdateProfileFailure) {
                 showCustomSnackBar(
@@ -118,7 +121,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               );
             },
           ),
-        ),        body: SingleChildScrollView(
+        ),
+        body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(Dimensions.paddingMedium),
             child: Column(
@@ -178,7 +182,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
 
                 const SizedBox(height: 24),
-
               ],
             ),
           ),

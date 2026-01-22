@@ -14,6 +14,7 @@ import 'app/core/di/injection.dart';
 import 'app/core/localization/cubit/language_cubit.dart';
 import 'app/core/utils/my_bloc_observer.dart';
 import 'app/features/main_layout.dart';
+import 'app/features/menu/presentation/cubits/get_cached_data/get_cached_data_cubit.dart';
 import 'app/features/onboarding/presentation/on_boarding_screen.dart';
 
 void main() async {
@@ -37,6 +38,9 @@ class Mega extends StatelessWidget {
           create: (context) => getIt<LanguageCubit>()..getSavedLanguage(),
         ),
         BlocProvider(create: (context) => getIt<AuthCubit>()..initApp()),
+        BlocProvider(
+          create: (_) => getIt<GetCachedDataCubit>()..getCachedData(),
+        ),
       ],
       child: BlocBuilder<LanguageCubit, LanguageState>(
         builder: (context, state) {
