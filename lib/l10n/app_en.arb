@@ -84,5 +84,7 @@
   "english": "English",
   "arabic": "Arabic",
   "areYouSureLogout": "Are You Sure Logout ?",
-  "youAreLoggedOut": "You Are Logged Out"
+  "youAreLoggedOut": "You Are Logged Out",
+  "search": "Search",
+  "noProductsFound": "No products found"
 }

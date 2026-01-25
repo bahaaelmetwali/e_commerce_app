@@ -11,14 +11,16 @@ class CustomTextField extends StatelessWidget {
     this.obscureText = false,
     this.suffixIcon,
     this.validator,
-    this.controller,
+    this.controller, this.prefixIcon, this.onChanged,
   });
   final String? hintText;
   final String? labelText;
   final bool obscureText;
-  final suffixIcon;
+  final Widget? suffixIcon;
   final String? Function(String?)? validator;
   final TextEditingController? controller;
+  final Widget? prefixIcon ;
+  final Function(String)? onChanged ;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -30,6 +32,7 @@ class CustomTextField extends StatelessWidget {
           style: TextStyles.regular13,
         ),
         TextFormField(
+          onChanged:  onChanged, 
           validator: validator,
           controller: controller,
           obscureText: obscureText,
@@ -37,6 +40,7 @@ class CustomTextField extends StatelessWidget {
           decoration: InputDecoration(
             hintText: hintText ?? '',
             suffixIcon: suffixIcon,
+            prefixIcon: prefixIcon,
           ),
         ),
       ],

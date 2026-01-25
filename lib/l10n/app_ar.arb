@@ -84,5 +84,7 @@
   "english": "الانجليزية",
   "arabic": "العربية",
   "areYouSureLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
-  "youAreLoggedOut": "تم تسجيل خروجك بنجاح"
+  "youAreLoggedOut": "تم تسجيل خروجك بنجاح",
+  "search": "بحث",
+  "noProductsFound": "لم يتم العثور على منتجات"
 }

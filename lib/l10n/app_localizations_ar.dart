@@ -272,4 +272,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get youAreLoggedOut => 'تم تسجيل خروجك بنجاح';
+
+  @override
+  String get search => 'بحث';
+
+  @override
+  String get noProductsFound => 'لم يتم العثور على منتجات';
 }

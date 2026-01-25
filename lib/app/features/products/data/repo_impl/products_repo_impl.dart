@@ -15,6 +15,7 @@ import 'package:mega/app/features/products/domain/use_cases/get_product_use_case
 import 'package:mega/app/features/products/domain/use_cases/update_product_use.dart';
 
 import '../../domain/repos/products_repo.dart';
+import '../../domain/use_cases/get_products_use_case.dart';
 import '../data_sources/remote_products_data_source.dart';
 
 @Injectable(as: ProductsRepo)
@@ -42,10 +43,10 @@ class ProductsRepoImpl extends ProductsRepo {
   }
 
   @override
-  Future<Either<Failure, List<ProductEntity>>> getAllProducts() async {
+  Future<Either<Failure, List<ProductEntity>>> getProducts({GetProductsParams? params}) async {
     return requestHandler(
       request: () async {
-        final response = await remoteDataSource.getAllProducts();
+        final response = await remoteDataSource.getProducts(params: params);
         return response.map((productModel) => productModel.toEntity()).toList();
       },
     );

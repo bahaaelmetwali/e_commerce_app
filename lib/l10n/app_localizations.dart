@@ -613,6 +613,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You Are Logged Out'**
   String get youAreLoggedOut;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @noProductsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No products found'**
+  String get noProductsFound;
 }
 
 class _AppLocalizationsDelegate

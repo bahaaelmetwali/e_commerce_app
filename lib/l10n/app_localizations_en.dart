@@ -272,4 +272,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get youAreLoggedOut => 'You Are Logged Out';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get noProductsFound => 'No products found';
 }

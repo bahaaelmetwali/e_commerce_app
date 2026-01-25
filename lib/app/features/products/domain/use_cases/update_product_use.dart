@@ -2,10 +2,13 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:mega/app/features/products/domain/repos/products_repo.dart';
 
 import '../../../../core/errors/failure.dart';
 
+
+@singleton
 class UpdateProductUse {
   final ProductsRepo repository;
   UpdateProductUse(this.repository);

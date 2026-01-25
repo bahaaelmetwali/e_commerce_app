@@ -95,6 +95,35 @@ import '../../features/menu/presentation/cubits/rate_app/rate_app_cubit.dart'
     as _i701;
 import '../../features/menu/presentation/cubits/terms/terms_cubit.dart'
     as _i240;
+import '../../features/products/data/data_sources/remote_products_data_source.dart'
+    as _i204;
+import '../../features/products/data/repo_impl/products_repo_impl.dart'
+    as _i249;
+import '../../features/products/domain/repos/products_repo.dart' as _i556;
+import '../../features/products/domain/use_cases/create_product_use_case.dart'
+    as _i1059;
+import '../../features/products/domain/use_cases/delete_product_use_case.dart'
+    as _i153;
+import '../../features/products/domain/use_cases/get_my_products_use_case.dart'
+    as _i705;
+import '../../features/products/domain/use_cases/get_product_use_case.dart'
+    as _i950;
+import '../../features/products/domain/use_cases/get_products_use_case.dart'
+    as _i551;
+import '../../features/products/domain/use_cases/update_product_use.dart'
+    as _i1037;
+import '../../features/products/presentation/cubits/add_product/add_product_cubit.dart'
+    as _i123;
+import '../../features/products/presentation/cubits/delete_product/delete_product_cubit.dart'
+    as _i981;
+import '../../features/products/presentation/cubits/get_my_products/get_my_products_cubit.dart'
+    as _i847;
+import '../../features/products/presentation/cubits/get_product/get_product_cubit.dart'
+    as _i937;
+import '../../features/products/presentation/cubits/get_products/get_products_cubit.dart'
+    as _i408;
+import '../../features/products/presentation/cubits/update_product/update_product_cubit.dart'
+    as _i662;
 import '../data/data/data_source/auth_state_local_data_source.dart' as _i323;
 import '../data/data/data_source/cached_authenticated_data_source.dart' as _i29;
 import '../data/data/data_source/language_local_data_source.dart' as _i191;
@@ -244,6 +273,15 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i816.StaticRemoteDataSource>(
       () => _i816.StaticRemoteDataSourceImp(apiHelper: gh<_i926.ApiHelper>()),
     );
+    gh.factory<_i204.RemoteProductsDataSource>(
+      () =>
+          _i204.RemoteProductsDataSourceImpl(apiHelper: gh<_i926.ApiHelper>()),
+    );
+    gh.factory<_i556.ProductsRepo>(
+      () => _i249.ProductsRepoImpl(
+        remoteDataSource: gh<_i204.RemoteProductsDataSource>(),
+      ),
+    );
     gh.factory<_i114.AuthRemoteDataSource>(
       () => _i114.AuthRemoteDataSourceImpl(gh<_i926.ApiHelper>()),
     );
@@ -251,6 +289,33 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i574.StaticRepoImpl(
         remoteDataSource: gh<_i816.StaticRemoteDataSource>(),
       ),
+    );
+    gh.singleton<_i1059.AddProductUseCase>(
+      () => _i1059.AddProductUseCase(gh<_i556.ProductsRepo>()),
+    );
+    gh.singleton<_i153.DeleteProductUseCase>(
+      () => _i153.DeleteProductUseCase(gh<_i556.ProductsRepo>()),
+    );
+    gh.singleton<_i705.GetMyProductsUseCase>(
+      () => _i705.GetMyProductsUseCase(gh<_i556.ProductsRepo>()),
+    );
+    gh.singleton<_i950.GetProductUseCase>(
+      () => _i950.GetProductUseCase(gh<_i556.ProductsRepo>()),
+    );
+    gh.singleton<_i551.GetProductsUseCase>(
+      () => _i551.GetProductsUseCase(gh<_i556.ProductsRepo>()),
+    );
+    gh.singleton<_i1037.UpdateProductUse>(
+      () => _i1037.UpdateProductUse(gh<_i556.ProductsRepo>()),
+    );
+    gh.factory<_i937.GetProductCubit>(
+      () => _i937.GetProductCubit(gh<_i950.GetProductUseCase>()),
+    );
+    gh.factory<_i123.AddProductCubit>(
+      () => _i123.AddProductCubit(gh<_i1059.AddProductUseCase>()),
+    );
+    gh.factory<_i662.UpdateProductCubit>(
+      () => _i662.UpdateProductCubit(gh<_i1037.UpdateProductUse>()),
     );
     gh.factory<_i848.AuthRepo>(
       () => _i304.AuthRepoImpl(
@@ -298,6 +363,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i900.AboutAppUseCase>(
       () => _i900.AboutAppUseCase(repo: gh<_i742.StaticRepo>()),
     );
+    gh.factory<_i847.GetMyProductsCubit>(
+      () => _i847.GetMyProductsCubit(gh<_i705.GetMyProductsUseCase>()),
+    );
+    gh.factory<_i408.GetProductsCubit>(
+      () => _i408.GetProductsCubit(gh<_i551.GetProductsUseCase>()),
+    );
     gh.factory<_i240.TermsCubit>(
       () => _i240.TermsCubit(gh<_i715.GetTermsUseCase>()),
     );
@@ -309,6 +380,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i554.ResendCodeCubit>(
       () => _i554.ResendCodeCubit(gh<_i556.ResendVerificationCodeUseCase>()),
+    );
+    gh.factory<_i981.DeleteProductCubit>(
+      () => _i981.DeleteProductCubit(gh<_i153.DeleteProductUseCase>()),
     );
     gh.factory<_i1069.PrivacyCubit>(
       () => _i1069.PrivacyCubit(gh<_i565.GetPrivacyUseCase>()),
