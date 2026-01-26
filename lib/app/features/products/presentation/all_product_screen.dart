@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega/app/core/constants/dimensions.dart';
 import 'package:mega/app/features/products/presentation/widgets/product_card.dart';
@@ -19,6 +21,11 @@ class AllProductScreen extends StatefulWidget {
 
 class _AllProductScreenState extends State<AllProductScreen> {
   late final TextEditingController searchController;
+  Timer? _searchDebounce;
+  void startDebounce(VoidCallback callback) {
+    _searchDebounce?.cancel();
+    _searchDebounce = Timer(const Duration(milliseconds: 500), callback);
+  }
 
   @override
   void initState() {
@@ -51,9 +58,11 @@ class _AllProductScreenState extends State<AllProductScreen> {
                 children: [
                   CustomTextField(
                     onChanged: (value) {
-                      context.read<GetProductsCubit>().getProducts(
-                        params: GetProductsParams(keyword: value),
-                      );
+                      startDebounce(() {
+                        context.read<GetProductsCubit>().getProducts(
+                          params: GetProductsParams(keyword: value),
+                        );
+                      });
                     },
                     hintText: AppLocalizations.of(context)!.search,
                     prefixIcon: const Icon(Icons.search),

@@ -86,5 +86,10 @@
   "areYouSureLogout": "Are You Sure Logout ?",
   "youAreLoggedOut": "You Are Logged Out",
   "search": "Search",
-  "noProductsFound": "No products found"
+  "noProductsFound": "No products found",
+  "notifications": "Notifications",
+  "silenceIsGoldenButDealsAreBetter": "Silence is golden, but deals are better",
+  "weWillLetYouKnowWhenSomethingExcitingHappens": "We will let you know when something exciting happens",
+  "exploreProducts": "Explore Products",
+  "dataNotLoadedYet": "Data not loaded yet"
 }

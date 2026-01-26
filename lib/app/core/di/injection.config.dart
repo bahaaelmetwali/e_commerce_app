@@ -76,6 +76,15 @@ import '../../features/Auth/presentation/cubits/verify_email_update/verify_email
     as _i962;
 import '../../features/Auth/presentation/cubits/verify_pass_code/verify_pass_code_cubit.dart'
     as _i911;
+import '../../features/favorites/data/data_source/favorites_data_source.dart'
+    as _i705;
+import '../../features/favorites/data/repo_impl/favorites_repo_impl.dart'
+    as _i810;
+import '../../features/favorites/domain/repos/favorites_repo.dart' as _i1045;
+import '../../features/favorites/domain/use_cases/get_favorites_use_case.dart'
+    as _i986;
+import '../../features/favorites/domain/use_cases/toggle_favorite_use_case.dart'
+    as _i1052;
 import '../../features/menu/data/data_source/static_remote_data_source.dart'
     as _i816;
 import '../../features/menu/data/repo_impl/static_repo_impl.dart' as _i574;
@@ -95,6 +104,16 @@ import '../../features/menu/presentation/cubits/rate_app/rate_app_cubit.dart'
     as _i701;
 import '../../features/menu/presentation/cubits/terms/terms_cubit.dart'
     as _i240;
+import '../../features/notification/data/data_source/notification_data_source.dart'
+    as _i707;
+import '../../features/notification/data/repos_impl/notification_repo_impl.dart'
+    as _i349;
+import '../../features/notification/domain/repo/notification_repo.dart'
+    as _i588;
+import '../../features/notification/domain/use_cases/get_all_notifications_use_case.dart'
+    as _i27;
+import '../../features/notification/presentation/cubits/get_all_notifications/get_all_notifications_cubit.dart'
+    as _i690;
 import '../../features/products/data/data_sources/remote_products_data_source.dart'
     as _i204;
 import '../../features/products/data/repo_impl/products_repo_impl.dart'
@@ -285,6 +304,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i114.AuthRemoteDataSource>(
       () => _i114.AuthRemoteDataSourceImpl(gh<_i926.ApiHelper>()),
     );
+    gh.factory<_i705.FavoritesDataSource>(
+      () => _i705.FavoritesDataSourceImpl(gh<_i926.ApiHelper>()),
+    );
+    gh.factory<_i707.NotificationDataSource>(
+      () => _i707.NotificationDataSourceImpl(gh<_i926.ApiHelper>()),
+    );
     gh.factory<_i742.StaticRepo>(
       () => _i574.StaticRepoImpl(
         remoteDataSource: gh<_i816.StaticRemoteDataSource>(),
@@ -310,6 +335,11 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i937.GetProductCubit>(
       () => _i937.GetProductCubit(gh<_i950.GetProductUseCase>()),
+    );
+    gh.factory<_i1045.FavoritesRepo>(
+      () => _i810.FavoritesRepoImpl(
+        favoritesDataSource: gh<_i705.FavoritesDataSource>(),
+      ),
     );
     gh.factory<_i123.AddProductCubit>(
       () => _i123.AddProductCubit(gh<_i1059.AddProductUseCase>()),
@@ -363,6 +393,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i900.AboutAppUseCase>(
       () => _i900.AboutAppUseCase(repo: gh<_i742.StaticRepo>()),
     );
+    gh.factory<_i588.NotificationRepo>(
+      () => _i349.NotificationRepoImpl(
+        notificationDataSource: gh<_i707.NotificationDataSource>(),
+      ),
+    );
     gh.factory<_i847.GetMyProductsCubit>(
       () => _i847.GetMyProductsCubit(gh<_i705.GetMyProductsUseCase>()),
     );
@@ -397,12 +432,24 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i665.ResetPasswordCubit>(
       () => _i665.ResetPasswordCubit(gh<_i942.ResetPasswordUseCase>()),
     );
+    gh.factory<_i1052.ToggleFavoriteUseCase>(
+      () => _i1052.ToggleFavoriteUseCase(
+        favoritesRepo: gh<_i1045.FavoritesRepo>(),
+      ),
+    );
+    gh.singleton<_i986.GetFavoritesUseCase>(
+      () =>
+          _i986.GetFavoritesUseCase(favoritesRepo: gh<_i1045.FavoritesRepo>()),
+    );
     gh.factory<_i478.RegisterCubit>(
       () => _i478.RegisterCubit(
         gh<_i228.RegisterUseCase>(),
         gh<_i871.SaveTokenUseCase>(),
         saveUserInfoUseCase: gh<_i1018.SaveUserInfoUseCase>(),
       ),
+    );
+    gh.singleton<_i27.GetAllNotificationsUseCase>(
+      () => _i27.GetAllNotificationsUseCase(gh<_i588.NotificationRepo>()),
     );
     gh.factory<_i759.ForgetPasswordCubit>(
       () => _i759.ForgetPasswordCubit(gh<_i812.ForgetPasswordUseCase>()),
@@ -446,6 +493,10 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i799.GetTokenUseCase>(),
         gh<_i1002.LoginAsGuestUseCase>(),
       ),
+    );
+    gh.factory<_i690.GetAllNotificationsCubit>(
+      () =>
+          _i690.GetAllNotificationsCubit(gh<_i27.GetAllNotificationsUseCase>()),
     );
     gh.factory<_i38.ResendEmailUpdatedCubit>(
       () => _i38.ResendEmailUpdatedCubit(gh<_i587.ResendEmailUpdateUseCase>()),

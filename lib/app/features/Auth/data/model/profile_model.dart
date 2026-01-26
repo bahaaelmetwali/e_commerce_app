@@ -1,6 +1,6 @@
+import '../../domain/entities/profile_entity.dart';
 import 'package:mega/app/core/data/domain/entities/cached_user_entity.dart';
 import 'package:mega/app/core/data/domain/entities/token_entity.dart';
-import 'package:mega/app/features/Auth/domain/entities/profile_entity.dart';
 
 class ProfileModel extends ProfileEntity {
   const ProfileModel({
@@ -19,12 +19,11 @@ class ProfileModel extends ProfileEntity {
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) {
     final data = json['data'];
-
     return ProfileModel(
       id: data['_id'] as String,
       name: data['name'] as String,
       email: data['email'] as String,
-      role: data['role'] as String,
+      role: RoleEnumExtension.fromString(data['role']),
       isVerified: data['isVerified'] as bool,
       avatar: data['avatar'] as String?,
       createdAt: DateTime.parse(data['createdAt']),
@@ -40,7 +39,7 @@ class ProfileModel extends ProfileEntity {
       '_id': id,
       'name': name,
       'email': email,
-      'role': role,
+      'role': role.value,
       'isVerified': isVerified,
       'avatar': avatar,
       'createdAt': createdAt.toIso8601String(),
@@ -51,34 +50,27 @@ class ProfileModel extends ProfileEntity {
     };
   }
 
-  ProfileEntity toEntity() {
-    return ProfileEntity(
-      id: id,
-      name: name,
-      email: email,
-      role: role,
-      isVerified: isVerified,
-      createdAt: createdAt,
-      rating: rating,
-      tokenVersion: tokenVersion,
-      avatar: avatar,
-      fcmToken: fcmToken,
-      traderRequestStatus: traderRequestStatus,
-    );
-  }
+  ProfileEntity toEntity() => ProfileEntity(
+    id: id,
+    name: name,
+    email: email,
+    role: role,
+    isVerified: isVerified,
+    createdAt: createdAt,
+    rating: rating,
+    tokenVersion: tokenVersion,
+    avatar: avatar,
+    fcmToken: fcmToken,
+    traderRequestStatus: traderRequestStatus,
+  );
 
-  TokenEntity toTokenEntity(String token) {
-    return TokenEntity(token: token);
-  }
+  TokenEntity toTokenEntity(String token) => TokenEntity(token: token);
 
-  CachedUserEntity toUserEntity() {
-    return CachedUserEntity(
-      id: id,
-      name: name,
-      email: email,
-      role: role,
-
-      avatar: avatar,
-    );
-  }
+  CachedUserEntity toUserEntity() => CachedUserEntity(
+    id: id,
+    name: name,
+    email: email,
+    avatar: avatar,
+    role: role,
+  );
 }

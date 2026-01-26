@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import '../../domain/entities/cached_user_entity.dart';
 
 class CachedUserModel extends CachedUserEntity {
@@ -17,12 +16,20 @@ class CachedUserModel extends CachedUserEntity {
       name: map['name'],
       email: map['email'],
       avatar: map['avatar'],
-      role: map['role'],
+      role: map['role'] is String
+          ? RoleEnumExtension.fromString(map['role'])
+          : map['role'],
     );
   }
 
   Map<String, dynamic> toMap() {
-    return {'id': id, 'name': name, 'email': email, 'role': role, 'avatar': avatar};
+    return {
+      'id': id,
+      'name': name,
+      'email': email,
+      'role': role.value,
+      'avatar': avatar,
+    };
   }
 
   factory CachedUserModel.fromEntity(CachedUserEntity entity) {
@@ -34,6 +41,7 @@ class CachedUserModel extends CachedUserEntity {
       avatar: entity.avatar,
     );
   }
+
   factory CachedUserModel.fromJson(String source) =>
       CachedUserModel.fromMap(jsonDecode(source));
 

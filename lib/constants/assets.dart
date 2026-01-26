@@ -82,6 +82,10 @@ class Assets {
   /// assets/icons/alert.svg
   static const String iconsAlert = "assets/icons/alert.svg";
 
+  /// Assets for iconsAlerts
+  /// assets/icons/alerts.svg
+  static const String iconsAlerts = "assets/icons/alerts.svg";
+
   /// Assets for iconsBag
   /// assets/icons/bag.svg
   static const String iconsBag = "assets/icons/bag.svg";
@@ -101,6 +105,10 @@ class Assets {
   /// Assets for iconsForbidden
   /// assets/icons/forbidden.svg
   static const String iconsForbidden = "assets/icons/forbidden.svg";
+
+  /// Assets for iconsGift
+  /// assets/icons/gift.svg
+  static const String iconsGift = "assets/icons/gift.svg";
 
   /// Assets for iconsHome
   /// assets/icons/home.svg
@@ -150,9 +158,17 @@ class Assets {
   /// assets/icons/tab.svg
   static const String iconsTab = "assets/icons/tab.svg";
 
+  /// Assets for iconsTrack
+  /// assets/icons/track.svg
+  static const String iconsTrack = "assets/icons/track.svg";
+
   /// Assets for iconsTranslate
   /// assets/icons/translate.svg
   static const String iconsTranslate = "assets/icons/translate.svg";
+
+  /// Assets for iconsVoucher
+  /// assets/icons/voucher.svg
+  static const String iconsVoucher = "assets/icons/voucher.svg";
 
   /// Assets for imagesCardtest
   /// assets/images/cardtest.png
@@ -165,6 +181,10 @@ class Assets {
   /// Assets for imagesManTest
   /// assets/images/man_test.jpg
   static const String imagesManTest = "assets/images/man_test.jpg";
+
+  /// Assets for imagesNotificationBackGround
+  /// assets/images/notification_back_ground.png
+  static const String imagesNotificationBackGround = "assets/images/notification_back_ground.png";
 
   /// Assets for imagesPrevTest1
   /// assets/images/prev_test1.png

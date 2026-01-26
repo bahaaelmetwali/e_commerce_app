@@ -1,6 +1,8 @@
 import 'package:mega/app/core/config/router/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:mega/app/core/data/domain/entities/cached_user_entity.dart';
+import 'package:mega/app/features/products/presentation/product_details_screen.dart';
+import 'package:mega/app/features/review/presentation/all_reviews_screen.dart';
 
 import '../../../features/main_layout.dart';
 import '../../../features/menu/presentation/profile_screen.dart';
@@ -15,9 +17,22 @@ class AppRouter {
           return MaterialPageRoute(
             builder: (_) => MainLayout(isGuest: isGuest),
           );
+        case RouteNames.productDetails:
+          final String productId = settings.arguments as String;
+          return MaterialPageRoute(
+            builder: (_) => ProductDetailsScreen(productId: productId),
+          );
         case RouteNames.profileScreen:
-        final CachedUserEntity  cachedUserEntity = settings.arguments as CachedUserEntity ;
-          return MaterialPageRoute(builder: (_) => ProfileScreen(cachedUserEntity: cachedUserEntity));
+          final CachedUserEntity cachedUserEntity =
+              settings.arguments as CachedUserEntity;
+          return MaterialPageRoute(
+            builder: (_) => ProfileScreen(cachedUserEntity: cachedUserEntity),
+          );
+        case RouteNames.allReviews:
+final String productId = settings.arguments as String;
+          return MaterialPageRoute(
+            builder: (_) => AllReviewsScreen(productId: productId),
+          );
         default:
           return null;
       }

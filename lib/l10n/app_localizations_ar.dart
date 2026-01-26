@@ -278,4 +278,21 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get noProductsFound => 'لم يتم العثور على منتجات';
+
+  @override
+  String get notifications => 'الإشعارات';
+
+  @override
+  String get silenceIsGoldenButDealsAreBetter =>
+      'الصمت من ذهب، لكن الصفقات أفضل';
+
+  @override
+  String get weWillLetYouKnowWhenSomethingExcitingHappens =>
+      'سنخبرك عندما يحدث شيء مثير';
+
+  @override
+  String get exploreProducts => 'استكشف المنتجات';
+
+  @override
+  String get dataNotLoadedYet => 'البيانات لم تُحمّل بعد';
 }

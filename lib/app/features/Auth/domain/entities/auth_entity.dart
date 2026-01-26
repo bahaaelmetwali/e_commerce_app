@@ -1,13 +1,14 @@
 import 'package:mega/app/core/data/domain/entities/cached_user_entity.dart';
 
- class AuthEntity {
+class AuthEntity {
   final String id;
   final String name;
   final String email;
   final String avatar;
   final String token;
   final bool isVerified;
-  final String role;
+  final RoleEnum role;
+
   AuthEntity({
     required this.id,
     required this.name,

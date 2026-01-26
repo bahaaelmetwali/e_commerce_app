@@ -11,7 +11,7 @@ import '../../../features/Auth/presentation/register_screen.dart';
 import '../../../features/Auth/presentation/reset_password_screen.dart';
 import '../../../features/Auth/presentation/verification_code_screen.dart';
 import '../../../features/Auth/presentation/verify_password_screen.dart';
-import '../../../features/products/presentation/product_details_screen.dart';
+import '../../../features/notification/presentation/notification_screen.dart';
 import '../../../features/menu/presentation/about_app_screen.dart';
 import '../../../features/menu/presentation/terms_and_conditions_screen.dart';
 import '../../../features/menu/presentation/update_email_screen.dart';
@@ -29,7 +29,6 @@ class AppRoutes {
     RouteNames.forgetPassword: (context) => const ForgetPasswordScreen(),
     RouteNames.verificationCode: (context) => const VerificationCodeScreen(),
     RouteNames.allProducts: (context) => const AllProductScreen(),
-    RouteNames.productDetails: (context) => const ProductDetailsScreen(),
     RouteNames.verifyCodeForResetPassword: (context) =>
         const VerifyPasswordScreen(),
     RouteNames.resetPassword: (context) => const ResetPasswordScreen(),
@@ -42,5 +41,6 @@ class AppRoutes {
     RouteNames.updatePassword: (context) => const UpdatePasswordScreen(),
     RouteNames.updateEmail: (context) => const UpdateEmailScreen(),
     RouteNames.updateLanguage: (context) => const UpdateLanguageScreen(),
+    RouteNames.notificationsScreen: (context) => const NotificationScreen(),
   };
 }

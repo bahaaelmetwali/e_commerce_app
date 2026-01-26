@@ -13,6 +13,7 @@ class GetCachedDataCubit extends Cubit<GetCachedDataState> {
   final GetUserInfoUseCase getUserInfoUseCase;
   Future<void> getCachedData() async {
     final result = await getUserInfoUseCase();
+
     result.fold((failure) => emit(GetCachedDataError(failure.toString())), (
       cachedUserEntity,
     ) {

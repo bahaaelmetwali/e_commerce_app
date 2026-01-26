@@ -625,6 +625,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No products found'**
   String get noProductsFound;
+
+  /// No description provided for @notifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notifications;
+
+  /// No description provided for @silenceIsGoldenButDealsAreBetter.
+  ///
+  /// In en, this message translates to:
+  /// **'Silence is golden, but deals are better'**
+  String get silenceIsGoldenButDealsAreBetter;
+
+  /// No description provided for @weWillLetYouKnowWhenSomethingExcitingHappens.
+  ///
+  /// In en, this message translates to:
+  /// **'We will let you know when something exciting happens'**
+  String get weWillLetYouKnowWhenSomethingExcitingHappens;
+
+  /// No description provided for @exploreProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore Products'**
+  String get exploreProducts;
+
+  /// No description provided for @dataNotLoadedYet.
+  ///
+  /// In en, this message translates to:
+  /// **'Data not loaded yet'**
+  String get dataNotLoadedYet;
 }
 
 class _AppLocalizationsDelegate

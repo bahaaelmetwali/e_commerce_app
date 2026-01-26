@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "1091199258711",
-    "project_id": "mega-39b37",
-    "storage_bucket": "mega-39b37.firebasestorage.app"
+    "project_number": "165517394994",
+    "project_id": "mega-intern-app",
+    "storage_bucket": "mega-intern-app.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1091199258711:android:3b7d59ece4cd87f2819312",
+        "mobilesdk_app_id": "1:165517394994:android:6914e1fc3ebc07c731682b",
         "android_client_info": {
           "package_name": "com.example.mega"
         }
@@ -15,7 +15,26 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAa5yABIF431GSg_r6Gb-CKzuUse7cx6F0"
+          "current_key": "AIzaSyC4Eo5kIqJJa9vNoKRA2YpMiR-XwF0gWbM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:165517394994:android:e6170897a74c108e31682b",
+        "android_client_info": {
+          "package_name": "com.mega.intern.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4Eo5kIqJJa9vNoKRA2YpMiR-XwF0gWbM"
         }
       ],
       "services": {

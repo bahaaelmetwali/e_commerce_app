@@ -21,4 +21,6 @@ class RouteNames {
   static const String updateEmail = '/updateEmail';
   static const String updateLanguage = '/updateLanguage';
   static const String profileScreen = '/profileScreen';
+  static const String notificationsScreen = '/notificationsScreen';
+  static const String allReviews = '/allReviews';
 }

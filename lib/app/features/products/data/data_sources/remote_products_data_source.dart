@@ -72,8 +72,8 @@ class RemoteProductsDataSourceImpl implements RemoteProductsDataSource {
   Future<ProductModel> getProduct(GetProductParams params) async {
     final response = await apiHelper.get(
       endPoint: '${Constants.getProductsEndPoint}/${params.productId}',
-    );    
-    return Future.value(ProductModel.fromJson(response['products']));
+    );
+    return Future.value(ProductModel.fromJson(response));
   }
 
   @override

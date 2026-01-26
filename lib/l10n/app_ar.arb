@@ -86,5 +86,10 @@
   "areYouSureLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
   "youAreLoggedOut": "تم تسجيل خروجك بنجاح",
   "search": "بحث",
-  "noProductsFound": "لم يتم العثور على منتجات"
+  "noProductsFound": "لم يتم العثور على منتجات",
+  "notifications": "الإشعارات",
+  "silenceIsGoldenButDealsAreBetter": "الصمت من ذهب، لكن الصفقات أفضل",
+  "weWillLetYouKnowWhenSomethingExcitingHappens": "سنخبرك عندما يحدث شيء مثير",
+  "exploreProducts": "استكشف المنتجات",
+  "dataNotLoadedYet": "البيانات لم تُحمّل بعد"
 }

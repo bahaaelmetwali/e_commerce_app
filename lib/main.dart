@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:mega/app/core/helper/local_notification_service.dart';
+import 'package:mega/app/core/helper/push_notification_helper.dart';
 import 'package:mega/app/features/Auth/presentation/cubits/auth/auth_cubit.dart';
 import 'package:mega/app/features/Auth/presentation/cubits/auth/auth_state.dart';
+import 'package:mega/firebase_options.dart';
 import 'package:mega/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,8 +21,11 @@ import 'app/features/onboarding/presentation/on_boarding_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  await _requestNotificationPermission();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Future.wait([
+    PushNotificationHelper.requestPermission(),
+    LocalNotifications.init(),
+  ]);
 
   Bloc.observer = MyBlocObserver();
   await configureDependencies();
@@ -94,23 +99,5 @@ class _InitialRouteState extends State<InitialRoute> {
         }
       },
     );
-  }
-}
-
-Future<void> _requestNotificationPermission() async {
-  FirebaseMessaging messaging = FirebaseMessaging.instance;
-
-  NotificationSettings settings = await messaging.requestPermission(
-    alert: true,
-    badge: true,
-    sound: true,
-  );
-
-  if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-    print('User granted permission');
-  } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
-    print('User granted provisional permission');
-  } else {
-    print('User declined or has not accepted permission');
   }
 }

@@ -1,4 +1,5 @@
-import 'package:mega/app/features/Auth/domain/entities/auth_entity.dart';
+import '../../../../core/data/domain/entities/cached_user_entity.dart';
+import '../../domain/entities/auth_entity.dart';
 
 class AuthResponseModel extends AuthEntity {
   AuthResponseModel({
@@ -19,9 +20,22 @@ class AuthResponseModel extends AuthEntity {
       avatar: json['avatar'] ?? '',
       token: json['token'] ?? '',
       isVerified: json['isVerified'] ?? false,
-      role: json['role'] ?? '',
+      role: RoleEnumExtension.fromString(json['role']),
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'email': email,
+      'avatar': avatar,
+      'token': token,
+      'isVerified': isVerified,
+      'role': role.value,
+    };
+  }
+
   AuthEntity toEntity() {
     return AuthEntity(
       id: id,

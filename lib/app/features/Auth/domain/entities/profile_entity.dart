@@ -1,8 +1,10 @@
+import '../../../../core/data/domain/entities/cached_user_entity.dart';
+
 class ProfileEntity {
   final String id;
   final String name;
   final String email;
-  final String role;
+  final RoleEnum role;
   final bool isVerified;
 
   final String? avatar;

@@ -4,6 +4,7 @@ import 'package:mega/app/features/menu/presentation/cubits/get_cached_data/get_c
 
 import '../../../../../constants/assets.dart';
 import '../../../../../l10n/app_localizations.dart';
+import '../../../../core/config/router/route_names.dart';
 import '../../../../core/config/theme/app_colors.dart' show AppColors;
 import '../../../../core/config/theme/text_styles.dart';
 import '../../../../material/images/app_svg_photo.dart';
@@ -50,10 +51,15 @@ class HomeAppBar extends StatelessWidget {
           ],
         ),
         Spacer(),
-        CircleAvatar(
-          radius: 25,
-          backgroundColor: AppColors.greyBackGround,
-          child: Center(child: AppSvgIcon(path: Assets.iconsNotification)),
+        GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, RouteNames.notificationsScreen);
+          },
+          child: CircleAvatar(
+            radius: 25,
+            backgroundColor: AppColors.greyBackGround,
+            child: Center(child: AppSvgIcon(path: Assets.iconsNotification)),
+          ),
         ),
       ],
     );

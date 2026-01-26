@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mega/app/features/products/domain/entities/product_entity.dart';
 
 import '../../../../../constants/assets.dart';
 import '../../../../core/config/theme/app_colors.dart';
@@ -6,8 +7,8 @@ import '../../../../material/images/app_image_widget.dart';
 import '../../../../material/images/app_svg_photo.dart';
 
 class MainImageCard extends StatelessWidget {
-  const MainImageCard({super.key});
-
+  const MainImageCard({super.key, required this.product});
+  final ProductEntity product;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -16,7 +17,7 @@ class MainImageCard extends StatelessWidget {
           height: 260,
           color: Color(0xffF2F2F2),
           child: AppImageWidget(
-            path: Assets.imagesCardtest,
+            path: product.image,
             fit: BoxFit.contain,
             width: double.infinity,
           ),

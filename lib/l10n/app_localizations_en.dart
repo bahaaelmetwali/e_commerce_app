@@ -278,4 +278,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noProductsFound => 'No products found';
+
+  @override
+  String get notifications => 'Notifications';
+
+  @override
+  String get silenceIsGoldenButDealsAreBetter =>
+      'Silence is golden, but deals are better';
+
+  @override
+  String get weWillLetYouKnowWhenSomethingExcitingHappens =>
+      'We will let you know when something exciting happens';
+
+  @override
+  String get exploreProducts => 'Explore Products';
+
+  @override
+  String get dataNotLoadedYet => 'Data not loaded yet';
 }

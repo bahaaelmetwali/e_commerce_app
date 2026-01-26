@@ -14,5 +14,6 @@ abstract class AppColors {
   static const greyBackGround = Color(0xffF5F6FA);
   static const whiteColor = Color(0xffffffff);
   static const greyBackGroundCard = Color(0xffF3F3F4);
-  static const   neaturlsColor =  Color(0xff353945) ;
+  static const neaturlsColor = Color(0xff353945);
+  static const starColor = Color(0xffFF981F);
 }

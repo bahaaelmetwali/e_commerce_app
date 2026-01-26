@@ -9,7 +9,7 @@ class DioApiHelper implements ApiHelper {
   DioApiHelper(this.dio);
 
   @override
-  Future<Map<String, dynamic>> get({
+  Future<dynamic> get({
     required String endPoint,
     Map<String, dynamic>? queryParameters,
   }) async {
@@ -24,7 +24,7 @@ class DioApiHelper implements ApiHelper {
     final Map<String, dynamic>? formData,
     final Map<String, dynamic>? json,
   }) async {
-    Object? body= json;
+    Object? body = json;
     if (formData != null) {
       body = FormData.fromMap(formData);
     }
@@ -43,7 +43,7 @@ class DioApiHelper implements ApiHelper {
     final Map<String, dynamic>? formData,
     final Map<String, dynamic>? json,
   }) async {
-      Object? body= json;
+    Object? body = json;
     if (formData != null) {
       body = FormData.fromMap(formData);
     }
@@ -56,7 +56,10 @@ class DioApiHelper implements ApiHelper {
     required String endPoint,
     Map<String, dynamic>? queryParameters,
   }) async {
-    final response = await dio.delete(endPoint, queryParameters: queryParameters);
+    final response = await dio.delete(
+      endPoint,
+      queryParameters: queryParameters,
+    );
     return response.data;
   }
 }

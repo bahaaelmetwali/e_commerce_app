@@ -1,6 +1,6 @@
 
 abstract class ApiHelper {
-  Future<Map<String, dynamic>> get({
+  Future<dynamic> get({
     required String endPoint,
     Map<String, dynamic>? queryParameters,
   }) ;
