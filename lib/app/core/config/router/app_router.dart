@@ -4,6 +4,7 @@ import 'package:mega/app/core/data/domain/entities/cached_user_entity.dart';
 import 'package:mega/app/features/products/presentation/product_details_screen.dart';
 import 'package:mega/app/features/review/presentation/all_reviews_screen.dart';
 
+import '../../../features/chat/presentation/chat_screen.dart';
 import '../../../features/main_layout.dart';
 import '../../../features/menu/presentation/profile_screen.dart';
 
@@ -29,10 +30,13 @@ class AppRouter {
             builder: (_) => ProfileScreen(cachedUserEntity: cachedUserEntity),
           );
         case RouteNames.allReviews:
-final String productId = settings.arguments as String;
+          final String productId = settings.arguments as String;
           return MaterialPageRoute(
             builder: (_) => AllReviewsScreen(productId: productId),
           );
+        case RouteNames.chatScreen:
+        final String userId = settings.arguments as String;
+          return MaterialPageRoute(builder: (_) => ChatScreen(userId: userId));
         default:
           return null;
       }

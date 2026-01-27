@@ -295,4 +295,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dataNotLoadedYet => 'Data not loaded yet';
+
+  @override
+  String get typeYourMessage => 'Type your message...';
 }

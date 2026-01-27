@@ -28,4 +28,7 @@ class Constants {
   static const userKey = 'user_key';
   static const guest = 'guest';
   static const client = 'client';
+  static const sendByUserIdEndPoint = "chat/send";
+  static const getAllConversationEndPoint = "chat";
+  static const getChatByUserIdEndPoint = "chat/user";
 }

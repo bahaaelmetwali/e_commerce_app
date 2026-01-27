@@ -2,7 +2,6 @@ import 'package:mega/app/features/products/domain/entities/product_entity.dart';
 import 'package:mega/app/material/images/app_image_widget.dart';
 import 'package:flutter/widgets.dart';
 
-
 class PreviewWidget extends StatefulWidget {
   const PreviewWidget({super.key, this.product});
   final ProductEntity? product;
@@ -11,7 +10,6 @@ class PreviewWidget extends StatefulWidget {
 }
 
 class _PreviewWidgetState extends State<PreviewWidget> {
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -20,12 +18,15 @@ class _PreviewWidgetState extends State<PreviewWidget> {
         itemCount: widget.product?.images.length ?? 0,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: AppImageWidget(
-              path: widget.product?.images[index] ??"",
-              width: 86,
-              fit: BoxFit.contain,
+          return Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: AppImageWidget(
+                path: widget.product?.images[index] ?? "",
+                width: 86,
+                fit: BoxFit.fill,
+              ),
             ),
           );
         },

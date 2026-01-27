@@ -69,7 +69,7 @@ class ProductDetailsScreen extends StatelessWidget {
                             ),
                             ExpandableText(text: state.product.description),
                             const SizedBox(height: Dimensions.paddingMedium),
-                            const ReviewsSection(),
+                            ReviewsSection(product: state.product),
                           ],
                         ),
                       ),

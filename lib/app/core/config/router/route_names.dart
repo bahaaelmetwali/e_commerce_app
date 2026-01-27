@@ -23,4 +23,5 @@ class RouteNames {
   static const String profileScreen = '/profileScreen';
   static const String notificationsScreen = '/notificationsScreen';
   static const String allReviews = '/allReviews';
+  static const String chatScreen = '/chatScreen';
 }

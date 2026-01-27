@@ -76,6 +76,21 @@ import '../../features/Auth/presentation/cubits/verify_email_update/verify_email
     as _i962;
 import '../../features/Auth/presentation/cubits/verify_pass_code/verify_pass_code_cubit.dart'
     as _i911;
+import '../../features/chat/data/data_source/chat_data_source.dart' as _i542;
+import '../../features/chat/data/repo_impl/chat_repo_impl.dart' as _i96;
+import '../../features/chat/domain/repos/chat_repo.dart' as _i1044;
+import '../../features/chat/domain/use_cases/fetch_chat_by_chat_Id_use_case.dart'
+    as _i566;
+import '../../features/chat/domain/use_cases/fetch_chat_by_user_id_use_case.dart'
+    as _i171;
+import '../../features/chat/domain/use_cases/fetch_chat_list_use_case.dart'
+    as _i90;
+import '../../features/chat/domain/use_cases/send_message_by_chat_Id_use_case.dart'
+    as _i646;
+import '../../features/chat/domain/use_cases/send_message_by_user_id_use_case.dart'
+    as _i456;
+import '../../features/chat/presentation/cubits/send_by_user_id/get_chat_by_user_id_cubit.dart'
+    as _i860;
 import '../../features/favorites/data/data_source/favorites_data_source.dart'
     as _i705;
 import '../../features/favorites/data/repo_impl/favorites_repo_impl.dart'
@@ -301,6 +316,9 @@ extension GetItInjectableX on _i174.GetIt {
         remoteDataSource: gh<_i204.RemoteProductsDataSource>(),
       ),
     );
+    gh.factory<_i542.ChatDataSource>(
+      () => _i542.ChatDataSourceImpl(gh<_i926.ApiHelper>()),
+    );
     gh.factory<_i114.AuthRemoteDataSource>(
       () => _i114.AuthRemoteDataSourceImpl(gh<_i926.ApiHelper>()),
     );
@@ -393,6 +411,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i900.AboutAppUseCase>(
       () => _i900.AboutAppUseCase(repo: gh<_i742.StaticRepo>()),
     );
+    gh.factory<_i1044.ChatRepo>(
+      () => _i96.ChatRepoImpl(gh<_i542.ChatDataSource>()),
+    );
     gh.factory<_i588.NotificationRepo>(
       () => _i349.NotificationRepoImpl(
         notificationDataSource: gh<_i707.NotificationDataSource>(),
@@ -447,6 +468,21 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i871.SaveTokenUseCase>(),
         saveUserInfoUseCase: gh<_i1018.SaveUserInfoUseCase>(),
       ),
+    );
+    gh.singleton<_i566.FetchChatByChatIdUseCase>(
+      () => _i566.FetchChatByChatIdUseCase(gh<_i1044.ChatRepo>()),
+    );
+    gh.singleton<_i171.FetchChatByUserIdUseCase>(
+      () => _i171.FetchChatByUserIdUseCase(gh<_i1044.ChatRepo>()),
+    );
+    gh.singleton<_i90.FetchChatListUseCase>(
+      () => _i90.FetchChatListUseCase(gh<_i1044.ChatRepo>()),
+    );
+    gh.singleton<_i646.SendMessageByChatIdUseCase>(
+      () => _i646.SendMessageByChatIdUseCase(gh<_i1044.ChatRepo>()),
+    );
+    gh.singleton<_i456.SendMessageByUserIdUseCase>(
+      () => _i456.SendMessageByUserIdUseCase(gh<_i1044.ChatRepo>()),
     );
     gh.singleton<_i27.GetAllNotificationsUseCase>(
       () => _i27.GetAllNotificationsUseCase(gh<_i588.NotificationRepo>()),
@@ -503,6 +539,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i849.UpdateProfileCubit>(
       () => _i849.UpdateProfileCubit(gh<_i611.UpdateProfileUseCase>()),
+    );
+    gh.factory<_i860.GetChatByUserIdCubit>(
+      () => _i860.GetChatByUserIdCubit(gh<_i171.FetchChatByUserIdUseCase>()),
     );
     gh.factory<_i843.UpdatePasswordCubit>(
       () => _i843.UpdatePasswordCubit(gh<_i500.ChangePasswordUseCase>()),

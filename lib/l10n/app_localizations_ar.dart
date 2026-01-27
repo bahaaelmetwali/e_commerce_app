@@ -295,4 +295,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get dataNotLoadedYet => 'البيانات لم تُحمّل بعد';
+
+  @override
+  String get typeYourMessage => 'اكتب رسالتك...';
 }

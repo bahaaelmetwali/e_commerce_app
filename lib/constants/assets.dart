@@ -86,6 +86,10 @@ class Assets {
   /// assets/icons/alerts.svg
   static const String iconsAlerts = "assets/icons/alerts.svg";
 
+  /// Assets for iconsAttach
+  /// assets/icons/attach.svg
+  static const String iconsAttach = "assets/icons/attach.svg";
+
   /// Assets for iconsBag
   /// assets/icons/bag.svg
   static const String iconsBag = "assets/icons/bag.svg";
@@ -133,6 +137,10 @@ class Assets {
   /// Assets for iconsNotification
   /// assets/icons/notification.svg
   static const String iconsNotification = "assets/icons/notification.svg";
+
+  /// Assets for iconsSendIcon
+  /// assets/icons/send_Icon.svg
+  static const String iconsSendIcon = "assets/icons/send_Icon.svg";
 
   /// Assets for iconsShieldTick
   /// assets/icons/shield-tick.svg

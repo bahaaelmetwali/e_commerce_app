@@ -91,5 +91,6 @@
   "silenceIsGoldenButDealsAreBetter": "Silence is golden, but deals are better",
   "weWillLetYouKnowWhenSomethingExcitingHappens": "We will let you know when something exciting happens",
   "exploreProducts": "Explore Products",
-  "dataNotLoadedYet": "Data not loaded yet"
+  "dataNotLoadedYet": "Data not loaded yet",
+  "typeYourMessage": "Type your message..."
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:mega/app/features/products/domain/entities/product_entity.dart';
 import 'package:mega/app/material/images/app_image_widget.dart';
 import 'package:mega/app/material/images/app_svg_photo.dart';
 
@@ -10,8 +11,8 @@ import '../../../../core/config/theme/app_colors.dart';
 import '../../../../core/config/theme/text_styles.dart';
 
 class ReviewsSection extends StatelessWidget {
-  const ReviewsSection({super.key});
-
+  const ReviewsSection({super.key, required this.product});
+final ProductEntity product ;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,7 +29,7 @@ class ReviewsSection extends StatelessWidget {
                 Navigator.pushNamed(
                   context,
                   RouteNames.allReviews,
-                  arguments: 'productId',
+                  arguments: product.id,
                 );
               },
               child: Text(

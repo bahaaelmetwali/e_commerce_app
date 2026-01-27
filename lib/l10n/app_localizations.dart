@@ -655,6 +655,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Data not loaded yet'**
   String get dataNotLoadedYet;
+
+  /// No description provided for @typeYourMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Type your message...'**
+  String get typeYourMessage;
 }
 
 class _AppLocalizationsDelegate

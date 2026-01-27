@@ -91,5 +91,6 @@
   "silenceIsGoldenButDealsAreBetter": "الصمت من ذهب، لكن الصفقات أفضل",
   "weWillLetYouKnowWhenSomethingExcitingHappens": "سنخبرك عندما يحدث شيء مثير",
   "exploreProducts": "استكشف المنتجات",
-  "dataNotLoadedYet": "البيانات لم تُحمّل بعد"
+  "dataNotLoadedYet": "البيانات لم تُحمّل بعد",
+"typeYourMessage": "اكتب رسالتك..."
 }
