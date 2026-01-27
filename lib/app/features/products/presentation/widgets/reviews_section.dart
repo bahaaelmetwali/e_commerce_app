@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:mega/app/material/images/app_image_widget.dart';
 import 'package:mega/app/material/images/app_svg_photo.dart';
 

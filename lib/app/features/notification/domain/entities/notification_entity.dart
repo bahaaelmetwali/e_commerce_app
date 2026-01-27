@@ -1,4 +1,7 @@
+import 'package:mega/app/core/config/router/route_names.dart';
 import 'package:mega/constants/assets.dart';
+
+import '../../../../../main.dart';
 
 class NotificationEntity {
   final String id;
@@ -31,24 +34,44 @@ enum NotificationTypeEnum {
 
   final String value;
   const NotificationTypeEnum(this.value);
+
   factory NotificationTypeEnum.fromString(String type) {
     return NotificationTypeEnum.values.firstWhere(
       (e) => e.value == type,
       orElse: () => NotificationTypeEnum.system,
     );
   }
+
   String get notificationIcon {
     switch (this) {
       case NotificationTypeEnum.order:
-        return  Assets.iconsTrack;
+        return Assets.iconsTrack;
       case NotificationTypeEnum.product:
         return Assets.iconsGift;
       case NotificationTypeEnum.announcement:
-        return Assets.iconsVoucher;
       case NotificationTypeEnum.reminder:
         return Assets.iconsVoucher;
       case NotificationTypeEnum.system:
         return Assets.iconsAlerts;
+    }
+  }
+
+  void navigate(Map<String, dynamic> data) {
+    switch (this) {
+      case NotificationTypeEnum.order:
+      case NotificationTypeEnum.announcement:
+      case NotificationTypeEnum.reminder:
+      case NotificationTypeEnum.system:
+        navigatorKey.currentState?.pushNamed(RouteNames.mainLayout,
+            arguments: false);
+        break;
+
+      case NotificationTypeEnum.product:
+        navigatorKey.currentState?.pushNamed(
+          RouteNames.productDetails,
+          arguments: data['productId'],
+        );
+        break;
     }
   }
 }

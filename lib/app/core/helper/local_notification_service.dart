@@ -1,56 +1,48 @@
+import 'dart:convert';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:mega/app/core/helper/push_notification_helper.dart';
 
 abstract class LocalNotifications {
-  static FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+  static final FlutterLocalNotificationsPlugin _plugin =
       FlutterLocalNotificationsPlugin();
 
-  //init_local_notifications
   static Future<void> init() async {
-    InitializationSettings settings = InitializationSettings(
+    const settings = InitializationSettings(
       android: AndroidInitializationSettings('@drawable/ic_logo'),
       iOS: DarwinInitializationSettings(),
     );
 
-    await flutterLocalNotificationsPlugin.initialize(
+    await _plugin.initialize(
       settings: settings,
       onDidReceiveNotificationResponse: onTap,
       onDidReceiveBackgroundNotificationResponse: onTap,
     );
   }
 
-  static void onTap(NotificationResponse details) {
-    //handle notification tapped logic here
+  static void onTap(NotificationResponse response) {
+    if (response.payload == null) return;
+    final notification = mapToEntity(jsonDecode(response.payload!));
+    notification.type.navigate(notification.data);
   }
-  //notification details
-  static NotificationDetails notificationDetails = const NotificationDetails(
-    android: AndroidNotificationDetails(
-      'id:0',
-      'NoteDetails',
-      importance: Importance.high,
-      priority: Priority.high,
-      playSound: true,
-    ),
-    iOS: DarwinNotificationDetails(),
-  );
-  //single notifications
-  static Future<void> showSBasicNotifications({RemoteMessage? message}) async {
-    await flutterLocalNotificationsPlugin.show(
-      id: 0,
-      title: message?.notification?.title,
-      body: message?.notification?.body,
-      notificationDetails: notificationDetails,
-      payload: 'SingleNotifcation',
+
+  static Future<void> showBasicNotification({
+    required RemoteMessage message,
+  }) async {
+    await _plugin.show(
+      id: DateTime.now().millisecondsSinceEpoch ~/ 1000,
+      title: message.notification?.title,
+      body: message.notification?.body,
+      notificationDetails: const NotificationDetails(
+        android: AndroidNotificationDetails(
+          'default_channel',
+          'General Notifications',
+          importance: Importance.high,
+          priority: Priority.high,
+        ),
+      ),
+      payload: jsonEncode(message.data),
     );
-  }
-
-  //cancelNotification
-  static Future<void> cancelNotifications(int id) async {
-    await flutterLocalNotificationsPlugin.cancel(id: id);
-  }
-
-  //cancelAllNotification
-  static Future<void> cancelAllNotifications() async {
-    await flutterLocalNotificationsPlugin.cancelAll();
   }
 }

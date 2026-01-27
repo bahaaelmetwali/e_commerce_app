@@ -19,11 +19,14 @@ import 'app/features/main_layout.dart';
 import 'app/features/menu/presentation/cubits/get_cached_data/get_cached_data_cubit.dart';
 import 'app/features/onboarding/presentation/on_boarding_screen.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Future.wait([
-    PushNotificationHelper.requestPermission(),
+    PushNotificationHelper.init(),
+    PushNotificationHelper.handleInitialMessage(),
     LocalNotifications.init(),
   ]);
 
@@ -50,6 +53,7 @@ class Mega extends StatelessWidget {
       child: BlocBuilder<LanguageCubit, LanguageState>(
         builder: (context, state) {
           return MaterialApp(
+            navigatorKey: navigatorKey,
             debugShowCheckedModeBanner: false,
             routes: AppRoutes.routes,
             initialRoute: RouteNames.initialRoute,
