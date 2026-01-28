@@ -8,8 +8,9 @@ import '../repos/chat_repo.dart';
 class SendMessageByUserIdUseCase {
   final ChatRepo chatRepo;
   SendMessageByUserIdUseCase(this.chatRepo);
-    Future<Either<Failure, Unit>>  call({required SendMessageByUserIdParams params}) =>
-      chatRepo.sendMessageByUserId(params: params);
+  Future<Either<Failure, Unit>> call({
+    required SendMessageByUserIdParams params,
+  }) => chatRepo.sendMessageByUserId(params: params);
 }
 
 class SendMessageByUserIdParams {
@@ -23,7 +24,7 @@ class SendMessageByUserIdParams {
   });
   Map<String, dynamic> toMap() => {
     'recipientId': userId,
-    'text': text,
-    'media': media,
+    if (text != null) 'text': text,
+    if (media != null) 'media': media,
   };
 }

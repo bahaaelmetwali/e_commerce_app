@@ -44,10 +44,13 @@ class AppImageWidget extends StatelessWidget {
         height: height,
         width: width,
         fit: fit,
-        scale: scale?? 1,
+        scale: scale ?? 1,
       );
     }
 
+    if (path == "") {
+      return errorWidget ?? const Icon(Icons.broken_image);
+    }
     return Image.asset(
       path,
       height: height,
@@ -64,7 +67,7 @@ class AppImageWidget extends StatelessWidget {
         height: height,
         width: width,
         fit: fit,
-        scale: scale??1,
+        scale: scale ?? 1,
       );
     }
 

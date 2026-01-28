@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega/app/core/config/theme/app_colors.dart';
+import 'package:mega/app/features/chat/presentation/cubits/send_by_chat_id/send_by_chat_id_cubit.dart';
 import 'package:mega/app/material/images/app_svg_photo.dart';
 
 import '../../../../../constants/assets.dart';
 import '../../../../../l10n/app_localizations.dart';
+import '../../domain/use_cases/send_message_by_chat_Id_use_case.dart';
+import '../cubits/get_chat_by_user_id/get_chat_by_user_id_cubit.dart';
 
 class MessageInput extends StatefulWidget {
   final void Function(String text) onSend;
 
-  const MessageInput({required this.onSend});
+  const MessageInput({super.key, required this.onSend});
 
   @override
   State<MessageInput> createState() => _MessageInputState();
@@ -56,7 +60,7 @@ class _MessageInputState extends State<MessageInput> {
                           child: TextField(
                             controller: _controller,
                             textInputAction: TextInputAction.send,
-                            onSubmitted: _send,
+                            onSubmitted: (text) => _onSend(context, text),
                             decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide.none,
@@ -81,19 +85,22 @@ class _MessageInputState extends State<MessageInput> {
                 ),
                 const SizedBox(width: 8),
                 GestureDetector(
-                  onTap: () => _send(_controller.text),
+                  onTap: () {
+                    _onSend(context, _controller.text);
+                    _controller.clear();
+                  },
                   child: Container(
-                    height: 44,
-                    width: 44,
+                    height: 42,
+                    width: 42,
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: AppSvgIcon(
-                      path: Assets.iconsSendIcon,
-                      height: 24,
-                      width: 24,
+                      path: Assets.iconsSend,
+                      height: 20,
+                      width: 20,
                     ),
                   ),
                 ),
@@ -110,9 +117,16 @@ class _MessageInputState extends State<MessageInput> {
     );
   }
 
-  void _send(String text) {
-    if (text.trim().isEmpty) return;
-    widget.onSend(text);
-    _controller.clear();
+  void _onSend(BuildContext context, String text) {
+    final chatState = context.read<GetChatByUserIdCubit>().state;
+
+    if (chatState is! GetChatByUserIdSuccess) return;
+
+    context.read<SendByChatIdCubit>().sendMessageByChatId(
+      SendMessageByChatIdParams(
+        chatId: chatState.chatDetail.chatId,
+        text: text,
+      ),
+    );
   }
 }

@@ -1,10 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:mega/app/core/di/injection.config.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants/constants.dart';
@@ -50,16 +52,18 @@ abstract class RegisterModule {
         },
       ),
     );
-
     dio.interceptors.addAll([
       tokenInterceptor,
       errorInterceptor,
-      LogInterceptor(
-        request: true,
+
+      PrettyDioLogger(
+        requestHeader: true,
         requestBody: true,
         responseBody: true,
         responseHeader: false,
         error: true,
+        compact: true,
+        enabled: kDebugMode,
       ),
     ]);
 

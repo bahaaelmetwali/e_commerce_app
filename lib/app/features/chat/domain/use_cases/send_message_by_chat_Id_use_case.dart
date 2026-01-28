@@ -16,17 +16,13 @@ class SendMessageByChatIdUseCase {
 
 class SendMessageByChatIdParams {
   final String chatId;
-  final String text;
+  final String? text;
   final List<String>? media;
 
-  SendMessageByChatIdParams({
-    required this.chatId,
-    required this.text,
-    this.media,
-  });
+  SendMessageByChatIdParams({required this.chatId, this.text, this.media});
 
   Map<String, dynamic> toMap() => {
-    'text': text,
-    'media': media,
+    if (text != null) 'text': text,
+    if (media != null) 'media': media,
   };
 }

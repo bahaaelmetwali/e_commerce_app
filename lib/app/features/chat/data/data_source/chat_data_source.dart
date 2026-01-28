@@ -67,8 +67,10 @@ class ChatDataSourceImpl implements ChatDataSource {
     required SendMessageByChatIdParams params,
   }) {
     apiHelper.post(
-      endPoint: '${Constants.getAllConversationEndPoint}/${params.chatId}/send',
-      queryParameters: params.toMap(),
+      endPoint:
+          '${Constants.getAllConversationEndPoint}/${params.chatId}/send/',
+
+      json: params.toMap(),
     );
     return Future.value(unit);
   }
