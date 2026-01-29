@@ -28,7 +28,7 @@ class ChatMessageModel {
   factory ChatMessageModel.fromJson(Map<String, dynamic> json) =>
       ChatMessageModel(
         id: json['_id'],
-        chatId: json['conversation'],
+        chatId: json['conversation'] as String? ?? '',
         sender: ChatUserModel.fromJson(json['sender']),
         text: json['text'],
         media: List<String>.from(json['media'] ?? []),
@@ -37,6 +37,24 @@ class ChatMessageModel {
         createdAt: DateTime.parse(json['createdAt']),
         isMine: json['isMine'] ?? false,
       );
+  factory ChatMessageModel.fromPusherJson(
+    Map<String, dynamic> json,
+    String currentUserId,
+  ) {
+    return ChatMessageModel(
+      id: json['_id'] as String,
+      chatId: (json['conversation']?['_id'] ?? '') as String,
+      sender: ChatUserModel.fromJson(json['sender'] as Map<String, dynamic>),
+      text: json['text'] as String? ?? '',
+      media: (json['media'] as List<dynamic>?)?.cast<String>() ?? [],
+      status: json['status'] as String? ?? 'sent',
+      readBy: (json['readBy'] as List<dynamic>?)?.cast<String>() ?? [],
+      createdAt:
+          DateTime.tryParse(json['createdAt'] as String? ?? '') ??
+          DateTime.now(),
+      isMine: (json['sender']?['_id'] ?? '') != currentUserId,
+    );
+  }
 
   Map<String, dynamic> toJson() => {
     '_id': id,

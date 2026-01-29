@@ -13,4 +13,18 @@ class ChatDetailEntity {
     required this.otherUser,
     required this.messages,
   });
+
+  ChatDetailEntity copyWith({
+    String? chatId,
+    ChatUserEntity? currentUser,
+    ChatUserEntity? otherUser,
+    List<ChatMessageEntity>? messages,
+  }) {
+    return ChatDetailEntity(
+      chatId: chatId ?? this.chatId,
+      currentUser: currentUser ?? this.currentUser,
+      otherUser: otherUser ?? this.otherUser,
+      messages: messages ?? this.messages,
+    );
+  }
 }

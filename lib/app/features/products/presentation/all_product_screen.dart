@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/config/theme/app_colors.dart';
 import '../../../core/di/injection.dart';
+import '../../favorites/presentation/cubits/favorite/favorite_cubit.dart';
 import '../domain/use_cases/get_products_use_case.dart';
 import 'cubits/get_products/get_products_cubit.dart';
 
@@ -41,8 +42,13 @@ class _AllProductScreenState extends State<AllProductScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<GetProductsCubit>(
-      create: (_) => getIt<GetProductsCubit>()..getProducts(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<GetProductsCubit>(
+          create: (_) => getIt<GetProductsCubit>()..getProducts(),
+        ),
+        BlocProvider(create: (context) => getIt<FavoriteCubit>()),
+      ],
       child: Builder(
         builder: (context) {
           return Scaffold(

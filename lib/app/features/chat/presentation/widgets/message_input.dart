@@ -10,9 +10,7 @@ import '../../domain/use_cases/send_message_by_chat_Id_use_case.dart';
 import '../cubits/get_chat_by_user_id/get_chat_by_user_id_cubit.dart';
 
 class MessageInput extends StatefulWidget {
-  final void Function(String text) onSend;
-
-  const MessageInput({super.key, required this.onSend});
+  const MessageInput({super.key});
 
   @override
   State<MessageInput> createState() => _MessageInputState();

@@ -104,6 +104,8 @@ import '../../features/favorites/domain/use_cases/get_favorites_use_case.dart'
     as _i986;
 import '../../features/favorites/domain/use_cases/toggle_favorite_use_case.dart'
     as _i1052;
+import '../../features/favorites/presentation/cubits/favorite/favorite_cubit.dart'
+    as _i718;
 import '../../features/menu/data/data_source/static_remote_data_source.dart'
     as _i816;
 import '../../features/menu/data/repo_impl/static_repo_impl.dart' as _i574;
@@ -541,6 +543,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i38.ResendEmailUpdatedCubit>(
       () => _i38.ResendEmailUpdatedCubit(gh<_i587.ResendEmailUpdateUseCase>()),
     );
+    gh.factory<_i718.FavoriteCubit>(
+      () => _i718.FavoriteCubit(
+        gh<_i986.GetFavoritesUseCase>(),
+        gh<_i1052.ToggleFavoriteUseCase>(),
+      ),
+    );
     gh.factory<_i425.SendByChatIdCubit>(
       () => _i425.SendByChatIdCubit(gh<_i646.SendMessageByChatIdUseCase>()),
     );
@@ -548,7 +556,10 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i849.UpdateProfileCubit(gh<_i611.UpdateProfileUseCase>()),
     );
     gh.factory<_i821.GetChatByUserIdCubit>(
-      () => _i821.GetChatByUserIdCubit(gh<_i171.FetchChatByUserIdUseCase>()),
+      () => _i821.GetChatByUserIdCubit(
+        gh<_i171.FetchChatByUserIdUseCase>(),
+        getUserInfoUseCase: gh<_i590.GetUserInfoUseCase>(),
+      ),
     );
     gh.factory<_i529.SendByUserIdCubit>(
       () => _i529.SendByUserIdCubit(gh<_i456.SendMessageByUserIdUseCase>()),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega/app/core/config/theme/app_colors.dart';
 import 'package:mega/app/features/chat/presentation/cubits/get_chat_by_user_id/get_chat_by_user_id_cubit.dart';
 import 'package:mega/app/features/chat/presentation/cubits/send_by_chat_id/send_by_chat_id_cubit.dart';
 import 'package:mega/app/features/chat/presentation/widgets/chat_bubble.dart';
@@ -23,6 +24,7 @@ class ChatScreen extends StatelessWidget {
         BlocProvider(create: (_) => getIt<SendByChatIdCubit>()),
       ],
       child: Scaffold(
+        backgroundColor: AppColors.chatColor,
         appBar: AppBar(
           title: BlocBuilder<GetChatByUserIdCubit, GetChatByUserIdState>(
             builder: (context, state) {
@@ -59,7 +61,7 @@ class ChatScreen extends StatelessWidget {
           children: [
             Expanded(child: const ChatBody()),
 
-            MessageInput(onSend: (_) {}),
+            MessageInput(),
           ],
         ),
       ),
@@ -75,7 +77,9 @@ class ChatBody extends StatelessWidget {
     return BlocBuilder<GetChatByUserIdCubit, GetChatByUserIdState>(
       builder: (context, state) {
         if (state is GetChatByUserIdLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator(
+            color: AppColors.primaryColor ,
+          ));
         }
 
         if (state is GetChatByUserIdError) {

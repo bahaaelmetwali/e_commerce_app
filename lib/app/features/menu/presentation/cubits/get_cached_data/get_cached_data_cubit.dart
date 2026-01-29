@@ -18,6 +18,7 @@ class GetCachedDataCubit extends Cubit<GetCachedDataState> {
       cachedUserEntity,
     ) {
       final cachedUser = cachedUserEntity;
+
       if (cachedUser == null) {
         emit(GetCachedDataEmpty());
         return;

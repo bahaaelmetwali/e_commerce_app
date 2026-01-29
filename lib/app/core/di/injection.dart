@@ -35,6 +35,7 @@ abstract class RegisterModule {
 
   @lazySingleton
   FlutterSecureStorage get flutterSecureStorage => FlutterSecureStorage();
+@lazySingleton
 
   @lazySingleton
   Dio dio(

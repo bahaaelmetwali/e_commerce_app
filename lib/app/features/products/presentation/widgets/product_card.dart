@@ -1,5 +1,6 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mega/app/features/favorites/presentation/cubits/favorite/favorite_cubit.dart';
 
 import '../../../../../constants/assets.dart';
 import '../../../../core/config/router/route_names.dart';
@@ -8,15 +9,10 @@ import '../../../../material/images/app_image_widget.dart';
 import '../../../../material/images/app_svg_photo.dart';
 import '../../domain/entities/product_entity.dart';
 
-class ProductCard extends StatefulWidget {
+class ProductCard extends StatelessWidget {
   const ProductCard({super.key, required this.product});
   final ProductEntity product;
 
-  @override
-  State<ProductCard> createState() => _ProductCardState();
-}
-
-class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -24,7 +20,7 @@ class _ProductCardState extends State<ProductCard> {
         Navigator.pushNamed(
           context,
           RouteNames.productDetails,
-          arguments: widget.product.id,
+          arguments: product.id,
         );
       },
       child: Column(
@@ -37,24 +33,29 @@ class _ProductCardState extends State<ProductCard> {
                 AppImageWidget(
                   height: 200,
                   width: double.infinity,
-                  path: widget.product.image,
+                  path: product.image,
                   fit: BoxFit.cover,
                 ),
                 PositionedDirectional(
                   top: 8,
                   end: 8,
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        // favorites[index] = !favorites[index];
-                      });
+                  child: BlocBuilder<FavoriteCubit, FavoriteState>(
+                    builder: (context, state) {
+                      final isFavorite = state.favorites.any(
+                        (p) => p.id == product.id,
+                      );
+
+                      return GestureDetector(
+                        onTap: () {
+                          context.read<FavoriteCubit>().toggleFavorite(product);
+                        },
+                        child: AppSvgIcon(
+                          path: isFavorite
+                              ? Assets.iconsFav
+                              : Assets.iconsFavPage,
+                        ),
+                      );
                     },
-                    child: AppSvgIcon(
-                      path: Assets.iconsFav,
-                      // path: favorites[index]
-                      // ? Assets.iconsFav
-                      // : Assets.iconsFavPage,
-                    ),
                   ),
                 ),
               ],
@@ -62,13 +63,13 @@ class _ProductCardState extends State<ProductCard> {
           ),
           const SizedBox(height: 10),
           Text(
-            widget.product.name,
+            product.name,
             style: TextStyles.medium12,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(height: 5),
-          Text("\$${widget.product.price}", style: TextStyles.semiBold14),
+          Text("\$${product.price}", style: TextStyles.semiBold14),
         ],
       ),
     );

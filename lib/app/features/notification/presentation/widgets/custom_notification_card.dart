@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mega/app/core/utils/get_time_difference.dart';
+import 'package:mega/app/core/utils/time_extensions.dart';
 import '../../../../core/config/theme/app_colors.dart';
 import '../../../../core/config/theme/text_styles.dart';
 import '../../../../material/images/app_svg_photo.dart';

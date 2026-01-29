@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mega/app/core/config/theme/app_colors.dart';
 import 'package:mega/app/core/constants/dimensions.dart';
 import 'package:mega/app/core/di/injection.dart';
+import 'package:mega/app/features/favorites/presentation/cubits/favorite/favorite_cubit.dart';
 import 'package:mega/app/features/products/presentation/cubits/get_products/get_products_cubit.dart';
 import 'package:mega/app/features/products/presentation/widgets/home_list_of_products.dart';
 
@@ -24,8 +25,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<GetProductsCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => getIt<GetProductsCubit>()),
+        BlocProvider(create: (context) => getIt<FavoriteCubit>()),
+      ],
       child: Scaffold(
         body: SafeArea(
           child: Padding(

@@ -29,7 +29,6 @@ void main() async {
     PushNotificationHelper.handleInitialMessage(),
     LocalNotifications.init(),
   ]);
-
   Bloc.observer = MyBlocObserver();
   await configureDependencies();
   runApp(const Mega());
