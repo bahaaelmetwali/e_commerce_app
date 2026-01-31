@@ -13,6 +13,61 @@ class ChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget buildMediaGrid(List<String> mediaUrls) {
+      int extraCount = mediaUrls.length > 4 ? mediaUrls.length - 4 : 0;
+      List<String> displayUrls = mediaUrls.take(4).toList();
+
+      return ConstrainedBox(
+        constraints: const BoxConstraints(maxHeight: 180),
+        child: GridView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: displayUrls.length == 1
+                ? 1
+                : displayUrls.length == 2
+                ? 2
+                : 2, 
+            crossAxisSpacing: 4,
+            mainAxisSpacing: 4,
+            childAspectRatio: 1, 
+          ),
+          itemCount: displayUrls.length,
+          itemBuilder: (context, index) {
+            String url = displayUrls[index];
+            return GestureDetector(
+              onTap: () {
+      
+              },
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: AppImageWidget(path: url, fit: BoxFit.fill),
+                  ),
+                  if (extraCount > 0 && index == 3)
+                    Container(
+                      color: Colors.black54,
+                      child: Center(
+                        child: Text(
+                          '+$extraCount',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+            );
+          },
+        ),
+      );
+    }
+
     return Row(
       mainAxisAlignment: message.isMine
           ? MainAxisAlignment.end
@@ -42,27 +97,7 @@ class ChatBubble extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (message.media.isNotEmpty)
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: message.media.map((url) {
-                        return Padding(
-                          padding: const EdgeInsets.only(bottom: 6),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: LayoutBuilder(
-                              builder: (context, constraints) {
-                                return AppImageWidget(
-                                  path: url,
-                                  fit: BoxFit.cover,
-                                  width: constraints.maxWidth,
-                                );
-                              },
-                            ),
-                          ),
-                        );
-                      }).toList(),
-                    ),
+                  if (message.media.isNotEmpty) buildMediaGrid(message.media),
                   Text(
                     message.text,
                     style: TextStyle(

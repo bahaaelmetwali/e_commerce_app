@@ -90,13 +90,25 @@ class Assets {
   /// assets/icons/attach.svg
   static const String iconsAttach = "assets/icons/attach.svg";
 
+  /// Assets for iconsAudioIcon
+  /// assets/icons/audio_icon.svg
+  static const String iconsAudioIcon = "assets/icons/audio_icon.svg";
+
   /// Assets for iconsBag
   /// assets/icons/bag.svg
   static const String iconsBag = "assets/icons/bag.svg";
 
+  /// Assets for iconsCameraIcon
+  /// assets/icons/camera_icon.svg
+  static const String iconsCameraIcon = "assets/icons/camera_icon.svg";
+
   /// Assets for iconsClock
   /// assets/icons/clock.svg
   static const String iconsClock = "assets/icons/clock.svg";
+
+  /// Assets for iconsDocumentIcon
+  /// assets/icons/document_icon.svg
+  static const String iconsDocumentIcon = "assets/icons/document_icon.svg";
 
   /// Assets for iconsFav
   /// assets/icons/fav.svg
@@ -110,6 +122,10 @@ class Assets {
   /// assets/icons/forbidden.svg
   static const String iconsForbidden = "assets/icons/forbidden.svg";
 
+  /// Assets for iconsGalleryIcon
+  /// assets/icons/gallery_icon.svg
+  static const String iconsGalleryIcon = "assets/icons/gallery_icon.svg";
+
   /// Assets for iconsGift
   /// assets/icons/gift.svg
   static const String iconsGift = "assets/icons/gift.svg";
@@ -121,6 +137,10 @@ class Assets {
   /// Assets for iconsInformation
   /// assets/icons/information.svg
   static const String iconsInformation = "assets/icons/information.svg";
+
+  /// Assets for iconsLocationIcon
+  /// assets/icons/location_icon.svg
+  static const String iconsLocationIcon = "assets/icons/location_icon.svg";
 
   /// Assets for iconsLock
   /// assets/icons/lock.svg
@@ -161,6 +181,10 @@ class Assets {
   /// Assets for iconsStar
   /// assets/icons/star.svg
   static const String iconsStar = "assets/icons/star.svg";
+
+  /// Assets for iconsSubTractIcon
+  /// assets/icons/sub_tract_icon.svg
+  static const String iconsSubTractIcon = "assets/icons/sub_tract_icon.svg";
 
   /// Assets for iconsTab
   /// assets/icons/tab.svg

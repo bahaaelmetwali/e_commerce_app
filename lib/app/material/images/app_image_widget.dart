@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:mega/app/core/config/theme/app_colors.dart';
 
 class AppImageWidget extends StatelessWidget {
   const AppImageWidget({
@@ -49,7 +50,8 @@ class AppImageWidget extends StatelessWidget {
     }
 
     if (path == "") {
-      return errorWidget ?? const Icon(Icons.broken_image);
+      return errorWidget ??
+          const Icon(Icons.broken_image, color: AppColors.primaryText);
     }
     return Image.asset(
       path,
@@ -76,10 +78,14 @@ class AppImageWidget extends StatelessWidget {
       height: height,
       width: width,
       fit: fit,
-      placeholder: (_, __) =>
-          placeholder ?? const Center(child: CircularProgressIndicator()),
-      errorWidget: (_, __, ___) =>
-          errorWidget ?? const Icon(Icons.broken_image),
+      placeholder: (_, _) =>
+          placeholder ??
+          const Center(
+            child: CircularProgressIndicator(color: AppColors.primaryColor),
+          ),
+      errorWidget: (_, _, _) =>
+          errorWidget ??
+          const Icon(Icons.broken_image, color: AppColors.primaryText),
     );
   }
 }

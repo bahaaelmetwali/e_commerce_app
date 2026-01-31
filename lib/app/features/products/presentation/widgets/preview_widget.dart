@@ -25,7 +25,7 @@ class _PreviewWidgetState extends State<PreviewWidget> {
               child: AppImageWidget(
                 path: widget.product?.images[index] ?? "",
                 width: 86,
-                fit: BoxFit.fill,
+                fit: BoxFit.contain,
               ),
             ),
           );

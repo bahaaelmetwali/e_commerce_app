@@ -16,25 +16,21 @@ class DioApiHelper implements ApiHelper {
     final response = await dio.get(endPoint, queryParameters: queryParameters);
     return response.data;
   }
-
-  @override
-  Future<Map<String, dynamic>> post({
-    required String endPoint,
-    final Map<String, dynamic>? queryParameters,
-    final Map<String, dynamic>? formData,
-    final Map<String, dynamic>? json,
-  }) async {
-    Object? body = json;
-    if (formData != null) {
-      body = FormData.fromMap(formData);
-    }
-    final response = await dio.post(
-      endPoint,
-      data: body,
-      queryParameters: queryParameters,
-    );
-    return response.data;
-  }
+@override
+Future<Map<String, dynamic>> post({
+  required String endPoint,
+  Map<String, dynamic>? queryParameters,
+  Map<String, dynamic>? json,
+  FormData? formData, // ← بدل Map<String, dynamic>?
+}) async {
+  final Object? body = formData ?? json;
+  final response = await dio.post(
+    endPoint,
+    data: body,
+    queryParameters: queryParameters,
+  );
+  return response.data;
+}
 
   @override
   Future<Map<String, dynamic>> put({

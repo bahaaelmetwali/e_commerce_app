@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/errors/failure.dart';
@@ -16,15 +19,33 @@ class SendMessageByUserIdUseCase {
 class SendMessageByUserIdParams {
   final String userId;
   final String? text;
-  final List<String>? media;
+  final List<File>? media;
   SendMessageByUserIdParams({
     required this.userId,
     required this.text,
     this.media,
   });
+
   Map<String, dynamic> toMap() => {
     'recipientId': userId,
     if (text != null) 'text': text,
-    if (media != null) 'media': media,
   };
+
+  FormData toFormData() {
+    final formData = FormData.fromMap(toMap());
+    if (media != null && media!.isNotEmpty) {
+      formData.files.addAll(
+        media!.map(
+          (file) => MapEntry(
+            'media',
+            MultipartFile.fromFileSync(
+              file.path,
+              filename: file.path.split('/').last,
+            ),
+          ),
+        ),
+      );
+    }
+    return formData;
+  }
 }

@@ -298,4 +298,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get typeYourMessage => 'Type your message...';
+
+  @override
+  String get camera => 'Camera';
+
+  @override
+  String get gallery => 'Gallery';
+
+  @override
+  String get document => 'Document';
+
+  @override
+  String get polling => 'Polling';
+
+  @override
+  String get location => 'Location';
+
+  @override
+  String get audio => 'Audio';
 }

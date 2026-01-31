@@ -661,6 +661,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Type your message...'**
   String get typeYourMessage;
+
+  /// No description provided for @camera.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera'**
+  String get camera;
+
+  /// No description provided for @gallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Gallery'**
+  String get gallery;
+
+  /// No description provided for @document.
+  ///
+  /// In en, this message translates to:
+  /// **'Document'**
+  String get document;
+
+  /// No description provided for @polling.
+  ///
+  /// In en, this message translates to:
+  /// **'Polling'**
+  String get polling;
+
+  /// No description provided for @location.
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get location;
+
+  /// No description provided for @audio.
+  ///
+  /// In en, this message translates to:
+  /// **'Audio'**
+  String get audio;
 }
 
 class _AppLocalizationsDelegate

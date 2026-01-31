@@ -298,4 +298,22 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get typeYourMessage => 'اكتب رسالتك...';
+
+  @override
+  String get camera => 'كاميرا';
+
+  @override
+  String get gallery => 'معرض الصور';
+
+  @override
+  String get document => 'مستند';
+
+  @override
+  String get polling => 'استطلاع';
+
+  @override
+  String get location => 'موقع';
+
+  @override
+  String get audio => 'صوت';
 }

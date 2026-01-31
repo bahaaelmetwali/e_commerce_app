@@ -70,7 +70,7 @@ class ChatDataSourceImpl implements ChatDataSource {
       endPoint:
           '${Constants.getAllConversationEndPoint}/${params.chatId}/send/',
 
-      json: params.toMap(),
+      formData: params.toFormData(),
     );
     return Future.value(unit);
   }
@@ -82,6 +82,7 @@ class ChatDataSourceImpl implements ChatDataSource {
     apiHelper.post(
       endPoint: Constants.sendByUserIdEndPoint,
       queryParameters: params.toMap(),
+      formData: params.toFormData(),
     );
     return Future.value(unit);
   }

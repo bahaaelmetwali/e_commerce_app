@@ -92,5 +92,11 @@
   "weWillLetYouKnowWhenSomethingExcitingHappens": "سنخبرك عندما يحدث شيء مثير",
   "exploreProducts": "استكشف المنتجات",
   "dataNotLoadedYet": "البيانات لم تُحمّل بعد",
-"typeYourMessage": "اكتب رسالتك..."
+  "typeYourMessage": "اكتب رسالتك...",
+  "camera": "كاميرا",
+  "gallery": "معرض الصور",
+  "document": "مستند",
+  "polling": "استطلاع",
+  "location": "موقع",
+  "audio": "صوت"
 }

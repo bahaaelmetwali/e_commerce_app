@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -70,7 +71,7 @@ class GetChatByUserIdCubit extends Cubit<GetChatByUserIdState> {
 
       emit(GetChatByUserIdSuccess(chatDetail: _cachedChat!));
     } catch (e) {
-      print("⚠️ Failed to parse new message: $event, error: $e");
+      log("⚠️ Failed to parse new message: $event, error: $e");
     }
   }
 
@@ -87,6 +88,5 @@ class GetChatByUserIdCubit extends Cubit<GetChatByUserIdState> {
       },
     );
 
-    ;
   }
 }

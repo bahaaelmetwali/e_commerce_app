@@ -92,5 +92,11 @@
   "weWillLetYouKnowWhenSomethingExcitingHappens": "We will let you know when something exciting happens",
   "exploreProducts": "Explore Products",
   "dataNotLoadedYet": "Data not loaded yet",
-  "typeYourMessage": "Type your message..."
+  "typeYourMessage": "Type your message...",
+  "camera": "Camera",
+  "gallery": "Gallery",
+  "document": "Document",
+  "polling": "Polling",
+  "location": "Location",
+  "audio": "Audio"
 }

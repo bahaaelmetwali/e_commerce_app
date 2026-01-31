@@ -35,6 +35,7 @@ class ChatScreen extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: 20,
+                      backgroundColor: AppColors.greyText,
                       child: ClipOval(
                         child: AppImageWidget(
                           path: user.avatar,
@@ -51,7 +52,6 @@ class ChatScreen extends StatelessWidget {
                 );
               }
 
-              // loading / initial / error
               return const SizedBox.shrink();
             },
           ),
@@ -59,7 +59,7 @@ class ChatScreen extends StatelessWidget {
         body: Column(
           spacing: 6,
           children: [
-            Expanded(child: const ChatBody()),
+            Expanded(child: ChatBody()),
 
             MessageInput(),
           ],
@@ -69,43 +69,86 @@ class ChatScreen extends StatelessWidget {
   }
 }
 
-class ChatBody extends StatelessWidget {
+class ChatBody extends StatefulWidget {
   const ChatBody({super.key});
 
   @override
+  State<ChatBody> createState() => _ChatBodyState();
+}
+
+class _ChatBodyState extends State<ChatBody> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _scrollToBottom() {
+    if (_scrollController.hasClients) {
+      _scrollController.animateTo(
+        0.0,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeOut,
+      );
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GetChatByUserIdCubit, GetChatByUserIdState>(
-      builder: (context, state) {
-        if (state is GetChatByUserIdLoading) {
-          return const Center(child: CircularProgressIndicator(
-            color: AppColors.primaryColor ,
-          ));
-        }
-
-        if (state is GetChatByUserIdError) {
-          return Center(child: Text(state.message));
-        }
-
+    return BlocListener<GetChatByUserIdCubit, GetChatByUserIdState>(
+      listener: (context, state) {
+        // Auto-scroll when new messages arrive
         if (state is GetChatByUserIdSuccess) {
-          final reversedMessages = state.chatDetail.messages.reversed.toList();
-
-          return MessagesList(messages: reversedMessages);
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            _scrollToBottom();
+          });
         }
-
-        return const SizedBox.shrink();
       },
+      child: BlocBuilder<GetChatByUserIdCubit, GetChatByUserIdState>(
+        builder: (context, state) {
+          if (state is GetChatByUserIdLoading) {
+            return const Center(
+              child: CircularProgressIndicator(color: AppColors.primaryColor),
+            );
+          }
+
+          if (state is GetChatByUserIdError) {
+            return Center(child: Text(state.message));
+          }
+
+          if (state is GetChatByUserIdSuccess) {
+            final reversedMessages = state.chatDetail.messages.reversed
+                .toList();
+
+            return MessagesList(
+              messages: reversedMessages,
+              scrollController: _scrollController,
+            );
+          }
+
+          return const SizedBox.shrink();
+        },
+      ),
     );
   }
 }
 
 class MessagesList extends StatelessWidget {
   final List<ChatMessageEntity> messages;
+  final ScrollController scrollController;
 
-  const MessagesList({super.key, required this.messages});
+  const MessagesList({
+    super.key,
+    required this.messages,
+    required this.scrollController,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      controller: scrollController,
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       reverse: true,
       itemCount: messages.length,
